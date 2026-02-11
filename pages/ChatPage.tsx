@@ -84,6 +84,7 @@ export const ChatPage = () => {
 
     setIsSending(true);
     setInput('');
+    dispatch({ type: 'SET_CITATIONS', citations: [] });
     
     // Reset textarea height
     if (textareaRef.current) {
@@ -97,16 +98,21 @@ export const ChatPage = () => {
       timestamp: Date.now()
     };
 
+    const nextSessionId = state.currentChatId
+      || (typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : Date.now().toString());
+
     // If no active chat, start one. Otherwise, add to existing.
     if (!state.currentChatId) {
-        const newChatId = Date.now().toString();
-        dispatch({ type: 'START_CHAT', chatId: newChatId, initialMessage: userMsg });
+        dispatch({ type: 'START_CHAT', chatId: nextSessionId, initialMessage: userMsg });
     } else {
         dispatch({ type: 'ADD_MESSAGE', message: userMsg });
     }
 
     try {
-      const response = await api.sendMessage(userMsg.content);
+      const response = await api.sendMessage(userMsg.content, nextSessionId);
+      if (response.sessionId && response.sessionId !== nextSessionId) {
+        dispatch({ type: 'REKEY_CURRENT_CHAT', newChatId: response.sessionId });
+      }
       
       const botMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -117,9 +123,7 @@ export const ChatPage = () => {
       };
 
       dispatch({ type: 'ADD_MESSAGE', message: botMsg });
-      if (response.citations.length > 0) {
-        dispatch({ type: 'SET_CITATIONS', citations: response.citations });
-      }
+      dispatch({ type: 'SET_CITATIONS', citations: response.citations });
     } catch (err) {
       console.error(err);
     } finally {
@@ -181,7 +185,7 @@ export const ChatPage = () => {
 
         {/* Messages Canvas */}
         <div className="flex-1 overflow-y-auto" ref={scrollRef}>
-          <div className="max-w-4xl mx-auto w-full px-6 pt-32 pb-48">
+          <div className="max-w-4xl mx-auto w-full px-6 pt-32 pb-72">
               {messages.length === 0 ? (
                 <div className="flex flex-col items-center justify-center animate-fade-in mt-10">
                   <div className="mb-10 relative group">
@@ -196,7 +200,7 @@ export const ChatPage = () => {
                     I'm ready to assist with your research. All citations are verified against the 2024 Federal Court database.
                   </p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl px-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl px-4">
                     {suggestions.map((s, idx) => (
                       <button 
                         key={idx}
@@ -218,7 +222,12 @@ export const ChatPage = () => {
               ) : (
                 <div className="flex flex-col space-y-12">
                   {messages.map((msg, idx) => (
-                    <MessageBubble key={msg.id} message={msg} isLast={idx === messages.length - 1} />
+                    <MessageBubble
+                      key={msg.id}
+                      message={msg}
+                      isLast={idx === messages.length - 1}
+                      onCitationOpen={setActiveCitation}
+                    />
                   ))}
                   {isSending && (
                     <div className="flex gap-6 p-4 animate-fade-in pl-2 max-w-3xl">

@@ -1,12 +1,48 @@
 import React from 'react';
 import { cn } from '../../lib/cn';
-import { Message } from '../../lib/types';
+import { CitationReference, Message } from '../../lib/types';
 import { Copy, ThumbsUp, Scale, CheckCircle2 } from 'lucide-react';
 import { useAppStore } from '../../lib/store';
 
-export const MessageBubble: React.FC<{ message: Message; isLast: boolean }> = ({ message, isLast }) => {
+export const MessageBubble: React.FC<{
+  message: Message;
+  isLast: boolean;
+  onCitationOpen?: (citation: CitationReference) => void;
+}> = ({ message, isLast, onCitationOpen }) => {
   const isUser = message.role === 'user';
   const { dispatch } = useAppStore();
+
+  const resolveCitation = (token: string): CitationReference | null => {
+    if (!message.citations || message.citations.length === 0) {
+      return null;
+    }
+
+    const raw = token.replace('[', '').replace(']', '').trim();
+    const numericMatch = raw.match(/^(\d+)$/);
+    if (numericMatch) {
+      const idx = Number(numericMatch[1]) - 1;
+      return message.citations[idx] || null;
+    }
+
+    const refMatch = raw.match(/^([PC])(\d+)$/i);
+    if (!refMatch) {
+      return null;
+    }
+
+    const refId = `${refMatch[1].toUpperCase()}${refMatch[2]}`;
+    const byRef = message.citations.find((c) => {
+      const cid = typeof c.caseId === 'string' ? c.caseId.toUpperCase() : '';
+      const rid = typeof c.referenceId === 'string' ? c.referenceId.toUpperCase() : '';
+      const iid = typeof c.id === 'string' ? c.id.toUpperCase() : '';
+      return rid === refId || cid === refId || iid === refId;
+    });
+    if (byRef) {
+      return byRef;
+    }
+
+    const idx = Number(refMatch[2]) - 1;
+    return message.citations[idx] || null;
+  };
 
   const renderContent = (content: string) => {
     const lines = content.split('\n');
@@ -35,22 +71,31 @@ export const MessageBubble: React.FC<{ message: Message; isLast: boolean }> = ({
       }
 
       // Process inline bold and citations
-      const parts = line.split(/(\[[\d]+\]|\*\*.*?\*\*)/g);
+      const parts = line.split(/(\[(?:P|C)?\d+\]|\*\*.*?\*\*)/g);
       return (
         <p key={idx} className={cn(
             "mb-4 leading-8 text-[16px] font-normal tracking-wide",
             isUser ? "text-white/95" : "text-slate-700"
         )}>
           {parts.map((part, pIdx) => {
-            if (part.match(/^\[[\d]+\]$/)) {
+            if (part.match(/^\[(?:P|C)?\d+\]$/i)) {
               const refId = part.replace('[', '').replace(']', '');
-              const citation = message.citations ? message.citations[parseInt(refId) - 1] : null;
+              const citation = resolveCitation(part);
               
               return (
                 <button
                   key={pIdx}
-                  onClick={() => citation && dispatch({ type: 'HIGHLIGHT_CITATION', caseId: citation.caseId })}
-                  className="inline-flex items-center justify-center align-top ml-0.5 -mt-0.5 text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-100/50 rounded-md h-5 min-w-[1.25rem] px-1 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer shadow-sm transform hover:scale-105"
+                  onClick={() => {
+                    if (!citation) return;
+                    dispatch({ type: 'HIGHLIGHT_CITATION', caseId: citation.caseId });
+                    onCitationOpen?.(citation);
+                  }}
+                  className={cn(
+                    "inline-flex items-center justify-center align-top ml-0.5 -mt-0.5 text-[10px] font-bold rounded-md h-5 min-w-[1.25rem] px-1 transition-all shadow-sm transform",
+                    citation
+                      ? "text-blue-600 bg-blue-50 border border-blue-100/50 hover:bg-blue-600 hover:text-white hover:border-blue-600 cursor-pointer hover:scale-105"
+                      : "text-slate-400 bg-slate-100 border border-slate-200 cursor-default"
+                  )}
                   title={citation?.caseName || "View Source"}
                 >
                   {refId}

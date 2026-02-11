@@ -1,32 +1,72 @@
 import React, { useState } from 'react';
 import { Scale, ArrowLeft, Loader2, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Button, Input } from '../components/ui/Generic';
+import { neonSignInWithEmail, neonSignUpWithEmail, neonStartSocialSignIn } from '../lib/neonAuth';
 
 interface LoginPageProps {
-  onLogin: () => void;
+  onLogin: () => void | Promise<void>;
   onBack: () => void;
+  onNavigateToTerms?: () => void;
 }
 
-export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
+export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigateToTerms }) => {
+  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [info, setInfo] = useState('');
 
-  const handleSimulatedLogin = (provider: string) => {
-    setIsLoading(provider);
-    // Simulate API network delay
-    setTimeout(() => {
+  const runAuthAction = async (loadingKey: string, action: () => Promise<void>) => {
+    setError('');
+    setInfo('');
+    setIsLoading(loadingKey);
+    try {
+      await action();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Authentication failed.';
+      setError(message);
+    } finally {
       setIsLoading(null);
-      onLogin();
-    }, 1500);
+    }
+  };
+
+  const handleSocialLogin = async (provider: 'google' | 'microsoft') => {
+    await runAuthAction(provider, async () => {
+      await neonStartSocialSignIn(provider);
+    });
+  };
+
+  const handleEmailAuth = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    await runAuthAction('email', async () => {
+      if (mode === 'signup') {
+        const payload = await neonSignUpWithEmail(name.trim(), email.trim(), password);
+        const autoSignedIn = Boolean(payload?.session || payload?.user);
+        if (autoSignedIn) {
+          await onLogin();
+          return;
+        }
+        setMode('signin');
+        setInfo('Account created. Sign in with your new credentials.');
+        return;
+      }
+
+      await neonSignInWithEmail(email.trim(), password);
+      await onLogin();
+    });
   };
 
   return (
-    <div className="min-h-screen w-full flex font-sans selection:bg-amber-100 selection:text-amber-900">
+    <div className="min-h-screen w-full flex font-sans selection:bg-blue-100 selection:text-blue-900">
       
       {/* Left Panel - Branding (Hidden on mobile) */}
       <div className="hidden lg:flex w-1/2 bg-[#0f172a] relative overflow-hidden flex-col justify-between p-16 text-white border-r border-slate-800">
         {/* Animated Background */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
         
         <div className="relative z-10">
             <div className="flex items-center gap-3 mb-12">
@@ -49,7 +89,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
             <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
                 <div className="flex gap-1 mb-4">
                      {[1,2,3,4,5].map(i => (
-                         <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                         <svg key={i} className="w-5 h-5 text-blue-400 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                      ))}
                 </div>
                 <p className="text-slate-200 italic font-serif text-lg mb-4">"The semantic search is a game changer. I found a specific H&C precedent regarding 'best interests of the child' that saved my client's application."</p>
@@ -81,15 +121,19 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
                  <div className="inline-block lg:hidden bg-slate-900 p-2 rounded-lg mb-6">
                     <Scale className="h-6 w-6 text-white" />
                  </div>
-                 <h2 className="text-3xl font-bold text-slate-900 font-serif">Welcome back</h2>
-                 <p className="text-slate-500 mt-2">Sign in to your professional workspace</p>
+                 <h2 className="text-3xl font-bold text-slate-900 font-serif">
+                   {mode === 'signin' ? 'Welcome back' : 'Create your account'}
+                 </h2>
+                 <p className="text-slate-500 mt-2">
+                   {mode === 'signin' ? 'Sign in to your professional workspace' : 'Start your RCIC workspace in minutes'}
+                 </p>
              </div>
 
              <div className="space-y-4">
                  <Button 
                     variant="outline" 
                     className="w-full h-12 text-base font-normal text-slate-700 hover:bg-slate-50 relative group"
-                    onClick={() => handleSimulatedLogin('google')}
+                    onClick={() => handleSocialLogin('google')}
                     disabled={!!isLoading}
                  >
                     {isLoading === 'google' ? (
@@ -102,7 +146,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
                                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
                                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                             </svg>
-                            Continue with Google
+                            {mode === 'signin' ? 'Continue with Google' : 'Sign up with Google'}
                         </>
                     )}
                  </Button>
@@ -110,7 +154,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
                  <Button 
                     variant="outline" 
                     className="w-full h-12 text-base font-normal text-slate-700 hover:bg-slate-50"
-                    onClick={() => handleSimulatedLogin('microsoft')}
+                    onClick={() => handleSocialLogin('microsoft')}
                     disabled={!!isLoading}
                  >
                     {isLoading === 'microsoft' ? (
@@ -123,7 +167,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
                                 <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
                                 <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
                             </svg>
-                            Continue with Microsoft
+                            {mode === 'signin' ? 'Continue with Microsoft' : 'Sign up with Microsoft'}
                         </>
                     )}
                  </Button>
@@ -138,36 +182,99 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack }) => {
                  </div>
              </div>
 
-             <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSimulatedLogin('email'); }}>
+             {error && (
+               <div className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                 {error}
+               </div>
+             )}
+
+             {info && (
+               <div className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 flex items-center gap-2">
+                 <CheckCircle2 className="h-4 w-4 shrink-0" />
+                 <span>{info}</span>
+               </div>
+             )}
+
+             <form className="space-y-4" onSubmit={handleEmailAuth}>
+                 {mode === 'signup' && (
+                   <div className="space-y-2">
+                       <label className="text-sm font-medium text-slate-700">Full Name</label>
+                       <Input
+                         placeholder="Jane Smith"
+                         type="text"
+                         required
+                         className="h-12"
+                         value={name}
+                         onChange={(e) => setName(e.target.value)}
+                       />
+                   </div>
+                 )}
                  <div className="space-y-2">
                      <label className="text-sm font-medium text-slate-700">Work Email</label>
-                     <Input placeholder="name@company.com" type="email" required className="h-12" />
+                     <Input
+                       placeholder="name@company.com"
+                       type="email"
+                       required
+                       className="h-12"
+                       value={email}
+                       onChange={(e) => setEmail(e.target.value)}
+                     />
                  </div>
                  <div className="space-y-2">
                      <div className="flex justify-between">
                         <label className="text-sm font-medium text-slate-700">Password</label>
-                        <a href="#" className="text-sm text-blue-600 hover:text-blue-800 font-medium">Forgot?</a>
+                        {mode === 'signin' && (
+                          <button
+                            type="button"
+                            onClick={() => setInfo('Password reset is configured from your Neon Auth project settings.')}
+                            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                          >
+                            Forgot?
+                          </button>
+                        )}
                      </div>
-                     <Input placeholder="••••••••" type="password" required className="h-12" />
+                     <Input
+                       placeholder="••••••••"
+                       type="password"
+                       required
+                       className="h-12"
+                       value={password}
+                       onChange={(e) => setPassword(e.target.value)}
+                     />
                  </div>
                  <Button 
                     type="submit" 
                     className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-lg shadow-xl shadow-slate-900/10"
                     disabled={!!isLoading}
                  >
-                    {isLoading === 'email' ? <Loader2 className="animate-spin" /> : 'Sign In'}
+                    {isLoading === 'email' ? (
+                      <Loader2 className="animate-spin" />
+                    ) : (
+                      mode === 'signin' ? 'Sign In' : 'Create Account'
+                    )}
                  </Button>
              </form>
 
              <p className="text-center text-sm text-slate-500">
-                 Don't have an account? <a href="#" className="text-blue-600 font-semibold hover:underline">Sign up for a free trial</a>
+                 {mode === 'signin' ? "Don't have an account?" : 'Already have an account?'}{' '}
+                 <button
+                   type="button"
+                   className="text-blue-600 font-semibold hover:underline"
+                   onClick={() => {
+                     setMode(mode === 'signin' ? 'signup' : 'signin');
+                     setError('');
+                     setInfo('');
+                   }}
+                 >
+                   {mode === 'signin' ? 'Sign up for a free trial' : 'Sign in'}
+                 </button>
              </p>
          </div>
 
          {/* Footer Links */}
          <div className="absolute bottom-6 flex gap-6 text-xs text-slate-400">
              <a href="#" className="hover:text-slate-600">Privacy Policy</a>
-             <a href="#" className="hover:text-slate-600">Terms of Service</a>
+             <button onClick={onNavigateToTerms} className="hover:text-slate-600">Terms of Service</button>
              <a href="#" className="hover:text-slate-600">Help Center</a>
          </div>
       </div>

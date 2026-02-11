@@ -16,11 +16,18 @@ export interface CaseParagraph {
 }
 
 export interface CitationReference {
+  id?: string;
+  referenceId?: string;
   caseId: string;
   caseName: string;
   citation: string;
   paragraphNumbers: number[];
   relevanceScore: number;
+  sourceType?: 'pinecone' | 'a2aj_case' | string;
+  locator?: string;
+  url?: string;
+  score?: number;
+  metadata?: any;
   title?: string;
   manual?: string;
   chapter?: string;
