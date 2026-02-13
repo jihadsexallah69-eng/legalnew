@@ -212,6 +212,9 @@ Phase 0 acceptance checks junior should run:
 - Added/updated Phase 0 architecture roadmap with execution controls:
   - `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
   - includes constrained executor contract, budgets, failure-state set, temporal semantics, claim-ledger hard gates, and Phase 1 CI-eval requirement
+- Started Senior Track S3 (audit trace wiring plan):
+  - `docs/PHASE0_S3_AUDIT_TRACE_WIRING_PLAN.md`
+  - defines `/api/chat` trace insertion points, payload contract mapping, redaction defaults, feature flags, persistence strategy, and acceptance tests
 - Delegation policy updated to junior-first:
   - junior assigned J1-J7 tracks (contracts, config, eval/CI scaffolding, runbooks, gold set)
   - senior limited to complex control-plane arbitration and policy/runtime guard semantics
@@ -279,6 +282,7 @@ Phase 0 acceptance checks junior should run:
 - `docs/LEGAL_METADATA_MAPPING.md`
 - `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
 - `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
+- `docs/PHASE0_S3_AUDIT_TRACE_WIRING_PLAN.md`
 
 ## Commands
 - Install: `npm install`
