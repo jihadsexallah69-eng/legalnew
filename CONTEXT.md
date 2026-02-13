@@ -1,6 +1,6 @@
 # Project Context
 
-Last updated: 2026-02-12
+Last updated: 2026-02-13
 
 ## Snapshot
 - Name: `rcic-case-law-assistant`
@@ -12,15 +12,17 @@ Last updated: 2026-02-12
 ## Current Architecture (Important)
 - Chat endpoint: `POST /api/chat`
 - Retrieval path:
-  1. Pinecone retrieval always
+  1. Tiered Pinecone retrieval (`server/rag/grounding.js`) with query profiling and metadata filters
   2. Intent routing (`server/rag/router.js`) decides A2AJ use
   3. A2AJ decision search/fetch enrichment when enabled
 - Prompt grounding:
-  - Pinecone sources labeled `P1..Pn`
+  - Pinecone sources labeled `P1..Pn` (Tier A/Tier B combined in stable order)
   - A2AJ sources labeled `C1..Cn`
+  - Uploaded document sources labeled `D1..Dn`
 - Citation safety:
   - model output tokens validated against citation map (`validateCitationTokens`)
   - invalid `[P#]/[C#]` tokens removed before response
+  - post-generation hierarchy guard (`server/rag/responseGuard.js`) adds warnings when binding claims lack binding citations
 - UI:
   - inline citation tokens in chat are clickable and open citation popup
   - Sources panel renders from `citations[]` returned by backend
@@ -28,7 +30,9 @@ Last updated: 2026-02-12
 ## Runtime Endpoints
 - `GET /api/health`
 - `GET /api/history` (DB-backed if `DATABASE_URL` configured)
+- `GET /api/documents` (DB-backed when enabled)
 - `POST /api/chat`
+- `POST /api/documents/text` (DB-backed when enabled)
 - `POST /api/ingest/pdi` (URL -> parse -> chunk -> embed -> upsert)
 - `POST /api/ingest` is placeholder (`not implemented`)
 
@@ -55,6 +59,7 @@ Implemented and active:
 - Inline clickable citations in assistant messages (`components/chat/MessageBubble.tsx`)
 - Sources panel + citation popup (`components/chat/SourcesPanel.tsx`, `pages/ChatPage.tsx`)
 - Citation persistence/reload through DB history (`server/db.js`, `lib/api.ts`)
+- Canonical metadata passthrough on citations (`authorityLevel`, `docFamily`, `instrument`, `jurisdiction`, `effectiveDate`, etc.)
 
 Detailed deep-dive doc:
 - `CITATION_SYSTEM.md`
@@ -103,22 +108,129 @@ Cleanup completed:
 - trial directories `ircc_data_clean_try*` are present and can be kept for comparison or cleaned later
 
 ## Current Phase Focus
-Current repo focus remains Phase 1 + ingestion hardening:
-- Chat grounding/citations currently support `P#` and `C#` tokens only.
-- Active ingestion work is in `server/ingest/pdi/*`, `scripts/ingest_md/ingest_md.py`, and `scripts/ingest_pdf/*`.
-- DB persistence currently covers `users`, `sessions`, and `messages` only.
-
-Phase 2 document-intelligence items are not present in this checkout (as of 2026-02-12):
-- no `server/db/migrations/phase2_documents.sql`
-- no `server/rag/documents.js`
-- no `POST /api/documents/text` or `GET /api/documents` endpoints
-- no `D#` citation token handling in grounding/extraction
-- no `server/ingest/pdi/__tests__/documents.test.js`
+Current repo focus is metadata-governed retrieval hardening:
+- Tiered Pinecone retrieval with explicit filter/debug artifacts (`server/rag/grounding.js`)
+- Response hierarchy guard to reduce policy-as-law drift (`server/rag/responseGuard.js`)
+- Ingestion metadata enrichment for markdown/pdf/pdi pipelines (canonical authority/doc_family/instrument/jurisdiction + optional fields)
+- Document endpoints and `D#` citations are present and active in chat flow
+- DB persistence currently covers `users`, `sessions`, `messages`, and session-scoped document/chunk grounding
+- Phase 0 contract freeze and control-plane scaffolding is now active for agentic RCIC architecture:
+  - roadmap: `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
+  - parallel delegation: `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
 
 Phase 1 delegation remains active in parallel:
 - `PHASE1_DELEGATION.md`
 
-## Latest Debug Update (2026-02-12)
+## Phase 0 Junior Execution Details (Important)
+Junior-first policy for Phase 0:
+- Junior owns non-complex deterministic work by default (target 75-85% of Phase 0 implementation).
+- Senior handles only high-complexity/high-risk control-plane tasks.
+
+Primary docs junior must follow:
+- `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
+- `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
+
+Junior track assignments (J1-J7):
+- J1 Contracts pack:
+  - create `contracts/v1/*.schema.json`
+  - create `contracts/v1/examples/*.json`
+- J2 Source policy:
+  - create `config/source_policy.v1.json`
+  - add allowlist/blocklist tests
+- J3 Eval harness scaffold:
+  - create `eval/gold/gold_set_template.jsonl`
+  - create `eval/run_eval.(js|ts|py)`
+- J4 CI + validation tooling:
+  - schema/example validation runner
+  - CI job + report artifact output
+- J5 Failure-state test matrix:
+  - create `eval/failure_state_matrix.json`
+  - add stubbed tests per failure code
+- J6 Docs/runbooks:
+  - create `docs/phase0_contracts.md`
+  - create `docs/phase0_testplan.md`
+  - create `docs/phase0_runbook.md`
+- J7 Gold-set expansion:
+  - expand starter gold set to 30-40 entries
+  - Phase 0 assertions are scope/failure/doc-family checks (not answer-quality grading)
+
+Contract/index requirements for junior:
+- maintain single source of truth index:
+  - `contracts/v1/INDEX.md` with version `v1.0.0`, schema list, required fields, examples
+- canonical ID format:
+  - `doc_id = sha256(canonical_url)` (64 hex)
+  - `content_hash_prefix = first 12 hex`
+  - `artifact_id = doc_id + ":" + content_hash_prefix`
+  - `chunk_id = artifact_id + ":" + chunk_index`
+  - `run_id = ulid()` (26 chars)
+
+Temporal requiredness (Phase 0 contracts):
+- required always: `observed_at`, `ingested_at`, `retrieved_at`
+- optional: `published_at`, `effective_from`, `effective_to`
+- required-if (best effort): for `{MI, PUBLIC_POLICY, OINP, BC_PNP, AAIP}`, include `effective_from`; `effective_to` nullable
+
+Junior boundaries (must not cross without approval):
+- Do not modify runtime orchestration/failure semantics in app server code.
+- Do not change retrieval behavior in `server/rag/*` during J-tracks.
+- Do not change policy semantics in roadmap docs.
+- Keep each PR scoped to a single J-track.
+- Junior PRs must not modify `server/**` runtime code.
+- Exception: tests or config-loading hooks behind feature flags with explicit senior approval.
+
+Phase 0 validator scope (junior scaffold):
+- include: schema checks, authority/modality compatibility, allowlist checks, binding-claim source checks on stub payloads
+- exclude: semantic quote verification by LLM (Phase 1+)
+
+Junior daily status format (required):
+- `Track:`
+- `PR:`
+- `Tests:`
+- `Blocked by:`
+- `Next:`
+
+Merge order for minimal conflicts:
+1. J1
+2. J2
+3. J4
+4. J3
+5. J5
+6. J6
+7. J7
+8. Senior integration tracks
+
+Phase 0 acceptance checks junior should run:
+- `npm run test:server`
+- eval runner:
+  - `node eval/run_eval.js` or `python eval/run_eval.py`
+- schema/example validation script from J4 tooling
+
+## Latest Debug Update (2026-02-13)
+- Added junior delegation runbook:
+  - `LEGAL_RAG_JUNIOR_PARALLEL_DELEGATION.md`
+- Added Phase 0 parallel delegation runbook:
+  - `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
+- Added/updated Phase 0 architecture roadmap with execution controls:
+  - `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
+  - includes constrained executor contract, budgets, failure-state set, temporal semantics, claim-ledger hard gates, and Phase 1 CI-eval requirement
+- Delegation policy updated to junior-first:
+  - junior assigned J1-J7 tracks (contracts, config, eval/CI scaffolding, runbooks, gold set)
+  - senior limited to complex control-plane arbitration and policy/runtime guard semantics
+- Junior Track B/C was reviewed and normalized to canonical schema values:
+  - validator updated in `scripts/ingest_md/validate_namespace.py`
+  - mapping contract corrected in `docs/LEGAL_METADATA_MAPPING.md`
+  - validation pass (2026-02-13): `npm run test:server` passed, Python compile checks passed for validator/metadata modules
+  - runtime note: `validate_namespace.py` requires Python package `pinecone` in local env to execute namespace scans
+- Senior stream retrieval updates:
+  - tiered retrieval/query profiling/filter reporting in `server/rag/grounding.js`
+  - hierarchy post-guard in `server/rag/responseGuard.js`
+  - debug payload now includes `retrieval` and `guardIssues` in `/api/chat`
+- Senior Track A metadata emission added:
+  - markdown: `scripts/ingest_md/legal_metadata.py` + wired in `scripts/ingest_md/ingest_md.py`
+  - pdf: `scripts/ingest_pdf/legal_metadata.py` + wired in `scripts/ingest_pdf/chunk.py`
+  - pdi: canonical metadata builder in `server/ingest/pdi/index.js`
+  - section ID normalization corrected for nested citations:
+    - `A40(1)(a)` now maps to `IRPA_A40_1a`
+    - `R200(1)(c)` maps to `IRPR_200_1c` while `R179(b)` remains `IRPR_179b`
 - Canonical markdown dataset was restored into `scripts/scraper/ircc_data_clean` from Git commit `c1f0b3eadfee6a1be4d6175e5dd65f19bcc7288c`.
   - current markdown count in canonical directory: `284` files.
 - Markdown ingestion pipeline (`scripts/ingest_md/ingest_md.py`) was fixed for `EMBEDDING_PROVIDER=pinecone`:
@@ -143,6 +255,7 @@ Phase 1 delegation remains active in parallel:
 ## Key Files (High Value)
 - `server/index.js`
 - `server/rag/grounding.js`
+- `server/rag/responseGuard.js`
 - `server/rag/router.js`
 - `server/rag/security.js`
 - `server/clients/a2aj.js`
@@ -153,12 +266,19 @@ Phase 1 delegation remains active in parallel:
 - `pages/ChatPage.tsx`
 - `server/ingest/pdi/index.js`
 - `scripts/ingest_md/ingest_md.py`
+- `scripts/ingest_md/legal_metadata.py`
+- `scripts/ingest_md/validate_namespace.py`
 - `scripts/ingest_pdf/ingest_pdf.py`
 - `scripts/ingest_pdf/extract.py`
 - `scripts/ingest_pdf/chunk.py`
+- `scripts/ingest_pdf/legal_metadata.py`
 - `scripts/ingest_pdf/upsert.py`
 - `scripts/scraper/scrape.py`
 - `MARKDOWN_UPSERT_PIPELINE_DELEGATION.md`
+- `LEGAL_RAG_JUNIOR_PARALLEL_DELEGATION.md`
+- `docs/LEGAL_METADATA_MAPPING.md`
+- `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
+- `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
 
 ## Commands
 - Install: `npm install`
@@ -194,6 +314,10 @@ A2AJ:
 Security/debug:
 - `PROMPT_INJECTION_BLOCK_ENABLED`
 - `DEBUG_MODE`
+- `RAG_TIERED_RETRIEVAL_ENABLED`
+- `RAG_TOP_K_BINDING`
+- `RAG_TOP_K_GUIDANCE`
+- `RAG_NO_SILENT_FALLBACK_ENABLED`
 
 Ingestion:
 - `EMBEDDING_MODEL`, `EMBEDDING_DIM`, `EMBEDDING_BASE_URL`
