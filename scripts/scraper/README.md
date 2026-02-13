@@ -46,15 +46,22 @@ python scrape.py \
 `scrape.py` now includes:
 - recursive BFS crawl
 - canonical URL dedupe (fragments + tracking params removed)
+- redirect-wrapper URL unwrapping (for `?url=...`, `?u=...`, `?target=...`, `?redirect=...`, percent-encoded and base64-encoded values)
 - strict host/path allowlisting
 - custom ingestion target filter:
   - keep `.../operational-bulletins-manuals/...`
   - keep `visit/visas.asp`
   - drop generic `/services/` except `transit/without-visa`
+- deterministic extractor routing:
+  - Tier A: local HTML main-text extraction
+  - Tier B fallback: Jina Reader when local extraction quality is low or HTML fetch fails
+- content-type routing:
+  - HTML continues through extractor pipeline
+  - PDF/non-HTML assets are logged and skipped for the HTML crawler path
 - retry/backoff handling for transient failures
 - state checkpointing for resume (`_crawl_state.json`)
 - manifest and failure logs (`manifest.json`, `failed_urls.json`)
-- markdown output with YAML frontmatter metadata
+- markdown output with YAML frontmatter metadata and provenance fields (`original_url`, `canonical_url`, `final_url`, `content_type`, `extractor_used`, `fallback_reason`)
 
 ### 2. `hub_scraper.py` - Extract Links from Hub Page
 

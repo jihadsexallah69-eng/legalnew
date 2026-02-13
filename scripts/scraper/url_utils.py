@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
 import hashlib
 import re
-from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, unquote, urlencode, urljoin, urlsplit, urlunsplit
 
 
 TRACKING_QUERY_KEYS = {
@@ -25,6 +26,107 @@ TRACKING_QUERY_KEYS = {
     "campaign",
 }
 
+UNWRAP_QUERY_KEYS = {
+    "url",
+    "u",
+    "target",
+    "dest",
+    "destination",
+    "redirect",
+    "redirect_url",
+    "redirect_uri",
+    "next",
+    "continue",
+    "return",
+    "return_url",
+    "link",
+    "href",
+}
+
+MAX_UNWRAP_DEPTH = 4
+
+
+def _decode_candidate(raw_value: str, max_depth: int = 3) -> str:
+    value = str(raw_value or "").strip()
+    if not value:
+        return ""
+
+    out = value
+    for _ in range(max_depth):
+        try:
+            decoded = unquote(out)
+        except Exception:
+            break
+        if not decoded or decoded == out:
+            break
+        out = decoded.strip()
+    return out
+
+
+def _try_decode_base64_url(raw_value: str) -> str | None:
+    value = str(raw_value or "").strip()
+    if not value:
+        return None
+
+    candidate = value.replace("-", "+").replace("_", "/")
+    candidate += "=" * (-len(candidate) % 4)
+
+    try:
+        decoded = base64.b64decode(candidate, validate=True).decode("utf-8").strip()
+    except Exception:
+        return None
+
+    if decoded.startswith("http://") or decoded.startswith("https://"):
+        return decoded
+    return None
+
+
+def _parse_absolute_http_url(raw_url: str) -> str | None:
+    value = str(raw_url or "").strip()
+    if not value:
+        return None
+
+    try:
+        split = urlsplit(value)
+    except Exception:
+        return None
+
+    if split.scheme not in ("http", "https"):
+        return None
+    if not split.hostname:
+        return None
+
+    return urlunsplit((split.scheme, split.netloc, split.path, split.query, ""))
+
+
+def _extract_nested_url_candidate(url_text: str) -> str | None:
+    parsed = _parse_absolute_http_url(url_text)
+    if not parsed:
+        return None
+
+    try:
+        split = urlsplit(parsed)
+    except Exception:
+        return None
+
+    for key, value in parse_qsl(split.query, keep_blank_values=True):
+        if not value:
+            continue
+        lower_key = key.lower()
+        should_unwrap = lower_key in UNWRAP_QUERY_KEYS or "url" in lower_key
+        if not should_unwrap:
+            continue
+
+        decoded = _decode_candidate(value)
+        for candidate in (decoded, value, _try_decode_base64_url(decoded), _try_decode_base64_url(value)):
+            if not candidate:
+                continue
+            nested = _parse_absolute_http_url(candidate)
+            if nested:
+                return nested
+
+    return None
+
 
 def canonicalize_url(raw_url: str, base_url: str | None = None) -> str | None:
     if not raw_url:
@@ -34,8 +136,18 @@ def canonicalize_url(raw_url: str, base_url: str | None = None) -> str | None:
         return None
 
     joined = urljoin(base_url, value) if base_url else value
+    parsed = _parse_absolute_http_url(joined) or _parse_absolute_http_url(_decode_candidate(joined))
+    if not parsed:
+        return None
+
+    for _ in range(MAX_UNWRAP_DEPTH):
+        nested = _extract_nested_url_candidate(parsed)
+        if not nested or nested == parsed:
+            break
+        parsed = nested
+
     try:
-        split = urlsplit(joined)
+        split = urlsplit(parsed)
     except Exception:
         return None
 
@@ -72,4 +184,3 @@ def canonicalize_url(raw_url: str, base_url: str | None = None) -> str | None:
 def build_source_id(canonical_url: str) -> str:
     digest = hashlib.sha1(canonical_url.encode("utf-8")).hexdigest()[:12]
     return f"pdi_{digest}"
-

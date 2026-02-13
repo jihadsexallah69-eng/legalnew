@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Recursive crawler for Canada.ca IRCC manual pages using Jina Reader for clean markdown extraction.
+Recursive crawler for Canada.ca IRCC manual pages with local extraction and Jina Reader fallback.
 
 Features:
 - strict host/path filtering
@@ -25,10 +25,12 @@ from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Deque, Dict, Iterable, List, Optional, Sequence, Set, Tuple
-from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import urlsplit
 
 import requests
 from bs4 import BeautifulSoup
+
+from url_utils import canonicalize_url as canonicalize_shared
 
 try:
     from curl_cffi import requests as curl_requests
@@ -56,25 +58,6 @@ MANIFEST_FILE = "manifest.json"
 FAILED_FILE = "failed_urls.json"
 
 JINA_API_KEY = os.getenv("JINA_API_KEY", "").strip()
-
-TRACKING_QUERY_KEYS = {
-    "utm_source",
-    "utm_medium",
-    "utm_campaign",
-    "utm_term",
-    "utm_content",
-    "utm_id",
-    "gclid",
-    "fbclid",
-    "msclkid",
-    "mc_cid",
-    "mc_eid",
-    "_hsenc",
-    "_hsmi",
-    "ref",
-    "source",
-    "campaign",
-}
 
 BLOCKED_CONTENT_PATTERNS = [
     r"enable javascript",
@@ -134,46 +117,7 @@ def parse_retry_after_seconds(value: Optional[str]) -> Optional[float]:
 
 
 def canonicalize_url(raw_url: str, base_url: Optional[str] = None) -> Optional[str]:
-    if not raw_url:
-        return None
-    value = str(raw_url).strip()
-    if not value:
-        return None
-
-    joined = urljoin(base_url, value) if base_url else value
-    try:
-        split = urlsplit(joined)
-    except Exception:
-        return None
-
-    if split.scheme not in ("http", "https"):
-        return None
-    if not split.hostname:
-        return None
-
-    hostname = split.hostname.lower()
-    port = split.port
-    if port and not ((split.scheme == "http" and port == 80) or (split.scheme == "https" and port == 443)):
-        netloc = f"{hostname}:{port}"
-    else:
-        netloc = hostname
-
-    path = re.sub(r"/{2,}", "/", split.path or "/")
-    if not path.startswith("/"):
-        path = "/" + path
-    if path != "/":
-        path = path.rstrip("/")
-
-    query_items: List[Tuple[str, str]] = []
-    for key, value in parse_qsl(split.query, keep_blank_values=True):
-        lower_key = key.lower()
-        if lower_key.startswith("utm_") or lower_key in TRACKING_QUERY_KEYS:
-            continue
-        query_items.append((key, value))
-    query_items.sort(key=lambda item: (item[0], item[1]))
-    query = urlencode(query_items, doseq=True)
-
-    return urlunsplit((split.scheme.lower(), netloc, path, query, ""))
+    return canonicalize_shared(raw_url, base_url=base_url)
 
 
 def is_valid_ingestion_target(url: str) -> bool:
@@ -355,7 +299,7 @@ def fetch_page_html(
     timeout: float,
     retries: int,
     backoff_base: float,
-) -> Tuple[str, str]:
+) -> Tuple[str, str, str]:
     response = request_with_backoff(
         session,
         "GET",
@@ -370,11 +314,8 @@ def fetch_page_html(
     if response.status_code != 200:
         raise RuntimeError(f"HTML fetch failed ({response.status_code})")
 
-    content_type = response.headers.get("Content-Type", "")
-    if "text/html" not in content_type and "application/xhtml+xml" not in content_type:
-        raise RuntimeError(f"Unsupported content type: {content_type}")
-
-    return response.text, response.url
+    content_type = response.headers.get("Content-Type", "").strip()
+    return response.text, response.url, content_type
 
 
 def scrape_with_jina(
@@ -433,6 +374,16 @@ def scrape_with_jina(
     return response.text
 
 
+def is_html_content_type(content_type: str) -> bool:
+    lower = str(content_type or "").lower()
+    return "text/html" in lower or "application/xhtml+xml" in lower
+
+
+def is_pdf_content_type(content_type: str) -> bool:
+    lower = str(content_type or "").lower()
+    return "application/pdf" in lower
+
+
 def extract_title_from_html(html: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
     h1 = soup.find("h1")
@@ -467,8 +418,7 @@ def extract_links_from_html(html: str, base_url: str) -> List[str]:
 
 def extract_markdown_from_html(html: str) -> str:
     """
-    Fallback extractor used when Jina is unavailable.
-    Produces markdown-like text from the page content container.
+    Primary local extractor that converts page content into markdown-like text.
     """
     soup = BeautifulSoup(html, "html.parser")
     container = soup.find(id="wb-cont") or soup.find("main") or soup.body or soup
@@ -550,22 +500,37 @@ def build_frontmatter(
     *,
     url: str,
     title: str,
+    original_url: str,
+    canonical_url: str,
+    final_url: str,
     fetched_url: str,
     parent_url: Optional[str],
     depth: int,
+    content_type: str,
+    extractor_used: str,
+    fallback_reason: str,
     content_hash: str,
 ) -> str:
     ingest_date = datetime.now().strftime("%Y-%m-%d")
     safe_title = escape_yaml_string(title)
     parent = parent_url or ""
+    safe_content_type = escape_yaml_string(content_type or "")
+    safe_extractor = escape_yaml_string(extractor_used or "")
+    safe_reason = escape_yaml_string(fallback_reason or "")
     return (
         "---\n"
         f"url: {url}\n"
+        f"original_url: {original_url}\n"
+        f"canonical_url: {canonical_url}\n"
+        f"final_url: {final_url}\n"
         f"fetched_url: {fetched_url}\n"
         f"title: \"{safe_title}\"\n"
         f"parent_url: {parent}\n"
         f"depth: {depth}\n"
         f"ingest_date: {ingest_date}\n"
+        f"content_type: \"{safe_content_type}\"\n"
+        f"extractor_used: \"{safe_extractor}\"\n"
+        f"fallback_reason: \"{safe_reason}\"\n"
         f"content_hash: \"{content_hash}\"\n"
         "type: manual_section\n"
         "---\n\n"
@@ -681,11 +646,15 @@ def crawl_recursive(
         visited.add(url)
         print(f"[{pages_attempted}/{max_pages}] Fetching (depth={depth}): {url}")
 
+        requested_url = url
+        canonical_url = canonicalize_url(requested_url) or requested_url
+
         html: Optional[str] = None
-        fetched_url = url
+        fetched_url = requested_url
+        content_type = ""
         fetch_warning: Optional[str] = None
         try:
-            html, fetched_url = fetch_page_html(
+            html, fetched_url, content_type = fetch_page_html(
                 session,
                 url,
                 timeout=timeout,
@@ -696,14 +665,18 @@ def crawl_recursive(
             fetch_warning = str(exc)
             print(f"  ! HTML fetch fallback via Jina: {fetch_warning}")
 
-        final_url = canonicalize_url(fetched_url) or url
+        final_url = canonicalize_url(fetched_url) or canonical_url
         if not url_is_allowed(final_url, allow_domains, allow_path_prefixes):
             pages_skipped += 1
             append_manifest_record(
                 manifest,
                 {
                     "url": final_url,
+                    "original_url": requested_url,
+                    "canonical_url": canonical_url,
+                    "final_url": final_url,
                     "fetched_url": fetched_url,
+                    "content_type": content_type or None,
                     "title": None,
                     "depth": depth,
                     "parent_url": parent_url,
@@ -721,6 +694,29 @@ def crawl_recursive(
             visited.add(final_url)
             url = final_url
 
+        if html is not None and not is_html_content_type(content_type):
+            pages_skipped += 1
+            asset_status = "pdf_asset" if is_pdf_content_type(content_type) or final_url.lower().endswith(".pdf") else "non_html_asset"
+            append_manifest_record(
+                manifest,
+                {
+                    "url": url,
+                    "original_url": requested_url,
+                    "canonical_url": canonical_url,
+                    "final_url": final_url,
+                    "fetched_url": fetched_url,
+                    "content_type": content_type or None,
+                    "title": derive_title_from_url(url),
+                    "depth": depth,
+                    "parent_url": parent_url,
+                    "status": asset_status,
+                    "file": None,
+                    "content_hash": None,
+                    "timestamp": utc_now_iso(),
+                },
+            )
+            continue
+
         if depth < max_depth and html is not None:
             links = extract_links_from_html(html, fetched_url)
             for link in links:
@@ -732,25 +728,51 @@ def crawl_recursive(
                 queued_set.add(link)
 
         title = extract_title_from_html(html) if html is not None else derive_title_from_url(url)
+        extractor_used = ""
+        fallback_reason = ""
         scrape_warning: Optional[str] = None
-        try:
-            markdown = scrape_with_jina(
-                session,
-                url,
-                target_selector=target_selector,
-                exclude_selectors=exclude_selectors,
-                wait_for_selector=wait_for_selector,
-                with_generated_alt=with_generated_alt,
-                timeout=timeout,
-                retries=retries,
-                backoff_base=backoff_base,
-            )
-        except Exception as exc:
-            if html is not None:
-                scrape_warning = f"jina_failed: {exc}"
-                print(f"  ! Jina fallback via HTML parser: {exc}")
-                markdown = extract_markdown_from_html(html)
+        markdown = ""
+        if html is not None:
+            markdown = extract_markdown_from_html(html)
+            local_quality_issue = looks_like_block_page(markdown)
+            if local_quality_issue:
+                fallback_reason = f"html_quality:{local_quality_issue}"
+                try:
+                    markdown = scrape_with_jina(
+                        session,
+                        url,
+                        target_selector=target_selector,
+                        exclude_selectors=exclude_selectors,
+                        wait_for_selector=wait_for_selector,
+                        with_generated_alt=with_generated_alt,
+                        timeout=timeout,
+                        retries=retries,
+                        backoff_base=backoff_base,
+                    )
+                    extractor_used = "jina_reader"
+                except Exception as exc:
+                    scrape_warning = f"jina_failed: {exc}"
+                    extractor_used = "html_local"
+                    fallback_reason = f"{fallback_reason};jina_failed"
+                    print(f"  ! Jina fallback failed, using local HTML extractor: {exc}")
             else:
+                extractor_used = "html_local"
+        else:
+            fallback_reason = f"html_fetch_failed:{fetch_warning or 'unknown'}"
+            try:
+                markdown = scrape_with_jina(
+                    session,
+                    url,
+                    target_selector=target_selector,
+                    exclude_selectors=exclude_selectors,
+                    wait_for_selector=wait_for_selector,
+                    with_generated_alt=with_generated_alt,
+                    timeout=timeout,
+                    retries=retries,
+                    backoff_base=backoff_base,
+                )
+                extractor_used = "jina_reader"
+            except Exception as exc:
                 combined_error = f"{exc}; html_fetch={fetch_warning}" if fetch_warning else str(exc)
                 error_entry = {
                     "url": url,
@@ -765,11 +787,17 @@ def crawl_recursive(
                     manifest,
                     {
                         "url": url,
+                        "original_url": requested_url,
+                        "canonical_url": canonical_url,
+                        "final_url": final_url,
                         "fetched_url": fetched_url,
+                        "content_type": content_type or None,
                         "title": title,
                         "depth": depth,
                         "parent_url": parent_url,
                         "status": "scrape_failed",
+                        "extractor_used": "jina_reader",
+                        "fallback_reason": fallback_reason,
                         "file": None,
                         "content_hash": None,
                         "error": combined_error,
@@ -806,11 +834,17 @@ def crawl_recursive(
                 manifest,
                 {
                     "url": url,
+                    "original_url": requested_url,
+                    "canonical_url": canonical_url,
+                    "final_url": final_url,
                     "fetched_url": fetched_url,
+                    "content_type": content_type or None,
                     "title": title,
                     "depth": depth,
                     "parent_url": parent_url,
                     "status": "quality_rejected",
+                    "extractor_used": extractor_used,
+                    "fallback_reason": fallback_reason or None,
                     "file": None,
                     "content_hash": None,
                     "error": quality_issue,
@@ -827,11 +861,17 @@ def crawl_recursive(
                 manifest,
                 {
                     "url": url,
+                    "original_url": requested_url,
+                    "canonical_url": canonical_url,
+                    "final_url": final_url,
                     "fetched_url": fetched_url,
+                    "content_type": content_type or None,
                     "title": title,
                     "depth": depth,
                     "parent_url": parent_url,
                     "status": "duplicate_content",
+                    "extractor_used": extractor_used,
+                    "fallback_reason": fallback_reason or None,
                     "file": existing_file,
                     "content_hash": content_hash,
                     "timestamp": utc_now_iso(),
@@ -842,10 +882,16 @@ def crawl_recursive(
             file_path = output_dir / filename
             frontmatter = build_frontmatter(
                 url=url,
+                original_url=requested_url,
+                canonical_url=canonical_url,
+                final_url=final_url,
                 fetched_url=fetched_url,
                 title=title,
                 parent_url=parent_url,
                 depth=depth,
+                content_type=content_type,
+                extractor_used=extractor_used,
+                fallback_reason=fallback_reason,
                 content_hash=content_hash,
             )
 
@@ -859,11 +905,17 @@ def crawl_recursive(
                 manifest,
                 {
                     "url": url,
+                    "original_url": requested_url,
+                    "canonical_url": canonical_url,
+                    "final_url": final_url,
                     "fetched_url": fetched_url,
+                    "content_type": content_type or None,
                     "title": title,
                     "depth": depth,
                     "parent_url": parent_url,
                     "status": "saved",
+                    "extractor_used": extractor_used,
+                    "fallback_reason": fallback_reason or None,
                     "file": filename,
                     "content_hash": content_hash,
                     "fetch_warning": fetch_warning,
