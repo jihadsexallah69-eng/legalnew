@@ -6,6 +6,7 @@ import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { TermsPage } from './pages/TermsPage';
+import { CRSCalculatorPage } from './pages/CRSCalculatorPage';
 import { AppProvider, useAppStore } from './lib/store';
 import { Menu, ShieldAlert, X } from 'lucide-react';
 import { Button } from './components/ui/Generic';
@@ -148,6 +149,7 @@ const Router = () => {
     switch (page) {
       case 'chat': return <ChatPage />;
       case 'cases': return <CasesPage />;
+      case 'calculator': return <CRSCalculatorPage />;
       case 'settings': return <SettingsPage />;
       default: return <div className="p-10 text-center text-slate-400">Page under construction: {page}</div>;
     }

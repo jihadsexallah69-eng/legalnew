@@ -229,22 +229,22 @@ export const ChatPage = () => {
   };
 
   return (
-    <div className="flex h-full overflow-hidden bg-white font-sans">
-      <div className="flex-1 flex flex-col min-w-0 relative bg-[#f9fafb]">
+    <div className="flex h-full overflow-hidden bg-white dark:bg-slate-950 font-sans transition-colors duration-300">
+      <div className="flex-1 flex flex-col min-w-0 relative bg-[#f9fafb] dark:bg-slate-950">
         {/* Subtle Noise Texture */}
-        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+        <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.05] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
 
         {/* Minimal Floating Header */}
         <header className="absolute top-0 left-0 right-0 h-20 px-8 flex items-center justify-between z-20 pointer-events-none">
           <div className="flex items-center gap-2 pointer-events-auto">
-             <div className="flex items-center gap-2 cursor-pointer hover:bg-black/5 py-1.5 px-3 -ml-3 rounded-full transition-colors group backdrop-blur-sm border border-transparent hover:border-black/5">
+             <div className="flex items-center gap-2 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 py-1.5 px-3 -ml-3 rounded-full transition-colors group backdrop-blur-sm border border-transparent hover:border-black/5 dark:hover:border-white/5">
                 <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
-                <h1 className="font-semibold text-slate-800 text-sm tracking-tight">{currentChat?.title || "New Session"}</h1>
-                <ChevronDown className="h-3 w-3 text-slate-400 group-hover:text-slate-600 transition-transform group-hover:rotate-180" />
+                <h1 className="font-semibold text-slate-800 dark:text-slate-200 text-sm tracking-tight">{currentChat?.title || "New Session"}</h1>
+                <ChevronDown className="h-3 w-3 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-transform group-hover:rotate-180" />
              </div>
           </div>
           <div className="flex items-center gap-3 pointer-events-auto">
-            <Button variant="ghost" size="sm" onClick={() => setShowMemoModal(true)} className="hidden sm:flex text-slate-500 hover:text-slate-900 gap-2 h-9 rounded-full px-4 hover:bg-white/60 hover:shadow-sm border border-transparent hover:border-slate-200 transition-all">
+            <Button variant="ghost" size="sm" onClick={() => setShowMemoModal(true)} className="hidden sm:flex text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 gap-2 h-9 rounded-full px-4 hover:bg-white/60 dark:hover:bg-slate-800/60 hover:shadow-sm border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all">
               <FileText className="h-4 w-4" /> 
               <span className="text-xs font-medium">Export</span>
             </Button>
@@ -252,7 +252,7 @@ export const ChatPage = () => {
               variant="ghost" 
               size="icon" 
               onClick={() => dispatch({ type: 'TOGGLE_SOURCES_PANEL' })}
-              className={cn("text-slate-400 hover:text-slate-800 transition-all rounded-full hover:bg-white/60 hover:shadow-sm h-9 w-9", state.isSourcesPanelOpen && "bg-white shadow-sm text-slate-900")}
+              className={cn("text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all rounded-full hover:bg-white/60 dark:hover:bg-slate-800/60 hover:shadow-sm h-9 w-9", state.isSourcesPanelOpen && "bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-slate-200")}
             >
               {state.isSourcesPanelOpen ? <PanelRightClose className="h-4 w-4" /> : <PanelRightOpen className="h-4 w-4" />}
             </Button>
@@ -266,13 +266,13 @@ export const ChatPage = () => {
                 <div className="flex flex-col items-center justify-center animate-fade-in mt-10">
                   <div className="mb-10 relative group">
                      <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                     <div className="relative bg-white p-5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 ring-1 ring-slate-900/5">
-                        <Scale className="h-10 w-10 text-slate-900" />
+                     <div className="relative bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 dark:border-slate-800 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+                        <Scale className="h-10 w-10 text-slate-900 dark:text-slate-100" />
                      </div>
                   </div>
                   
-                  <h2 className="text-4xl font-serif font-medium text-slate-900 mb-3 tracking-tight text-center">Good afternoon, Counsel.</h2>
-                  <p className="text-slate-500 mb-16 text-center max-w-lg text-lg leading-relaxed font-light">
+                  <h2 className="text-4xl font-serif font-medium text-slate-900 dark:text-slate-100 mb-3 tracking-tight text-center">Good afternoon, Counsel.</h2>
+                  <p className="text-slate-500 dark:text-slate-400 mb-16 text-center max-w-lg text-lg leading-relaxed font-light">
                     I'm ready to assist with your research. All citations are verified against the 2024 Federal Court database.
                   </p>
                   
@@ -281,16 +281,16 @@ export const ChatPage = () => {
                       <button 
                         key={idx}
                         onClick={() => handleSend(s.query)}
-                        className="group flex flex-col items-start p-5 bg-white border border-slate-200/60 rounded-2xl hover:border-blue-300/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-300 text-left relative overflow-hidden"
+                        className="group flex flex-col items-start p-5 bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl hover:border-blue-300/50 dark:hover:border-blue-700/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-300 text-left relative overflow-hidden"
                       >
                         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-2 group-hover:translate-x-0">
-                            <ArrowUpRight className="h-4 w-4 text-blue-500" />
+                            <ArrowUpRight className="h-4 w-4 text-blue-500 dark:text-blue-400" />
                         </div>
-                        <div className="mb-4 p-2.5 bg-slate-50 rounded-xl group-hover:bg-blue-50/50 transition-colors text-slate-600 group-hover:text-blue-600">
+                        <div className="mb-4 p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl group-hover:bg-blue-50/50 dark:group-hover:bg-blue-900/20 transition-colors text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                             <s.icon className="h-5 w-5" />
                         </div>
-                        <span className="text-base font-semibold text-slate-900 mb-1.5">{s.label}</span>
-                        <span className="text-sm text-slate-500 leading-snug">{s.desc}</span>
+                        <span className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-1.5">{s.label}</span>
+                        <span className="text-sm text-slate-500 dark:text-slate-400 leading-snug">{s.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -307,7 +307,7 @@ export const ChatPage = () => {
                   ))}
                   {isSending && (
                     <div className="flex gap-6 p-4 animate-fade-in pl-2 max-w-3xl">
-                       <div className="h-8 w-8 rounded-full bg-white border border-slate-100 flex items-center justify-center shadow-sm shrink-0">
+                       <div className="h-8 w-8 rounded-full bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center shadow-sm shrink-0">
                           <Sparkles className="h-4 w-4 text-amber-500 animate-pulse" />
                        </div>
                        <div className="space-y-3 pt-1.5">
@@ -326,11 +326,11 @@ export const ChatPage = () => {
         </div>
 
         {/* Floating Command Center */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 pt-32 bg-gradient-to-t from-[#f9fafb] via-[#f9fafb]/90 to-transparent pointer-events-none z-30">
+        <div className="absolute bottom-0 left-0 right-0 p-6 pt-32 bg-gradient-to-t from-[#f9fafb] via-[#f9fafb]/90 to-transparent dark:from-slate-950 dark:via-slate-950/90 pointer-events-none z-30">
           <div className="max-w-3xl mx-auto pointer-events-auto relative">
             <div className={cn(
-                "group relative bg-white/80 backdrop-blur-xl rounded-[24px] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.12)] border border-white/50 ring-1 ring-slate-900/5 transition-all duration-300",
-                "focus-within:ring-2 focus-within:ring-slate-900/10 focus-within:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] focus-within:scale-[1.002]"
+                "group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-[24px] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.12)] border border-white/50 dark:border-slate-800/50 ring-1 ring-slate-900/5 dark:ring-slate-100/5 transition-all duration-300",
+                "focus-within:ring-2 focus-within:ring-slate-900/10 dark:focus-within:ring-slate-100/10 focus-within:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] focus-within:scale-[1.002]"
             )}>
                 <input
                     ref={fileInputRef}
@@ -345,7 +345,7 @@ export const ChatPage = () => {
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}
                     placeholder="Describe the legal issue or ask a question..."
-                    className="w-full bg-transparent border-none focus:ring-0 focus:border-none p-5 min-h-[64px] max-h-[240px] resize-none text-[16px] leading-relaxed placeholder:text-slate-400 text-slate-900"
+                    className="w-full bg-transparent border-none focus:ring-0 focus:border-none p-5 min-h-[64px] max-h-[240px] resize-none text-[16px] leading-relaxed placeholder:text-slate-400 text-slate-900 dark:text-slate-100"
                     rows={1}
                 />
                 
@@ -356,19 +356,19 @@ export const ChatPage = () => {
                             size="icon"
                             onClick={handlePickDocument}
                             disabled={isUploadingDocument}
-                            className="h-9 w-9 text-slate-400 hover:text-slate-700 hover:bg-slate-100/80 rounded-xl transition-colors disabled:opacity-50"
+                            className="h-9 w-9 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors disabled:opacity-50"
                             title="Attach text/markdown document"
                         >
                             {isUploadingDocument ? <Loader2 className="h-4 w-4 animate-spin" /> : <Paperclip className="h-4 w-4" />}
                         </Button>
-                        <div className="w-px h-4 bg-slate-200 mx-1"></div>
-                        <Button variant="ghost" size="sm" className="h-8 text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100/80 rounded-lg transition-colors px-3">
+                        <div className="w-px h-4 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+                        <Button variant="ghost" size="sm" className="h-8 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-lg transition-colors px-3">
                             Search Web
                         </Button>
                     </div>
                     <div className="flex items-center gap-3">
                         {input.length > 0 && (
-                            <span className="text-[10px] text-slate-300 font-medium animate-fade-in tracking-wider uppercase">
+                            <span className="text-[10px] text-slate-300 dark:text-slate-600 font-medium animate-fade-in tracking-wider uppercase">
                                 {input.length} chars
                             </span>
                         )}
@@ -379,8 +379,8 @@ export const ChatPage = () => {
                             className={cn(
                                 "h-9 w-9 rounded-xl transition-all duration-300 shadow-sm",
                                 input.trim() 
-                                    ? "bg-slate-900 hover:bg-black text-white hover:scale-105 shadow-md" 
-                                    : "bg-slate-100 text-slate-300"
+                                    ? "bg-slate-900 dark:bg-slate-100 hover:bg-black dark:hover:bg-white text-white dark:text-slate-900 hover:scale-105 shadow-md" 
+                                    : "bg-slate-100 dark:bg-slate-800 text-slate-300 dark:text-slate-600"
                             )}
                         >
                             {isSending ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowUpIcon className="h-5 w-5" />}
@@ -390,10 +390,10 @@ export const ChatPage = () => {
             </div>
 
             {uploadStatus && (
-              <p className="text-center text-[11px] text-slate-500 mt-3 font-medium">{uploadStatus}</p>
+              <p className="text-center text-[11px] text-slate-500 dark:text-slate-400 mt-3 font-medium">{uploadStatus}</p>
             )}
             
-            <p className="text-center text-[11px] text-slate-400 mt-4 font-medium tracking-wide opacity-60">
+            <p className="text-center text-[11px] text-slate-400 dark:text-slate-500 mt-4 font-medium tracking-wide opacity-60">
                 AI may produce inaccurate information. Verify with official sources.
             </p>
           </div>
@@ -405,17 +405,17 @@ export const ChatPage = () => {
             onClick={() => setActiveCitation(null)}
           >
             <div
-              className="w-full max-w-2xl bg-white rounded-2xl shadow-[0_30px_80px_-30px_rgba(15,23,42,0.6)] border border-slate-200 overflow-hidden"
+              className="w-full max-w-2xl max-h-[85vh] bg-white dark:bg-slate-900 rounded-2xl shadow-[0_30px_80px_-30px_rgba(15,23,42,0.6)] border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
             >
-              <div className="px-6 py-4 border-b border-slate-100 bg-[#fffdf5]">
+              <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-[#fffdf5] dark:bg-slate-950">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 font-serif">{buildTitle(activeCitation)}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 font-serif">{buildTitle(activeCitation)}</h3>
                     {buildLocator(activeCitation) && (
-                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                         {buildLocator(activeCitation)}
                       </p>
                     )}
@@ -423,36 +423,36 @@ export const ChatPage = () => {
                   <button
                     type="button"
                     onClick={() => setActiveCitation(null)}
-                    className="text-xs font-semibold text-slate-500 hover:text-slate-900 px-2 py-1 rounded-md"
+                    className="text-xs font-semibold text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 px-2 py-1 rounded-md"
                   >
                     Close
                   </button>
                 </div>
               </div>
-              <div className="px-6 py-5 space-y-4">
+              <div className="px-6 py-5 space-y-4 overflow-y-auto min-h-0 flex-1 custom-scrollbar">
                 {activeCitation.snippet ? (
                   <div className="relative">
-                    <div className="absolute left-0 top-1 bottom-1 w-0.5 bg-amber-200 rounded-full"></div>
-                    <p className="pl-3 font-serif text-sm text-slate-700 leading-relaxed">
+                    <div className="absolute left-0 top-1 bottom-1 w-0.5 bg-amber-200 dark:bg-amber-800 rounded-full"></div>
+                    <p className="pl-3 font-serif text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap break-words">
                       “{activeCitation.snippet}”
                     </p>
                   </div>
                 ) : (
                   <p className="text-sm text-slate-400">No snippet available.</p>
                 )}
-                <div className="flex flex-wrap gap-2 text-[11px] text-slate-500">
+                <div className="flex flex-wrap gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                   {activeCitation.sourceType && (
-                    <span className="px-2 py-0.5 bg-slate-100 rounded-full">type: {activeCitation.sourceType}</span>
+                    <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full">type: {activeCitation.sourceType}</span>
                   )}
                   {activeCitation.sourceFile && (
-                    <span className="px-2 py-0.5 bg-slate-100 rounded-full">file: {activeCitation.sourceFile}</span>
+                    <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full">file: {activeCitation.sourceFile}</span>
                   )}
                   {typeof activeCitation.pageStart === 'number' && typeof activeCitation.pageEnd === 'number' && (
-                    <span className="px-2 py-0.5 bg-slate-100 rounded-full">pages: {activeCitation.pageStart}-{activeCitation.pageEnd}</span>
+                    <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full">pages: {activeCitation.pageStart}-{activeCitation.pageEnd}</span>
                   )}
                 </div>
               </div>
-              <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-end gap-2">
+              <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => {
@@ -460,7 +460,7 @@ export const ChatPage = () => {
                       navigator.clipboard?.writeText(activeCitation.snippet);
                     }
                   }}
-                  className="text-xs font-medium text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md bg-white border border-slate-200"
+                  className="text-xs font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100 px-3 py-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                 >
                   Copy Quote
                 </button>
@@ -468,7 +468,7 @@ export const ChatPage = () => {
                   <button
                     type="button"
                     onClick={() => window.open(activeCitation.sourceUrl, '_blank', 'noopener,noreferrer')}
-                    className="text-xs font-medium text-blue-600 hover:text-blue-800 px-3 py-1.5 rounded-md bg-white border border-slate-200 flex items-center gap-1"
+                    className="text-xs font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 px-3 py-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center gap-1"
                   >
                     Open Source <ArrowUpRight className="h-3 w-3" />
                   </button>
@@ -481,7 +481,7 @@ export const ChatPage = () => {
 
       {/* Sources Panel */}
       <div className={cn(
-        "border-l border-slate-200 bg-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hidden lg:block z-10 shadow-[0_0_40px_rgba(0,0,0,0.03)]",
+        "border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hidden lg:block z-10 shadow-[0_0_40px_rgba(0,0,0,0.03)]",
         state.isSourcesPanelOpen ? "w-[400px] opacity-100 translate-x-0" : "w-0 opacity-0 translate-x-10 overflow-hidden"
       )}>
         <div className="w-[400px] h-full">

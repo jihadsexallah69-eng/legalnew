@@ -50,30 +50,30 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
   const onGetStarted = () => onNavigate('login');
 
   return (
-    <div className="min-h-screen bg-[#fafafa] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-100 dark:selection:bg-blue-900 selection:text-blue-900 dark:selection:text-blue-100 overflow-x-hidden transition-colors">
       
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50 transition-all duration-300">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                <div className="bg-slate-900 p-2 rounded-lg shadow-lg shadow-slate-900/20 hover:scale-105 transition-transform">
-                    <Scale className="h-5 w-5 text-white" />
+                <div className="bg-slate-900 dark:bg-slate-100 p-2 rounded-lg shadow-lg shadow-slate-900/20 dark:shadow-slate-100/10 hover:scale-105 transition-transform">
+                    <Scale className="h-5 w-5 text-white dark:text-slate-900" />
                 </div>
-                <span className="font-bold text-xl tracking-tight text-slate-900 font-serif">RCIC Assistant</span>
+                <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-slate-100 font-serif">RCIC Assistant</span>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-                <a href="#features" className="hover:text-slate-900 transition-colors">Features</a>
-                <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
-                <a href="#about" className="hover:text-slate-900 transition-colors">About</a>
+            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+                <a href="#features" className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">Features</a>
+                <a href="#pricing" className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">Pricing</a>
+                <a href="#about" className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">About</a>
             </div>
             <div className="flex items-center gap-4">
                 <button 
                   onClick={() => onNavigate('login')}
-                  className="text-sm font-medium text-slate-600 hover:text-slate-900 hidden sm:block px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors"
+                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hidden sm:block px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   Log in
                 </button>
-                <Button onClick={onGetStarted} variant="premium" size="md" className="rounded-full px-6 shadow-slate-900/20">
+                <Button onClick={onGetStarted} variant="premium" size="md" className="rounded-full px-6 shadow-slate-900/20 dark:shadow-slate-100/10">
                     Get Started
                 </Button>
             </div>
@@ -83,41 +83,41 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <section className="pt-32 pb-24 px-6 relative overflow-hidden">
         {/* Refined Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-white via-transparent to-transparent pointer-events-none z-0"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none dark:opacity-20"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-white via-transparent to-transparent pointer-events-none z-0 dark:from-slate-900"></div>
         
-        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-blue-200/20 rounded-full mix-blend-multiply filter blur-[120px] animate-blob"></div>
-        <div className="absolute top-40 right-10 w-[600px] h-[600px] bg-indigo-200/20 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-2000"></div>
+        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-500/10 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-[120px] animate-blob"></div>
+        <div className="absolute top-40 right-10 w-[600px] h-[600px] bg-indigo-200/20 dark:bg-indigo-500/10 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-[120px] animate-blob animation-delay-2000"></div>
 
         {/* Floating Icons for Depth */}
-        <div className="absolute top-32 left-[10%] text-slate-200 animate-slide-up opacity-60 hidden lg:block">
+        <div className="absolute top-32 left-[10%] text-slate-200 dark:text-slate-800 animate-slide-up opacity-60 hidden lg:block">
             <Gavel className="h-12 w-12 rotate-12" />
         </div>
-        <div className="absolute top-40 right-[15%] text-slate-200 animate-slide-up animation-delay-500 opacity-60 hidden lg:block">
+        <div className="absolute top-40 right-[15%] text-slate-200 dark:text-slate-800 animate-slide-up animation-delay-500 opacity-60 hidden lg:block">
             <BookOpen className="h-10 w-10 -rotate-6" />
         </div>
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
             <FadeIn>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.04)] text-slate-600 text-xs font-semibold mb-8 hover:border-blue-200 hover:bg-blue-50/50 transition-all cursor-default backdrop-blur-sm group">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-[0_2px_10px_rgba(0,0,0,0.04)] text-slate-600 dark:text-slate-300 text-xs font-semibold mb-8 hover:border-blue-200 dark:hover:border-blue-800 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all cursor-default backdrop-blur-sm group">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                     </span>
                     Updated with 2024 SCC Jurisprudence
-                    <ChevronRight className="h-3 w-3 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                    <ChevronRight className="h-3 w-3 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 transition-colors" />
                 </div>
             </FadeIn>
             
             <FadeIn delay={100}>
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.05] font-serif">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-slate-50 mb-8 leading-[1.05] font-serif">
                     Legal drafting, <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900">elevated by intelligence.</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-300 dark:to-white">elevated by intelligence.</span>
                 </h1>
             </FadeIn>
             
             <FadeIn delay={200}>
-                <p className="text-xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
                     The premier AI assistant for Canadian immigration consultants. 
                     Find on-point case law and draft persuasive submissions in minutes, not hours.
                 </p>
@@ -125,89 +125,89 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             
             <FadeIn delay={300}>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-                    <Button onClick={onGetStarted} variant="premium" size="lg" className="rounded-full px-8 h-14 text-lg shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:shadow-slate-900/20 transition-all transform hover:-translate-y-0.5 w-full sm:w-auto">
+                    <Button onClick={onGetStarted} variant="premium" size="lg" className="rounded-full px-8 h-14 text-lg shadow-xl shadow-slate-900/10 dark:shadow-slate-100/10 hover:shadow-2xl hover:shadow-slate-900/20 dark:hover:shadow-slate-100/20 transition-all transform hover:-translate-y-0.5 w-full sm:w-auto">
                         Start Researching Free <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
-                    <Button variant="secondary" size="lg" className="rounded-full px-8 h-14 text-lg bg-white/80 backdrop-blur border-slate-200 hover:bg-white hover:border-slate-300 w-full sm:w-auto group">
-                        <PlayCircle className="mr-2 h-5 w-5 text-slate-400 group-hover:text-slate-600 transition-colors" />
+                    <Button variant="secondary" size="lg" className="rounded-full px-8 h-14 text-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 w-full sm:w-auto group dark:text-slate-200">
+                        <PlayCircle className="mr-2 h-5 w-5 text-slate-400 group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300 transition-colors" />
                         View Interactive Demo
                     </Button>
                 </div>
             </FadeIn>
             
             {/* Mock UI Interface */}
-            <FadeIn delay={400} className="relative mx-auto max-w-5xl rounded-2xl border border-slate-200/80 bg-white/60 backdrop-blur-xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] overflow-hidden ring-1 ring-white/50">
-                <div className="h-10 bg-white/50 border-b border-slate-200/50 flex items-center px-4 gap-2 justify-between">
+            <FadeIn delay={400} className="relative mx-auto max-w-5xl rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] overflow-hidden ring-1 ring-white/50 dark:ring-slate-800/50">
+                <div className="h-10 bg-white/50 dark:bg-slate-800/50 border-b border-slate-200/50 dark:border-slate-700/50 flex items-center px-4 gap-2 justify-between">
                     <div className="flex gap-1.5">
                         <div className="h-2.5 w-2.5 rounded-full bg-red-400/80"></div>
                         <div className="h-2.5 w-2.5 rounded-full bg-yellow-400/80"></div>
                         <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/80"></div>
                     </div>
-                    <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
+                    <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1">
                         <Lock className="h-2 w-2" /> secure-session.ts
                     </div>
                 </div>
                 <div className="grid grid-cols-[240px_1fr] h-[460px] md:h-[500px]">
                     {/* Sidebar Mock */}
-                    <div className="border-r border-slate-200/50 bg-slate-50/50 p-6 hidden md:flex flex-col gap-6 text-left">
-                        <div className="h-8 w-32 bg-white border border-slate-200/50 rounded-lg shadow-sm"></div>
+                    <div className="border-r border-slate-200/50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-900/50 p-6 hidden md:flex flex-col gap-6 text-left">
+                        <div className="h-8 w-32 bg-white dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 rounded-lg shadow-sm"></div>
                         <div className="space-y-3 opacity-60 flex-1">
-                            <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-slate-200/50 shadow-sm">
-                                <div className="h-5 w-5 rounded bg-blue-100 flex items-center justify-center"><Search className="h-3 w-3 text-blue-500" /></div>
-                                <div className="h-2 w-24 bg-slate-200 rounded"></div>
+                            <div className="flex items-center gap-3 p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 shadow-sm">
+                                <div className="h-5 w-5 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center"><Search className="h-3 w-3 text-blue-500" /></div>
+                                <div className="h-2 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
                             </div>
-                            <div className="flex items-center gap-3 p-2 rounded-lg border border-transparent hover:bg-white hover:border-slate-100 transition-colors">
-                                <div className="h-5 w-5 rounded bg-blue-100 flex items-center justify-center"><FileText className="h-3 w-3 text-blue-500" /></div>
-                                <div className="h-2 w-20 bg-slate-200 rounded"></div>
+                            <div className="flex items-center gap-3 p-2 rounded-lg border border-transparent hover:bg-white dark:hover:bg-slate-800 hover:border-slate-100 dark:hover:border-slate-700 transition-colors">
+                                <div className="h-5 w-5 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center"><FileText className="h-3 w-3 text-blue-500" /></div>
+                                <div className="h-2 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div>
                             </div>
-                            <div className="flex items-center gap-3 p-2 rounded-lg border border-transparent hover:bg-white hover:border-slate-100 transition-colors">
-                                <div className="h-5 w-5 rounded bg-purple-100 flex items-center justify-center"><Shield className="h-3 w-3 text-purple-500" /></div>
-                                <div className="h-2 w-16 bg-slate-200 rounded"></div>
+                            <div className="flex items-center gap-3 p-2 rounded-lg border border-transparent hover:bg-white dark:hover:bg-slate-800 hover:border-slate-100 dark:hover:border-slate-700 transition-colors">
+                                <div className="h-5 w-5 rounded bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center"><Shield className="h-3 w-3 text-purple-500" /></div>
+                                <div className="h-2 w-16 bg-slate-200 dark:bg-slate-700 rounded"></div>
                             </div>
                         </div>
-                        <div className="p-4 bg-slate-900 rounded-xl text-white">
-                            <div className="h-2 w-12 bg-slate-700 rounded mb-2"></div>
-                            <div className="h-1.5 w-full bg-slate-700/50 rounded-full overflow-hidden">
+                        <div className="p-4 bg-slate-900 dark:bg-slate-800 rounded-xl text-white border border-transparent dark:border-slate-700">
+                            <div className="h-2 w-12 bg-slate-700 dark:bg-slate-600 rounded mb-2"></div>
+                            <div className="h-1.5 w-full bg-slate-700/50 dark:bg-slate-600/50 rounded-full overflow-hidden">
                                 <div className="h-full w-3/4 bg-blue-500 rounded-full"></div>
                             </div>
                         </div>
                     </div>
                     {/* Main Mock */}
-                    <div className="p-8 bg-white/80 relative">
+                    <div className="p-8 bg-white/80 dark:bg-slate-900/80 relative">
                          <div className="space-y-8">
                             <div className="flex justify-end">
-                                <div className="bg-slate-900 text-white px-5 py-4 rounded-2xl rounded-tr-sm text-sm max-w-sm shadow-lg shadow-slate-900/10 leading-relaxed font-light">
+                                <div className="bg-slate-900 dark:bg-slate-700 text-white px-5 py-4 rounded-2xl rounded-tr-sm text-sm max-w-sm shadow-lg shadow-slate-900/10 dark:shadow-slate-900/30 leading-relaxed font-light">
                                     I need case law regarding study permit refusals for mature students under s. 216(1).
                                 </div>
                             </div>
                             <div className="flex gap-4">
-                                <div className="h-8 w-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 shadow-sm">
-                                    <Scale className="h-4 w-4 text-blue-600" />
+                                <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 flex items-center justify-center shrink-0 shadow-sm">
+                                    <Scale className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                                 </div>
                                 <div className="space-y-4 max-w-lg text-left">
-                                    <div className="p-5 rounded-2xl rounded-tl-sm bg-white border border-slate-100 text-sm text-slate-600 shadow-sm ring-1 ring-slate-900/5">
-                                        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-50">
+                                    <div className="p-5 rounded-2xl rounded-tl-sm bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-300 shadow-sm ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+                                        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-50 dark:border-slate-800">
                                             <Sparkles className="h-3.5 w-3.5 text-blue-500" />
-                                            <span className="font-serif text-slate-900 font-medium text-xs">AI Reasoning Engine</span>
+                                            <span className="font-serif text-slate-900 dark:text-slate-100 font-medium text-xs">AI Reasoning Engine</span>
                                         </div>
-                                        <p className="mb-3 font-serif text-slate-900 font-medium text-base">Key Jurisprudence Identified:</p>
+                                        <p className="mb-3 font-serif text-slate-900 dark:text-slate-100 font-medium text-base">Key Jurisprudence Identified:</p>
                                         <p className="mb-4 leading-relaxed">
-                                            The Federal Court has established that an officer's concern about a "mature student" must be rooted in evidence, not stereotypes (see <span className="font-semibold text-slate-800 border-b border-blue-200">Irimie</span>).
+                                            The Federal Court has established that an officer's concern about a "mature student" must be rooted in evidence, not stereotypes (see <span className="font-semibold text-slate-800 dark:text-slate-200 border-b border-blue-200 dark:border-blue-800">Irimie</span>).
                                         </p>
                                         <div className="space-y-2">
-                                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex justify-between items-center hover:border-blue-300 hover:bg-[#f0f9ff] transition-all cursor-pointer group">
+                                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex justify-between items-center hover:border-blue-300 dark:hover:border-blue-700 hover:bg-[#f0f9ff] dark:hover:bg-slate-800 transition-all cursor-pointer group">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="h-6 w-6 rounded bg-white border border-slate-100 flex items-center justify-center shadow-sm text-xs font-serif font-bold text-slate-700">¶</div>
-                                                    <span className="font-semibold text-slate-800 group-hover:text-blue-900 transition-colors">Irimie v. Canada</span>
+                                                    <div className="h-6 w-6 rounded bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center shadow-sm text-xs font-serif font-bold text-slate-700 dark:text-slate-300">¶</div>
+                                                    <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">Irimie v. Canada</span>
                                                 </div>
-                                                <span className="text-[10px] font-mono text-slate-400 bg-white px-2 py-1 rounded border border-slate-100 group-hover:border-blue-100">2000 CanLII 16688</span>
+                                                <span className="text-[10px] font-mono text-slate-400 bg-white dark:bg-slate-800 px-2 py-1 rounded border border-slate-100 dark:border-slate-700 group-hover:border-blue-100 dark:group-hover:border-blue-900">2000 CanLII 16688</span>
                                             </div>
-                                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex justify-between items-center hover:border-blue-300 hover:bg-[#f0f9ff] transition-all cursor-pointer group">
+                                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex justify-between items-center hover:border-blue-300 dark:hover:border-blue-700 hover:bg-[#f0f9ff] dark:hover:bg-slate-800 transition-all cursor-pointer group">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="h-6 w-6 rounded bg-white border border-slate-100 flex items-center justify-center shadow-sm text-xs font-serif font-bold text-slate-700">¶</div>
-                                                    <span className="font-semibold text-slate-800 group-hover:text-blue-900 transition-colors">Momi v. Canada</span>
+                                                    <div className="h-6 w-6 rounded bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center shadow-sm text-xs font-serif font-bold text-slate-700 dark:text-slate-300">¶</div>
+                                                    <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">Momi v. Canada</span>
                                                 </div>
-                                                <span className="text-[10px] font-mono text-slate-400 bg-white px-2 py-1 rounded border border-slate-100 group-hover:border-blue-100">2013 FC 666</span>
+                                                <span className="text-[10px] font-mono text-slate-400 bg-white dark:bg-slate-800 px-2 py-1 rounded border border-slate-100 dark:border-slate-700 group-hover:border-blue-100 dark:group-hover:border-blue-900">2013 FC 666</span>
                                             </div>
                                         </div>
                                     </div>
@@ -221,56 +221,56 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Social Proof */}
-      <section className="py-12 border-y border-slate-200/60 bg-white">
+      <section className="py-12 border-y border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900">
         <FadeIn className="max-w-7xl mx-auto px-6">
-            <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by regulated professionals at</p>
+            <p className="text-center text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-8">Trusted by regulated professionals at</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-20 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                <span className="text-xl font-bold font-serif text-slate-900">LEXBASE</span>
-                <span className="text-xl font-bold font-sans text-slate-900">Immigroup</span>
-                <span className="text-xl font-bold font-serif text-slate-900 tracking-[0.2em]">VISACORP</span>
-                <span className="text-xl font-bold font-sans text-slate-900 italic">GlobalMove</span>
-                <span className="text-xl font-bold font-mono text-slate-900">CANLAW</span>
+                <span className="text-xl font-bold font-serif text-slate-900 dark:text-slate-100">LEXBASE</span>
+                <span className="text-xl font-bold font-sans text-slate-900 dark:text-slate-100">Immigroup</span>
+                <span className="text-xl font-bold font-serif text-slate-900 dark:text-slate-100 tracking-[0.2em]">VISACORP</span>
+                <span className="text-xl font-bold font-sans text-slate-900 dark:text-slate-100 italic">GlobalMove</span>
+                <span className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100">CANLAW</span>
             </div>
         </FadeIn>
       </section>
 
       {/* Bento Grid Features */}
       <section id="features" className="py-24 max-w-7xl mx-auto px-6 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-100/50 rounded-full blur-3xl -z-10 mix-blend-multiply"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-100/50 dark:bg-slate-800/30 rounded-full blur-3xl -z-10 mix-blend-multiply dark:mix-blend-normal"></div>
         
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 font-serif">Engineered for legal precision</h2>
-            <p className="text-slate-500 text-lg leading-relaxed">Generic AI hallucinations can cost you a case. Our system is grounded in a verified database of Federal Court and Supreme Court decisions.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">Engineered for legal precision</h2>
+            <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">Generic AI hallucinations can cost you a case. Our system is grounded in a verified database of Federal Court and Supreme Court decisions.</p>
         </FadeIn>
         
         <div className="grid md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
             {/* Feature 1 - Large Left */}
-            <FadeIn delay={100} className="md:row-span-2 p-8 rounded-[2rem] bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500 group relative overflow-hidden flex flex-col">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-100/80 transition-colors duration-700"></div>
+            <FadeIn delay={100} className="md:row-span-2 p-8 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500 group relative overflow-hidden flex flex-col">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-900/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-100/80 dark:group-hover:bg-blue-900/20 transition-colors duration-700"></div>
                 <div className="relative z-10 h-full flex flex-col">
-                    <div className="h-14 w-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-500 border border-blue-100">
+                    <div className="h-14 w-14 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-500 border border-blue-100 dark:border-blue-800">
                         <Search className="h-7 w-7" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">Semantic Case Search</h3>
-                    <p className="text-slate-500 leading-relaxed mb-8 flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Semantic Case Search</h3>
+                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 flex-1">
                         Don't just search for keywords. Find cases based on legal principles like "procedural fairness regarding extrinsic evidence" or "reasonableness of financial assessment".
                     </p>
-                    <div className="bg-slate-50 rounded-xl border border-slate-100 p-4 mt-auto shadow-inner group-hover:bg-white group-hover:border-blue-100 transition-colors">
+                    <div className="bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 p-4 mt-auto shadow-inner group-hover:bg-white dark:group-hover:bg-slate-800/80 group-hover:border-blue-100 dark:group-hover:border-slate-600 transition-colors">
                         <div className="flex flex-wrap gap-2 mb-3">
-                            <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Scale className="h-3 w-3" /> Dual Intent</span>
-                            <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Globe className="h-3 w-3" /> H&C</span>
-                            <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Shield className="h-3 w-3" /> Vavilov</span>
+                            <span className="px-2 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Scale className="h-3 w-3" /> Dual Intent</span>
+                            <span className="px-2 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Globe className="h-3 w-3" /> H&C</span>
+                            <span className="px-2 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 shadow-sm"><Shield className="h-3 w-3" /> Vavilov</span>
                         </div>
                         <div className="space-y-2">
-                            <div className="h-2 w-full bg-slate-200/70 rounded-full group-hover:bg-blue-100 transition-colors"></div>
-                            <div className="h-2 w-2/3 bg-slate-200/70 rounded-full group-hover:bg-blue-100 transition-colors"></div>
+                            <div className="h-2 w-full bg-slate-200/70 dark:bg-slate-700 rounded-full group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors"></div>
+                            <div className="h-2 w-2/3 bg-slate-200/70 dark:bg-slate-700 rounded-full group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors"></div>
                         </div>
                     </div>
                 </div>
             </FadeIn>
 
             {/* Feature 2 - Top Middle */}
-            <FadeIn delay={200} className="p-8 rounded-[2rem] bg-slate-900 text-white shadow-xl hover:shadow-2xl hover:translate-y-[-4px] transition-all duration-500 relative overflow-hidden group">
+            <FadeIn delay={200} className="p-8 rounded-[2rem] bg-slate-900 text-white shadow-xl hover:shadow-2xl hover:translate-y-[-4px] transition-all duration-500 relative overflow-hidden group border border-slate-800">
                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-colors duration-700"></div>
                  <div className="relative z-10 h-full flex flex-col justify-between">
@@ -290,35 +290,35 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             </FadeIn>
 
             {/* Feature 3 - Top Right */}
-            <FadeIn delay={300} className="p-8 rounded-[2rem] bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-3xl -mr-8 -mt-8 group-hover:bg-indigo-100 transition-colors duration-700"></div>
+            <FadeIn delay={300} className="p-8 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-500 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 dark:bg-indigo-900/10 rounded-full blur-3xl -mr-8 -mt-8 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/20 transition-colors duration-700"></div>
                 <div className="relative z-10 h-full flex flex-col justify-between">
-                    <div className="h-12 w-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-4 border border-indigo-100 group-hover:rotate-12 transition-transform duration-500">
+                    <div className="h-12 w-12 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4 border border-indigo-100 dark:border-indigo-800 group-hover:rotate-12 transition-transform duration-500">
                         <Shield className="h-6 w-6" />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2">Vavilov Risk Analysis</h3>
-                        <p className="text-slate-500 text-sm leading-relaxed">Upload refusal letters to identify weak officer reasoning instantly using AI-driven logic.</p>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">Vavilov Risk Analysis</h3>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Upload refusal letters to identify weak officer reasoning instantly using AI-driven logic.</p>
                     </div>
                 </div>
             </FadeIn>
 
             {/* Feature 4 - Wide Bottom */}
-            <FadeIn delay={400} className="md:col-span-2 p-8 rounded-[2rem] bg-gradient-to-br from-slate-50 to-white border border-slate-200 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group hover:border-slate-300 transition-colors duration-500">
+            <FadeIn delay={400} className="md:col-span-2 p-8 rounded-[2rem] bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group hover:border-slate-300 dark:hover:border-slate-600 transition-colors duration-500">
                 <div className="flex-1 relative z-10">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 font-serif">Always Verified Citations</h3>
-                    <p className="text-slate-600 leading-relaxed">Every claim is backed by a specific paragraph number. Click to verify the source instantly in our integrated reader.</p>
-                    <div className="mt-6 flex gap-6 text-sm font-medium text-slate-700">
-                        <span className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-100 text-xs font-bold text-slate-600"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> No hallucinations</span>
-                        <span className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-100 text-xs font-bold text-slate-600"><BookOpen className="h-4 w-4 text-blue-500" /> Live links</span>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Always Verified Citations</h3>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Every claim is backed by a specific paragraph number. Click to verify the source instantly in our integrated reader.</p>
+                    <div className="mt-6 flex gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <span className="flex items-center gap-2 bg-white dark:bg-slate-950 px-3 py-1.5 rounded-full shadow-sm border border-slate-100 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> No hallucinations</span>
+                        <span className="flex items-center gap-2 bg-white dark:bg-slate-950 px-3 py-1.5 rounded-full shadow-sm border border-slate-100 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300"><BookOpen className="h-4 w-4 text-blue-500" /> Live links</span>
                     </div>
                 </div>
-                <div className="w-full md:w-1/3 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200 p-5 transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                <div className="w-full md:w-1/3 bg-white dark:bg-slate-950 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200 dark:border-slate-800 p-5 transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
                     <div className="flex items-start gap-3">
-                        <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-serif font-bold text-slate-700 shrink-0">¶</div>
-                        <div className="text-xs text-slate-500 font-serif italic leading-relaxed">
+                        <div className="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-serif font-bold text-slate-700 dark:text-slate-300 shrink-0">¶</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 font-serif italic leading-relaxed">
                             "A reasonable decision is one that is based on an internally coherent and rational chain of analysis..."
-                            <br/><span className="not-italic font-bold text-slate-900 mt-2 block border-t border-slate-100 pt-2">- Vavilov, para 85</span>
+                            <br/><span className="not-italic font-bold text-slate-900 dark:text-slate-100 mt-2 block border-t border-slate-100 dark:border-slate-800 pt-2">- Vavilov, para 85</span>
                         </div>
                     </div>
                 </div>
@@ -327,41 +327,41 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden">
+      <section id="pricing" className="py-24 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden transition-colors">
         {/* Abstract Background */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-100 via-slate-50 to-slate-50 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-100/30 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-4000"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-100 via-slate-50 to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-100/30 dark:bg-blue-900/10 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-[100px] animate-blob animation-delay-4000"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
             <FadeIn className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 mb-6">Transparent, predictable pricing</h2>
-                <p className="text-lg text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">Start researching for free. Upgrade when you need the full power of AI drafting.</p>
+                <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 dark:text-slate-100 mb-6">Transparent, predictable pricing</h2>
+                <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">Start researching for free. Upgrade when you need the full power of AI drafting.</p>
             </FadeIn>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
                 {/* Starter Plan */}
-                <FadeIn delay={100} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-xl transition-shadow duration-300 relative group">
+                <FadeIn delay={100} className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col hover:shadow-xl transition-shadow duration-300 relative group">
                     <div className="mb-6">
-                        <div className="h-10 w-10 bg-slate-50 rounded-xl flex items-center justify-center mb-4 text-slate-400 group-hover:scale-110 transition-transform">
+                        <div className="h-10 w-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center mb-4 text-slate-400 group-hover:scale-110 transition-transform">
                             <Search className="h-5 w-5" />
                         </div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">Starter</h3>
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Starter</h3>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-4xl font-bold text-slate-900">$0</span>
-                            <span className="text-slate-500">/mo</span>
+                            <span className="text-4xl font-bold text-slate-900 dark:text-slate-100">$0</span>
+                            <span className="text-slate-500 dark:text-slate-400">/mo</span>
                         </div>
-                        <p className="text-sm text-slate-500 mt-4">Perfect for trying out the search capabilities.</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">Perfect for trying out the search capabilities.</p>
                     </div>
                     <ul className="space-y-4 mb-8 flex-1">
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> 5 Case Searches / mo</li>
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> Basic Filters</li>
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> Federal Court DB Access</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> 5 Case Searches / mo</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> Basic Filters</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-emerald-500 shrink-0" /> Federal Court DB Access</li>
                     </ul>
-                    <Button variant="outline" className="w-full rounded-xl py-6 hover:border-slate-300 hover:bg-slate-50" onClick={onGetStarted}>Get Started</Button>
+                    <Button variant="outline" className="w-full rounded-xl py-6 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-900 dark:text-white dark:border-slate-700" onClick={onGetStarted}>Get Started</Button>
                 </FadeIn>
 
                 {/* Professional Plan */}
-                <FadeIn delay={200} className="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-2xl flex flex-col relative overflow-hidden transform md:-translate-y-4 ring-1 ring-slate-800">
+                <FadeIn delay={200} className="bg-slate-900 dark:bg-black rounded-3xl p-8 border border-slate-800 shadow-2xl flex flex-col relative overflow-hidden transform md:-translate-y-4 ring-1 ring-slate-800">
                     <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wider shadow-lg">POPULAR</div>
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-800/50 via-slate-900 to-slate-900 pointer-events-none"></div>
                     
@@ -388,24 +388,24 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 </FadeIn>
 
                 {/* Firm Plan */}
-                <FadeIn delay={300} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-xl transition-shadow duration-300 relative group">
+                <FadeIn delay={300} className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col hover:shadow-xl transition-shadow duration-300 relative group">
                     <div className="mb-6">
-                        <div className="h-10 w-10 bg-slate-50 rounded-xl flex items-center justify-center mb-4 text-slate-400 group-hover:scale-110 transition-transform">
+                        <div className="h-10 w-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center mb-4 text-slate-400 group-hover:scale-110 transition-transform">
                             <Landmark className="h-5 w-5" />
                         </div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">Firm</h3>
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Firm</h3>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-4xl font-bold text-slate-900">Custom</span>
+                            <span className="text-4xl font-bold text-slate-900 dark:text-slate-100">Custom</span>
                         </div>
-                        <p className="text-sm text-slate-500 mt-4">For larger teams requiring control & security.</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">For larger teams requiring control & security.</p>
                     </div>
                     <ul className="space-y-4 mb-8 flex-1">
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Everything in Pro</li>
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-slate-400 shrink-0" /> SSO / SAML Integration</li>
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Centralized Billing</li>
-                        <li className="flex items-center gap-3 text-sm text-slate-700"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Dedicated Account Mgr</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Everything in Pro</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-slate-400 shrink-0" /> SSO / SAML Integration</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Centralized Billing</li>
+                        <li className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300"><Check className="h-4 w-4 text-slate-400 shrink-0" /> Dedicated Account Mgr</li>
                     </ul>
-                    <Button variant="outline" className="w-full rounded-xl py-6 hover:border-slate-300 hover:bg-slate-50" onClick={() => window.location.href = 'mailto:sales@example.com'}>Contact Sales</Button>
+                    <Button variant="outline" className="w-full rounded-xl py-6 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-900 dark:text-white dark:border-slate-700" onClick={() => window.location.href = 'mailto:sales@example.com'}>Contact Sales</Button>
                 </FadeIn>
             </div>
         </div>

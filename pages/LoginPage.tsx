@@ -108,23 +108,23 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
       </div>
 
       {/* Right Panel - Login Form */}
-      <div className="w-full lg:w-1/2 bg-white flex flex-col justify-center items-center px-8 md:px-24 relative">
+      <div className="w-full lg:w-1/2 bg-white dark:bg-slate-950 flex flex-col justify-center items-center px-8 md:px-24 relative transition-colors duration-300">
          <button 
             onClick={onBack}
-            className="absolute top-8 left-8 flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+            className="absolute top-8 left-8 flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
          >
             <ArrowLeft className="h-4 w-4" /> Back to home
          </button>
 
          <div className="w-full max-w-md space-y-8">
              <div className="text-center">
-                 <div className="inline-block lg:hidden bg-slate-900 p-2 rounded-lg mb-6">
+                 <div className="inline-block lg:hidden bg-slate-900 dark:bg-slate-800 p-2 rounded-lg mb-6">
                     <Scale className="h-6 w-6 text-white" />
                  </div>
-                 <h2 className="text-3xl font-bold text-slate-900 font-serif">
+                 <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 font-serif">
                    {mode === 'signin' ? 'Welcome back' : 'Create your account'}
                  </h2>
-                 <p className="text-slate-500 mt-2">
+                 <p className="text-slate-500 dark:text-slate-400 mt-2">
                    {mode === 'signin' ? 'Sign in to your professional workspace' : 'Start your RCIC workspace in minutes'}
                  </p>
              </div>
@@ -132,7 +132,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
              <div className="space-y-4">
                  <Button 
                     variant="outline" 
-                    className="w-full h-12 text-base font-normal text-slate-700 hover:bg-slate-50 relative group"
+                    className="w-full h-12 text-base font-normal text-slate-700 dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 relative group"
                     onClick={() => handleSocialLogin('google')}
                     disabled={!!isLoading}
                  >
@@ -140,7 +140,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
                         <Loader2 className="h-5 w-5 animate-spin text-slate-400" />
                     ) : (
                         <>
-                            <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
+                             <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -153,7 +153,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
 
                  <Button 
                     variant="outline" 
-                    className="w-full h-12 text-base font-normal text-slate-700 hover:bg-slate-50"
+                    className="w-full h-12 text-base font-normal text-slate-700 dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                     onClick={() => handleSocialLogin('microsoft')}
                     disabled={!!isLoading}
                  >
@@ -175,21 +175,21 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
 
              <div className="relative">
                  <div className="absolute inset-0 flex items-center">
-                     <span className="w-full border-t border-slate-200"></span>
+                     <span className="w-full border-t border-slate-200 dark:border-slate-800"></span>
                  </div>
                  <div className="relative flex justify-center text-xs uppercase">
-                     <span className="bg-white px-2 text-slate-400 font-medium">Or continue with email</span>
+                     <span className="bg-white dark:bg-slate-950 px-2 text-slate-400 font-medium">Or continue with email</span>
                  </div>
              </div>
 
              {error && (
-               <div className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+               <div className="text-sm text-red-700 bg-red-50 border border-red-200 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300 rounded-lg px-3 py-2">
                  {error}
                </div>
              )}
 
              {info && (
-               <div className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 flex items-center gap-2">
+               <div className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-300 rounded-lg px-3 py-2 flex items-center gap-2">
                  <CheckCircle2 className="h-4 w-4 shrink-0" />
                  <span>{info}</span>
                </div>
@@ -198,36 +198,36 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
              <form className="space-y-4" onSubmit={handleEmailAuth}>
                  {mode === 'signup' && (
                    <div className="space-y-2">
-                       <label className="text-sm font-medium text-slate-700">Full Name</label>
+                       <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Full Name</label>
                        <Input
                          placeholder="Jane Smith"
                          type="text"
                          required
-                         className="h-12"
+                         className="h-12 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100"
                          value={name}
                          onChange={(e) => setName(e.target.value)}
                        />
                    </div>
                  )}
                  <div className="space-y-2">
-                     <label className="text-sm font-medium text-slate-700">Work Email</label>
+                     <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Work Email</label>
                      <Input
                        placeholder="name@company.com"
                        type="email"
                        required
-                       className="h-12"
+                       className="h-12 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100"
                        value={email}
                        onChange={(e) => setEmail(e.target.value)}
                      />
                  </div>
                  <div className="space-y-2">
                      <div className="flex justify-between">
-                        <label className="text-sm font-medium text-slate-700">Password</label>
+                        <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
                         {mode === 'signin' && (
                           <button
                             type="button"
                             onClick={() => setInfo('Password reset is configured from your Neon Auth project settings.')}
-                            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                            className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
                           >
                             Forgot?
                           </button>
@@ -237,14 +237,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
                        placeholder="••••••••"
                        type="password"
                        required
-                       className="h-12"
+                       className="h-12 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100"
                        value={password}
                        onChange={(e) => setPassword(e.target.value)}
                      />
                  </div>
                  <Button 
                     type="submit" 
-                    className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-lg shadow-xl shadow-slate-900/10"
+                    className="w-full h-12 bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white text-lg shadow-xl shadow-slate-900/10 dark:shadow-none"
                     disabled={!!isLoading}
                  >
                     {isLoading === 'email' ? (
@@ -255,11 +255,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
                  </Button>
              </form>
 
-             <p className="text-center text-sm text-slate-500">
+             <p className="text-center text-sm text-slate-500 dark:text-slate-400">
                  {mode === 'signin' ? "Don't have an account?" : 'Already have an account?'}{' '}
                  <button
                    type="button"
-                   className="text-blue-600 font-semibold hover:underline"
+                   className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
                    onClick={() => {
                      setMode(mode === 'signin' ? 'signup' : 'signin');
                      setError('');
@@ -272,10 +272,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onBack, onNavigat
          </div>
 
          {/* Footer Links */}
-         <div className="absolute bottom-6 flex gap-6 text-xs text-slate-400">
-             <a href="#" className="hover:text-slate-600">Privacy Policy</a>
-             <button onClick={onNavigateToTerms} className="hover:text-slate-600">Terms of Service</button>
-             <a href="#" className="hover:text-slate-600">Help Center</a>
+         <div className="absolute bottom-6 flex gap-6 text-xs text-slate-400 dark:text-slate-500">
+             <a href="#" className="hover:text-slate-600 dark:hover:text-slate-300">Privacy Policy</a>
+             <button onClick={onNavigateToTerms} className="hover:text-slate-600 dark:hover:text-slate-300">Terms of Service</button>
+             <a href="#" className="hover:text-slate-600 dark:hover:text-slate-300">Help Center</a>
          </div>
       </div>
     </div>

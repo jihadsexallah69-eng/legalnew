@@ -52,9 +52,9 @@ const CitationCard: React.FC<{
   return (
     <div
       className={cn(
-        "group relative rounded-lg border bg-white transition-all duration-300 overflow-hidden",
-        isHighlighted ? "ring-2 ring-amber-400 ring-offset-2 border-amber-300 shadow-md" : "border-slate-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-slate-300 hover:shadow-sm",
-        isExpanded ? "shadow-md ring-1 ring-slate-900/5" : ""
+        "group relative rounded-lg border bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden",
+        isHighlighted ? "ring-2 ring-amber-400 ring-offset-2 border-amber-300 shadow-md dark:ring-amber-500 dark:ring-offset-slate-900 dark:border-amber-500" : "border-slate-200 dark:border-slate-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm",
+        isExpanded ? "shadow-md ring-1 ring-slate-900/5 dark:ring-slate-100/5" : ""
       )}
     >
       <div 
@@ -65,13 +65,13 @@ const CitationCard: React.FC<{
         <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
                 <h3 className={cn(
-                    "font-serif font-bold text-slate-800 leading-snug transition-colors group-hover:text-blue-700",
+                    "font-serif font-bold text-slate-800 dark:text-slate-100 leading-snug transition-colors group-hover:text-blue-700 dark:group-hover:text-blue-400",
                     isExpanded ? "text-sm" : "text-xs truncate"
                 )}>
                     {title}
                 </h3>
                 {locator && (
-                    <p className="text-[10px] text-slate-400 font-medium mt-0.5 truncate">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 font-medium mt-0.5 truncate">
                         {locator}
                     </p>
                 )}
@@ -81,8 +81,8 @@ const CitationCard: React.FC<{
                      <span className={cn(
                          "text-[9px] font-bold px-1.5 py-0.5 rounded-full border",
                          citation.relevanceScore > 85 
-                            ? "bg-emerald-50 text-emerald-700 border-emerald-100" 
-                            : "bg-slate-50 text-slate-600 border-slate-100"
+                            ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-800" 
+                            : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-100 dark:border-slate-700"
                      )}>
                          {Math.round(citation.relevanceScore)}%
                      </span>
@@ -94,11 +94,11 @@ const CitationCard: React.FC<{
         {/* Content Snippet */}
         {citation.snippet && (
             <div className={cn(
-                "relative text-slate-600 font-serif leading-relaxed transition-all",
-                isExpanded ? "text-xs mt-2 pl-3 border-l-2 border-amber-200" : "text-[11px] opacity-80 line-clamp-2"
+                "relative text-slate-600 dark:text-slate-300 font-serif leading-relaxed transition-all",
+                isExpanded ? "text-xs mt-2 pl-3 border-l-2 border-amber-200 dark:border-amber-700" : "text-[11px] opacity-80 line-clamp-2"
             )}>
                 {isExpanded ? (
-                     <p>"{citation.snippet}"</p>
+                     <p className="max-h-40 overflow-y-auto pr-1 custom-scrollbar whitespace-pre-wrap break-words">"{citation.snippet}"</p>
                 ) : (
                      <p className="opacity-70">"{citation.snippet}"</p>
                 )}
@@ -108,13 +108,13 @@ const CitationCard: React.FC<{
 
       {/* Expanded Actions */}
       {isExpanded && (
-          <div className="bg-slate-50 px-3 py-2 border-t border-slate-100 flex justify-between items-center animate-fade-in">
+          <div className="bg-slate-50 dark:bg-slate-800/50 px-3 py-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center animate-fade-in">
               <button
                 onClick={(e) => {
                     e.stopPropagation();
                     if (citation.snippet) navigator.clipboard?.writeText(citation.snippet);
                 }}
-                className="flex items-center gap-1.5 text-[10px] font-medium text-slate-500 hover:text-slate-800 transition-colors px-2 py-1 rounded hover:bg-white"
+                className="flex items-center gap-1.5 text-[10px] font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700"
               >
                   <Copy className="h-3 w-3" /> Copy Quote
               </button>
@@ -124,7 +124,7 @@ const CitationCard: React.FC<{
                     e.stopPropagation();
                     if (citation.sourceUrl) window.open(citation.sourceUrl, '_blank', 'noopener,noreferrer');
                 }}
-                className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 hover:text-blue-800 transition-colors px-2 py-1 rounded hover:bg-blue-50"
+                className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors px-2 py-1 rounded hover:bg-blue-50 dark:hover:bg-blue-900/30"
               >
                   Read Source <ExternalLink className="h-3 w-3" />
               </button>
@@ -149,13 +149,13 @@ export const SourcesPanel: React.FC<{
   }, [state.highlightedCitationId]);
 
   return (
-    <div className="flex h-full flex-col bg-[#fdfdfd] border-l border-slate-200">
-      <div className="flex items-center justify-between border-b border-slate-100 bg-white/80 backdrop-blur-xl px-4 py-3 shrink-0 h-14">
-        <h2 className="text-xs font-bold text-slate-800 flex items-center gap-2 uppercase tracking-wide">
+    <div className="flex h-full flex-col bg-[#fdfdfd] dark:bg-slate-950 border-l border-slate-200 dark:border-slate-800">
+      <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl px-4 py-3 shrink-0 h-14">
+        <h2 className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 uppercase tracking-wide">
           <Library className="h-3.5 w-3.5 text-amber-500" />
           Sources
         </h2>
-        <Badge variant="secondary" className="bg-slate-100 text-slate-500 font-mono text-[10px] h-5 px-1.5 border border-slate-200">
+        <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-mono text-[10px] h-5 px-1.5 border border-slate-200 dark:border-slate-700">
             {state.activeCitations.length}
         </Badge>
       </div>
@@ -165,11 +165,11 @@ export const SourcesPanel: React.FC<{
         isOverlayOpen && "opacity-50 blur-[1px] pointer-events-none"
       )}>
         {state.activeCitations.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-48 text-slate-400 text-center">
-            <div className="h-10 w-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mb-3">
+          <div className="flex flex-col items-center justify-center h-48 text-slate-400 dark:text-slate-600 text-center">
+            <div className="h-10 w-10 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center mb-3">
                 <Quote className="h-4 w-4 opacity-40" />
             </div>
-            <p className="text-xs font-medium text-slate-500">No citations yet</p>
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-500">No citations yet</p>
           </div>
         ) : (
           state.activeCitations.map((citation) => {

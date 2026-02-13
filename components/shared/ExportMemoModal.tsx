@@ -47,21 +47,21 @@ ${sections.analysis ? 'ANALYSIS\n[Detailed analysis applying law to facts...]\n\
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        <div className="flex items-center justify-between border-b px-6 py-4 bg-slate-50">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 dark:bg-black/70 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border border-slate-200 dark:border-slate-800">
+        <div className="flex items-center justify-between border-b px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <div className="bg-blue-100 p-2 rounded-lg"><FileText className="h-5 w-5 text-blue-600" /></div>
-            <h2 className="text-lg font-bold text-slate-800">Export Memo</h2>
+            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg"><FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" /></div>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Export Memo</h2>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X className="h-5 w-5" /></button>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"><X className="h-5 w-5" /></button>
         </div>
 
         <div className="flex flex-1 overflow-hidden">
           {/* Settings Sidebar */}
-          <div className="w-1/3 border-r bg-slate-50 p-6 space-y-6 overflow-y-auto">
+          <div className="w-1/3 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 p-6 space-y-6 overflow-y-auto">
             <div>
-              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Template</label>
+              <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">Template</label>
               <div className="space-y-2">
                 {['refusal', 'jr-assess', 'client-sum'].map(id => (
                   <button
@@ -69,7 +69,9 @@ ${sections.analysis ? 'ANALYSIS\n[Detailed analysis applying law to facts...]\n\
                     onClick={() => setTemplate(id)}
                     className={cn(
                       "w-full text-left px-3 py-2 rounded-md text-sm transition-colors border",
-                      template === id ? "bg-blue-50 border-blue-200 text-blue-700 font-medium" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-100"
+                      template === id 
+                        ? "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 font-medium" 
+                        : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                     )}
                   >
                     {id === 'refusal' && 'Refusal Rebuttal'}
@@ -81,15 +83,15 @@ ${sections.analysis ? 'ANALYSIS\n[Detailed analysis applying law to facts...]\n\
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Sections</label>
+              <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">Sections</label>
               <div className="space-y-2">
                 {Object.keys(sections).map(key => (
-                  <label key={key} className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                  <label key={key} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 cursor-pointer">
                     <input 
                       type="checkbox" 
                       checked={(sections as any)[key]} 
                       onChange={() => setSections(prev => ({ ...prev, [key]: !(prev as any)[key] }))}
-                      className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-slate-300 dark:border-slate-600 text-blue-600 dark:text-blue-500 bg-white dark:bg-slate-900 focus:ring-blue-500"
                     />
                     <span className="capitalize">{key}</span>
                   </label>
@@ -99,23 +101,23 @@ ${sections.analysis ? 'ANALYSIS\n[Detailed analysis applying law to facts...]\n\
           </div>
 
           {/* Preview */}
-          <div className="flex-1 p-6 bg-white overflow-y-auto flex flex-col">
+          <div className="flex-1 p-6 bg-white dark:bg-slate-900 overflow-y-auto flex flex-col">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400 uppercase">Preview</span>
+              <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase">Preview</span>
             </div>
-            <div className="flex-1 rounded-md border border-slate-200 bg-slate-50 p-4 font-mono text-xs text-slate-800 whitespace-pre-wrap overflow-y-auto shadow-inner">
+            <div className="flex-1 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 font-mono text-xs text-slate-800 dark:text-slate-300 whitespace-pre-wrap overflow-y-auto shadow-inner dark:shadow-none">
               {generatedContent}
             </div>
           </div>
         </div>
 
-        <div className="border-t p-4 bg-white flex justify-end gap-3">
-          <Button variant="outline" onClick={onClose}>Cancel</Button>
-          <Button variant="secondary" onClick={handleCopy} className="gap-2">
+        <div className="border-t border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 flex justify-end gap-3">
+          <Button variant="outline" onClick={onClose} className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700">Cancel</Button>
+          <Button variant="secondary" onClick={handleCopy} className="gap-2 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700">
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
             {copied ? 'Copied' : 'Copy Text'}
           </Button>
-          <Button className="gap-2 bg-blue-600 hover:bg-blue-700">
+          <Button className="gap-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white border-transparent">
             <Download className="h-4 w-4" /> Download .md
           </Button>
         </div>

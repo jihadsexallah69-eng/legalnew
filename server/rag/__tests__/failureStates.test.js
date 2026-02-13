@@ -1,7 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import { failureStateCodes, getFailureStateInfo, resolveFailureState } from '../failureStates.js';
+import {
+  applyFailureStateNotice,
+  failureStateCodes,
+  failureStatePrecedence,
+  getFailureStateInfo,
+  resolveFailureState,
+} from '../failureStates.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const PROJECT_ROOT = join(__dirname, '..', '..', '..');
+const MATRIX_PATH = join(PROJECT_ROOT, 'eval', 'failure_state_matrix.json');
 
 test('failureStates exposes all Phase 0 failure codes', () => {
   const codes = failureStateCodes();
@@ -86,4 +99,103 @@ test('failureStates returns structured metadata info', () => {
   const info = getFailureStateInfo('NO_BINDING_AUTHORITY');
   assert.equal(info.code, 'NO_BINDING_AUTHORITY');
   assert.equal(info.retryPolicy, 'RETRY_WITH_BETTER_SOURCES');
+});
+
+test('failureStates prepends user-facing notice for actionable failure states', () => {
+  const out = applyFailureStateNotice(
+    'Binding authority says: unavailable in current retrieval set.',
+    'NO_BINDING_AUTHORITY'
+  );
+  assert.equal(
+    out.startsWith('No binding authority found in indexed sources for this question.'),
+    true
+  );
+});
+
+test('failureStates does not prepend notice for NONE', () => {
+  const text = 'Answer body';
+  const out = applyFailureStateNotice(text, 'NONE');
+  assert.equal(out, text);
+});
+
+test('failureStates exposes deterministic precedence order', () => {
+  const order = failureStatePrecedence();
+  assert.deepEqual(order, [
+    'OUT_OF_SCOPE_SOURCE',
+    'BUDGET_EXCEEDED',
+    'CITATION_MISMATCH',
+    'STALE_VOLATILE_SOURCE',
+    'NO_BINDING_AUTHORITY',
+    'INSUFFICIENT_EVIDENCE',
+    'INSUFFICIENT_FACTS',
+    'NONE',
+  ]);
+});
+
+test('failureStates: runtime matches eval/failure_state_matrix.json (J4 sync)', () => {
+  const matrixContent = readFileSync(MATRIX_PATH, 'utf-8');
+  const matrix = JSON.parse(matrixContent);
+  
+  const runtimeCodes = failureStateCodes();
+  const matrixCodes = matrix.failure_states.map(s => s.code);
+  
+  assert.equal(
+    runtimeCodes.length,
+    matrixCodes.length,
+    `Runtime has ${runtimeCodes.length} codes, matrix has ${matrixCodes.length}`
+  );
+  
+  for (const code of runtimeCodes) {
+    assert.equal(
+      matrixCodes.includes(code),
+      true,
+      `Runtime code '${code}' not found in matrix`
+    );
+  }
+  
+  for (const code of matrixCodes) {
+    assert.equal(
+      runtimeCodes.includes(code),
+      true,
+      `Matrix code '${code}' not found in runtime`
+    );
+  }
+});
+
+test('failureStates: severity enum matches matrix (J4 sync)', () => {
+  const matrixContent = readFileSync(MATRIX_PATH, 'utf-8');
+  const matrix = JSON.parse(matrixContent);
+  
+  const severityEnums = ['ERROR', 'WARNING', 'INFO', 'N/A'];
+  
+  for (const state of matrix.failure_states) {
+    const runtimeInfo = getFailureStateInfo(state.code);
+    
+    assert.equal(
+      severityEnums.includes(state.severity),
+      true,
+      `Matrix severity '${state.severity}' for ${state.code} is not a valid enum`
+    );
+    
+    assert.equal(
+      runtimeInfo.severity,
+      state.severity,
+      `Severity mismatch for ${state.code}: runtime='${runtimeInfo.severity}' vs matrix='${state.severity}'`
+    );
+  }
+});
+
+test('failureStates: retry policy matches matrix (J4 sync)', () => {
+  const matrixContent = readFileSync(MATRIX_PATH, 'utf-8');
+  const matrix = JSON.parse(matrixContent);
+  
+  for (const state of matrix.failure_states) {
+    const runtimeInfo = getFailureStateInfo(state.code);
+    
+    assert.equal(
+      runtimeInfo.retryPolicy,
+      state.retry_policy,
+      `Retry policy mismatch for ${state.code}: runtime='${runtimeInfo.retryPolicy}' vs matrix='${state.retry_policy}'`
+    );
+  }
 });

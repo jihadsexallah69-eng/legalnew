@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, Book, FileText, Settings, ShieldAlert, Scale, Plus, LogOut, ChevronRight } from 'lucide-react';
+import { MessageSquare, Book, FileText, Settings, ShieldAlert, Scale, Plus, LogOut, ChevronRight, Calculator } from 'lucide-react';
 import { cn } from '../../lib/cn';
 import { useAppStore } from '../../lib/store';
 
@@ -22,6 +22,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, isOpe
 
   const navItems = [
     { id: 'chat', label: 'Research Chat', icon: MessageSquare },
+    { id: 'calculator', label: 'CRS Calculator', icon: Calculator },
     { id: 'cases', label: 'Case Library', icon: Book },
     { id: 'memos', label: 'Saved Memos', icon: FileText },
     { id: 'settings', label: 'Settings', icon: Settings },
