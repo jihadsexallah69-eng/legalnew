@@ -235,10 +235,25 @@ Phase 0 acceptance checks junior should run:
     - `explicit_as_of` (`asOf`/`as_of`)
     - `application_date` (`applicationDate`/`lockInDate`)
   - added unit coverage: `server/rag/__tests__/auditTrace.test.js`
+- Started S4 arbitration/sign-off integration:
+  - added runtime failure-state resolver:
+    - `server/rag/failureStates.js`
+  - `/api/chat` failure-state assignment now uses deterministic resolver with precedence:
+    - `OUT_OF_SCOPE_SOURCE` -> `BUDGET_EXCEEDED` -> `CITATION_MISMATCH` -> `STALE_VOLATILE_SOURCE` -> `NO_BINDING_AUTHORITY` -> `INSUFFICIENT_EVIDENCE` -> `INSUFFICIENT_FACTS` -> `NONE`
+  - runtime budget counters (`usedToolCalls`, `usedLiveFetches`) are now tracked and surfaced in debug payload
+  - debug payload now includes:
+    - `failureState`
+    - `failureStateInfo`
+    - `budget`
+  - added unit coverage:
+    - `server/rag/__tests__/failureStates.test.js`
 - Junior progress status:
   - J2 completed: source policy config + allowlist/blocklist tests
   - J3 completed: eval harness scaffold (`eval/run_eval.js` + gold template)
   - J4 completed: CI workflow for Phase 0 schema/source-policy checks
+  - J5 completed: failure-state matrix + deterministic tests
+  - J6 completed: Phase 0 contracts/testplan/runbook docs
+  - J7 completed: gold set expanded to 39 entries
 - Delegation policy updated to junior-first:
   - junior assigned J1-J7 tracks (contracts, config, eval/CI scaffolding, runbooks, gold set)
   - senior limited to complex control-plane arbitration and policy/runtime guard semantics

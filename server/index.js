@@ -7,6 +7,7 @@ import { retrieveGrounding, buildPrompt, extractCitations, validateCitationToken
 import { buildCitationFromSource } from './rag/citations.js';
 import { chunkUserDocumentText, rankDocumentChunks } from './rag/documents.js';
 import { enforceAuthorityGuard } from './rag/responseGuard.js';
+import { getFailureStateInfo, resolveFailureState } from './rag/failureStates.js';
 import {
   appendRunTraceEvent,
   buildAuditRunTraceContract,
@@ -73,14 +74,6 @@ function normalizeDocTitle(value) {
   if (typeof value !== 'string') return 'Uploaded Document';
   const cleaned = value.trim();
   return cleaned || 'Uploaded Document';
-}
-
-function deriveFailureState(issues = []) {
-  const set = new Set(Array.isArray(issues) ? issues : []);
-  if (set.has('no_binding_authority_found')) return 'NO_BINDING_AUTHORITY';
-  if (set.has('binding_claim_without_binding_citation')) return 'CITATION_MISMATCH';
-  if (set.has('temporal_claim_without_effective_date')) return 'STALE_VOLATILE_SOURCE';
-  return '';
 }
 
 function extractDateCandidate(value) {
@@ -263,6 +256,12 @@ app.post('/api/chat', async (req, res) => {
     maxRetries: Number(process.env.RAG_MAX_RETRIES || 1),
   };
   let runTrace = null;
+  const runtimeBudget = {
+    maxToolCalls: Number(auditBudgets.maxToolCalls || 0),
+    maxLiveFetches: Number(auditBudgets.maxLiveFetches || 0),
+    usedToolCalls: 0,
+    usedLiveFetches: 0,
+  };
   if (auditTraceEnabled) {
     runTrace = startRunTrace({
       sessionId,
@@ -323,6 +322,12 @@ app.post('/api/chat', async (req, res) => {
 
     if (promptInjectionBlockingEnabled && promptSafety.detected && !rcicRelated) {
       const blockedText = 'I can only assist with RCIC-focused Canadian immigration research. Please rephrase your question without instruction-overrides.';
+      const failureState = resolveFailureState({
+        query: effectiveMessage,
+        outOfScopeBlocked: true,
+        budget: runtimeBudget,
+      });
+      const failureStateInfo = getFailureStateInfo(failureState);
       startRunTracePhase(runTrace, 'ROUTING', {
         prompt_injection_detected: true,
         rcic_related: rcicRelated,
@@ -344,7 +349,7 @@ app.post('/api/chat', async (req, res) => {
         });
       }
       appendRunTraceEvent(runTrace, 'failure_state', {
-        failureState: 'OUT_OF_SCOPE_SOURCE',
+        failureState,
       });
       finalizeRunTrace(runTrace, {
         status: 'ok',
@@ -371,6 +376,8 @@ app.post('/api/chat', async (req, res) => {
                   basis: analysisDateBasis,
                   asOf: asOfDate,
                 },
+                failureState,
+                failureStateInfo,
                 auditTrace: summarizeRunTrace(runTrace),
                 auditTraceContract,
                 auditTraceContractValidation,
@@ -385,6 +392,7 @@ app.post('/api/chat', async (req, res) => {
       analysis_date_basis: analysisDateBasis,
       as_of_date: asOfDate,
     });
+    runtimeBudget.usedToolCalls += 1;
     const grounding = await retrieveGrounding({ query: effectiveMessage, topK });
     completeRunTracePhase(runTrace, 'RETRIEVAL', {
       outputs: {
@@ -400,6 +408,7 @@ app.post('/api/chat', async (req, res) => {
       a2aj_case_law_enabled: a2ajCaseLawEnabled,
       a2aj_legislation_enabled: a2ajLegislationEnabled,
     });
+    runtimeBudget.usedToolCalls += 1;
     const routeDecision = await routeIntent({
       message: effectiveMessage,
       a2ajEnabled,
@@ -427,6 +436,8 @@ app.post('/api/chat', async (req, res) => {
     let a2ajEnrichAttempted = false;
     if (a2ajEnabled && routeDecision.useCaseLaw && a2ajCaseLawEnabled) {
       try {
+        runtimeBudget.usedToolCalls += 1;
+        runtimeBudget.usedLiveFetches += 1;
         const searchResults = await a2ajSearchDecisions({
           query: routeDecision.query || effectiveMessage,
           limit: routeDecision.limit || defaultA2ajTopK,
@@ -439,6 +450,7 @@ app.post('/api/chat', async (req, res) => {
         caseLawSources = a2ajToCaseSources(searchResults).slice(0, routeDecision.limit || defaultA2ajTopK);
         a2ajSearchCount = caseLawSources.length;
         a2ajEnrichAttempted = true;
+        runtimeBudget.usedToolCalls += 1;
         caseLawSources = await a2ajEnrichCaseSources({
           sources: caseLawSources,
           query: effectiveMessage,
@@ -503,6 +515,7 @@ app.post('/api/chat', async (req, res) => {
     startRunTracePhase(runTrace, 'GENERATION', {
       model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
     });
+    runtimeBudget.usedToolCalls += 1;
     const { text } = await groqAnswer({
       systemPrompt: system,
       userPrompt: user,
@@ -521,12 +534,18 @@ app.post('/api/chat', async (req, res) => {
       citationMap,
       retrieval: grounding?.retrieval,
     });
-    const failureState = deriveFailureState(guardResult.issues);
+    const guardFailureState = resolveFailureState({
+      query: effectiveMessage,
+      guardIssues: guardResult.issues,
+      retrieval: grounding?.retrieval,
+      citations: [],
+      budget: runtimeBudget,
+    });
     completeRunTracePhase(runTrace, 'RESPONSE_GUARD', {
-      status: failureState ? 'PARTIAL' : 'SUCCESS',
+      status: guardFailureState !== 'NONE' ? 'PARTIAL' : 'SUCCESS',
       outputs: {
         guard_issue_count: Array.isArray(guardResult?.issues) ? guardResult.issues.length : 0,
-        failure_state: failureState || 'NONE',
+        failure_state: guardFailureState,
       },
     });
 
@@ -536,6 +555,14 @@ app.post('/api/chat', async (req, res) => {
     const citations = citationIds
       .map((id) => buildCitationFromSource(id, citationMap[id] || {}))
       .filter(Boolean);
+    const failureState = resolveFailureState({
+      query: effectiveMessage,
+      guardIssues: guardResult.issues,
+      retrieval: grounding?.retrieval,
+      citations,
+      budget: runtimeBudget,
+    });
+    const failureStateInfo = getFailureStateInfo(failureState);
     completeRunTracePhase(runTrace, 'VALIDATION', {
       outputs: {
         citation_id_count: citationIds.length,
@@ -547,7 +574,7 @@ app.post('/api/chat', async (req, res) => {
       citationIds,
       failureState,
     });
-    if (failureState) {
+    if (failureState && failureState !== 'NONE') {
       appendRunTraceEvent(runTrace, 'failure_state', { failureState });
     }
 
@@ -587,6 +614,9 @@ app.post('/api/chat', async (req, res) => {
                 basis: analysisDateBasis,
                 asOf: asOfDate,
               },
+              failureState,
+              failureStateInfo,
+              budget: runtimeBudget,
               pineconeCount: Array.isArray(grounding.pinecone) ? grounding.pinecone.length : 0,
               caseLawCount: caseLawSources.length,
               documentCount: documentSources.length,
@@ -623,6 +653,9 @@ app.post('/api/chat', async (req, res) => {
     const auditTraceContractValidation = auditTraceContract
       ? validateAuditRunTraceContract(auditTraceContract)
       : null;
+    const failureState = 'INSUFFICIENT_EVIDENCE';
+    const failureStateInfo = getFailureStateInfo(failureState);
+    appendRunTraceEvent(runTrace, 'failure_state', { failureState });
     if (runTrace && auditTraceEnabled && auditTracePersistLog) {
       persistRunTraceLog(runTrace, { sampleRate: auditTraceSampleRate });
     }
@@ -637,6 +670,9 @@ app.post('/api/chat', async (req, res) => {
                 basis: analysisDateBasis,
                 asOf: asOfDate,
               },
+              failureState,
+              failureStateInfo,
+              budget: runtimeBudget,
               auditTrace: summarizeRunTrace(runTrace),
               auditTraceContract,
               auditTraceContractValidation,
