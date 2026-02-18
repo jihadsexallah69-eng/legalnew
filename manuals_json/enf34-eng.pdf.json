@@ -1,0 +1,4423 @@
+[
+  {
+    "type": "Title",
+    "element_id": "74efee211230f334fb58a2e6afee2115",
+    "text": "ENF 34",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 1,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "9bfac417e6166bce9ad1fa8bd433e009",
+    "text": "Alternatives to Detention Program",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 1,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "63764151ee0e509e8dd891d4a4641dc5",
+    "text": "ENF 34 Alternatives to Detention Program",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 2,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "ccc766581d27a0d62f000a482b79297a",
+    "text": "CONTENTS",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 2,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "15dafa481d7f89784d2641e1e3fc4886",
+    "text": "1. Updates to chapter ....................................................................................................... 3 1.1. Listing by date ........................................................................................................ 3 2. What this chapter is about ............................................................................................ 3 3. Definitions ................................................................................................................... 4 4. Program Objectives ...................................................................................................... 5 5. The Acts and Regulations ............................................................................................ 6 6. Forms and Publications ................................................................................................ 6 7. Departmental Policy ..................................................................................................... 7 8. Assessment of alternatives to detention ....................................................................... 7 8.1. Risk identification for ATD Considerations ............................................................. 7 8.2. Conducting the risk analysis .................................................................................. 8 8.3. Risk offset ............................................................................................................ 11 8.4. Evaluation of residual risk .................................................................................... 11 8.5. Documenting the decision .................................................................................... 12 9. Vulnerable persons .................................................................................................... 13 10. Minors ...................................................................................................................... 14 11. Use of Alternatives to Detention Program tools at ports of entry .............................. 14 12. Alternatives to Detention .......................................................................................... 14 12.1. Imposition of Conditions under 56(1) ................................................................. 15 12.2. Issuance of deposits and guarantees ................................................................ 15 12.3. In-person reporting ............................................................................................. 16 12.4. Remote Reporting .............................................................................................. 16 12.5. Community Case Management and Supervision ............................................... 16 12.6. Electronic monitoring.......................................................................................... 22 13. Roles and responsibilities ........................................................................................ 24 13.1. Community liaison officer ................................................................................... 24 13.2. CSC National Monitoring Centre ........................................................................ 25 13.3. CCMS service provider ...................................................................................... 25 14.0. Jurisprudence........................................................................................................ 25 15. Presenting the alternatives to detention assessment at detention reviews .............. 28 16. Privacy and information-sharing ............................................................................... 28 16.1. Community case management and supervision Privacy Notice form ................ 29 16.2. Requesting sensitive information from the community case management and supervision service provider ....................................................................................... 29",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><tbody><tr><td>1. Updates to chapter</td><td></td></tr><tr><td>1.1. Listing by date</td><td></td></tr><tr><td>What this chapter is about</td><td></td></tr><tr><td>Definitions</td><td></td></tr><tr><td>Program Objectives ONOWN</td><td></td></tr><tr><td>The Acts and Regulations</td><td></td></tr><tr><td>Forms and Publications</td><td></td></tr><tr><td>Departmental Policy</td><td></td></tr><tr><td>Assessment of alternatives to detention</td><td></td></tr><tr><td>8.1. Risk identification for ATD Considerations..</td><td></td></tr><tr><td>8.2. Conducting the risk analysis</td><td></td></tr><tr><td>8.3. Risk offset</td><td>11</td></tr><tr><td>8.4. Evaluation of residual risk .</td><td>11</td></tr><tr><td>8.5. Documenting the decision.</td><td>12</td></tr><tr><td>9. Vulnerable persons</td><td>13</td></tr><tr><td>10. Minors</td><td>14</td></tr><tr><td>11. Use of Alternatives to Detention Program tools at ports of entry</td><td>14</td></tr><tr><td>12. Alternatives to Detention</td><td>14</td></tr><tr><td>12.1. Imposition of Conditions under 56(1)</td><td>15</td></tr><tr><td>12.2. Issuance of deposits and guarantees</td><td>15</td></tr><tr><td>12.3. In-person reporting</td><td>16</td></tr><tr><td>12.4. Remote Reporting</td><td>16</td></tr><tr><td>12.5. Community Case Management and Supervision</td><td>16</td></tr><tr><td>12.6. Electronic monitoring</td><td>22</td></tr><tr><td>13. Roles and responsibilities</td><td>24</td></tr><tr><td>13.1. Community liaison officer</td><td>24</td></tr><tr><td>13.2. CSC National Monitoring Centre...</td><td>25</td></tr><tr><td>13.3. CCMS service provider</td><td>25</td></tr><tr><td>14.0. Jurisprudence</td><td>25</td></tr><tr><td>15. Presenting the alternatives to detention assessment at detention reviews</td><td>28</td></tr><tr><td>16. Privacy and information-sharing</td><td>28</td></tr><tr><td>16.1. Community case management and supervision Privacy Notice form</td><td>29</td></tr><tr><td>16.2. Requesting sensitive information from the community case management</td><td>and</td></tr><tr><td>supervision service provider</td><td>29</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 2,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ccc766581d27a0d62f000a482b79297a"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "0bac55c31b77c89be644aef612b3d584",
+    "text": "1. Updates to chapter",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "f173ed72515fad53e5ebef483ca8281e",
+    "text": "1.1. Listing by date",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "d45cd60c256bbcd35ca19e367ee7500c",
+    "text": "2023-10-26",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "2f2f726746462b9e851e4b1a63d50b70",
+    "text": "Substantive revisions were made to improve the flow of the manual and to reflect updated procedures, including the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "6fd3769dfdf4718b76e18105b8ffe06a",
+    "text": "Updated definitions section.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "59515d11f696c4ae6e633c215c3c12b5",
+    "text": "Sections 3.0 to 6.0 are new and include Program Objectives, Acts and Regulations, Forms and Publications, and Departmental Policy. The forms were formally in Annex A.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "7896f9a8d60ecc6a3508f04cf139d3d0",
+    "text": "Updated information on identity cases under 8.2.2.Revised information on risk offset 8.3, 8.4, and 8.5, particularly around the role of the Community Liaison Officer.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "7edceca160d28896be3d93813566a98c",
+    "text": "Updated information under section 9.0 vulnerable persons, including vulnerabilities to be considered.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "f0ec41ebc02bde262e17c6d5a0aada52",
+    "text": "Revised information under section 11.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "e7e617ae192e7b6c4c7f401a04a92ed2",
+    "text": "Revisions were made to section 12, 12.4.2, 12.4.4, 12.4.5, 12.6 and 12.6.1.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "02ddb1019befe264db30a643efaa4ed7",
+    "text": "New section added under 12.5.3 for CCMS transfers.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "1a9001ec0a9791f3ac169ce737e3c225",
+    "text": "New section added under 12.5.5 for the use of interpreters.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "3358a1eab66d5cae069b3b972ca16fab",
+    "text": "Reference to Voice Reporting as an ATD option has been removed.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b7b3bf5c3ae4e678bd1170b244647971",
+    "text": "Revised Community Liaison Roles and Responsibilities under section 13.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "aab59967084b096ed0fd0b04313aad6f",
+    "text": "New section for jurisprudence.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "aff7e26438a553005a5a4a65d1a9d323",
+    "text": "22 June 2018 \u2013 Initial version",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f173ed72515fad53e5ebef483ca8281e"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "31d8db6980c39f7ecc03b3c75b4022e4",
+    "text": "2. What this chapter is about",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "8c856dce6ab8250c08a65c44f13e0a41",
+    "text": "This chapter describes the elements of the Alternatives to Detention (ATD) Program and provides information and guidance on how the tools available under the ATD Program should be used.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9a1fd0639e064656a758fe77b51e684d",
+    "text": "This chapter is meant to be read in conjunction with",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "c69b7b18b39237dde8349cf868a6d544",
+    "text": "\u2022 ENF 3 Admissibility Hearings and Detention Reviews",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "be64c461d6152d8407aa34e0dea2a1c4",
+    "text": "\u2022 ENF 7 Immigration Investigations and IPRA s.55 Arrests/Detention",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "7ab082865551efd81a710f8ab66d754b",
+    "text": "\u2022 ENF 8 Deposits and Guarantees",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "07f223ed5da241c8a9f4342a6a8a6a24",
+    "text": "\u2022 ENF 20 Detentions",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "a874bd595ecd726f95e43fc3c1860530",
+    "text": "\u2022 ENF 22 Persons serving a sentence",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "31d8db6980c39f7ecc03b3c75b4022e4"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "b4fb0957f006102569d4b621af9ddbba",
+    "text": "3",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 3,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "113216318aed178a10da14275e5a4439",
+    "text": "Requests for clarification, questions and comments in relation to this manual should be addressed to the Canada Border Services Agency (CBSA) Alternatives to Detention Unit, Intelligence and Enforcement Branch\u2019s generic mailbox at CBSA.Alternatives_to_Detention- Solutions_de_rechange_de_detentions.ASFC@cbsa-asfc.gc.ca.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 4,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "e9547bcf2834a8e4b910badb9ad54d04",
+    "text": "3. Definitions",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 4,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "1f5ec3019f0ec941a0e9b65b3ce5b37c",
+    "text": "Alternative to An alternative to detention is defined as one of the conditions that may detention be imposed on an individual to offset a risk they represent to the enforcement objectives and the mandate of the CBSA by either an officer or a Member of the Immigration Division (ID) of the Immigration and Refugee Board (IRB). Case closure Case closure happens when an individual enrolled in an ATD no longer requires community based support (for example, a change in the individual\u2019s risk level or circumstances where the individual has other support mechanisms, the individual has been compliant after already being de-escalated or the individual is removed from the country). Community case The CCMS program provides in-community support to individuals in management and order to manage and mitigate risk. CCMS promotes detention supervision (CCMS) avoidance or detention release for people who lack a bondsperson or require support in addition to a bondsperson to mitigate risk upon release into the community. The CBSA has entered into contracted partnerships with third-party service providers to support individuals in the community. Deposit The payment of a sum of money by a person to the Receiver General for Canada for compliance with the conditions imposed on the person concerned and their release from detention. See ENF 8 Deposits and Guarantees. Detention review See ENF 3 Admissibility, Hearings and Detention Reviews. Electronic EM is the use of a global positioning system (GPS), radio-frequency monitoring (EM) (RF) system or both to monitor individuals in the community. The EM monitoring system is built on real-time location data, which is collected and analysed in a central facility and reported to regional staff to pursue for enforcement, as deemed appropriate. Guarantee A guarantee is a written enforceable undertaking by a third party (the guarantor) that the person concerned will abide by the conditions imposed by a CBSA or IRCC officer or the Immigration Division and to forfeit or pay a sum of money to the Crown if the person concerned breaches any conditions. The guarantor and the",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><tbody><tr><td>Alrnative to detention</td><td>An alternative to detention is defined as one of the conditions that may be imposed on an individual to offset a risk they represent to the enforcement objectives and the mandate of the CBSA by either an officer or a Member of the Immigration Division (ID) of the Immigration and Refugee Board (IRB).</td></tr><tr><td>Case closure</td><td>Case closure happens when an individual enrolled in an ATD no longer requires community based support (for example, a change in the individual\u2019s risk level or circumstances where the individual has other support mechanisms, the individual has been compliant after already being de-escalated or the individual is removed from the country).</td></tr><tr><td>Community case management and supervision (CCMS)</td><td>The CCMS program provides in-community support to individuals in order to manage and mitigate risk. CCMS promotes detention avoidance or detention release for people who lack a bondsperson or require support in addition to a bondsperson to mitigate risk upon release into the community. The CBSA has entered into contracted partnerships with third-party service providers to support individuals in the community.</td></tr><tr><td>Deposit</td><td>The payment of a sum of money by a person to the Receiver General for Canada for compliance with the conditions imposed on the person concerned and their release from detention. See ENF 8 Deposits and Guarantees.</td></tr><tr><td>Detention review</td><td>See ENF 3 Admissibility, Hearings and Detention Reviews.</td></tr><tr><td>Electronic monitoring (EM)</td><td>EM is the use of a global positioning system (GPS), radio-frequency (RF) system or both to monitor individuals in the community. The EM monitoring system is built on real-time location data, which is collected and analysed in a central facility and reported to regional staff to pursue for enforcement, as deemed appropriate.</td></tr><tr><td>Guarantee</td><td>A guarantee is a written enforceable undertaking by a third party (the guarantor) that the person concerned will abide by the conditions imposed by a CBSA or IRCC officer or the Immigration Division and to forfeit or pay a sum of money to the Crown if the person concerned breaches any conditions. The guarantor and the</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 4,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e9547bcf2834a8e4b910badb9ad54d04"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "a84517670f7b63028b1edcb9f49fdd88",
+    "text": "4",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 4,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "19d7014ebe5f74259e74de1389b42138",
+    "text": "person concerned must both agree to the conditions. They are also called \u201cperformance bonds\u201d. See ENF 8 Deposits and Guarantees. In-person reporting In-person reporting is a condition imposed on individuals where they are required to physically appear at a specified place and make themselves known to an official. Usually, this means attending a CBSA inland enforcement office and checking in with a CBSA staff member, who verifies the individual\u2019s identity and records their attendance in the system. Service provider A service provider provides CCMS services on behalf of the CBSA to eligible individuals and engages in discussions with the Community Liaison Officer (CLO), pertaining to individuals enrolled in CCMS services. Withdrawal of Withdrawal of supervision is a decision made by the CCMS service supervision provider to the CLO or CBSA management when the provider is of the opinion that the individual can no longer be managed in the community (that is, when the individual is no longer willing to comply with the requirements of the program).",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><thead><tr><th></th><th>person concerned must both agree to the conditions. They are also called \u201cperformance bonds\u201d. See ENF 8 Deposits and Guarantees.</th></tr></thead><tbody><tr><td>In-person reporting</td><td>In-person reporting is a condition imposed on individuals where they are required to physically appear at a specified place and make themselves known to an official. Usually, this means attending a CBSA inland enforcement office and checking in with a CBSA staff member, who verifies the individual\u2019's identity and records their attendance in the system.</td></tr><tr><td>Service provider</td><td>A service provider provides CCMS services on behalf of the CBSA to eligible individuals and engages in discussions with the Community Liaison Officer (CLO), pertaining to individuals enrolled in CCMS services.</td></tr><tr><td>Withdrawal of supervision</td><td>Withdrawal of supervision is a decision made by the CCMS service provider to the CLO or CBSA management when the provider is of the opinion that the individual can no longer be managed in the community (that is, when the individual is no longer willing to comply with the requirements of the program).</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "831d96ab335c5a100263e12348fed517",
+    "text": "4. Program Objectives",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "157dff53e3239e3786af28e9c27067a1",
+    "text": "The ATD Program encompasses all conditions that can be imposed to manage and mitigate the risk posed by an individual in relation to the enforcement objectives of the Immigration and Refugee Protection Act (IRPA) and the CBSA\u2019s mandate. The ATD Program provides officers and the Immigration and Refugee Board (IRB) with tools and programs that enable them to manage individuals released into the community more effectively.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "831d96ab335c5a100263e12348fed517"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "d1c519812271a96e7c86607ba9a08fa6",
+    "text": "The ATD Program is a mechanism to protect the integrity of Canada\u2019s immigration detention system by ensuring individuals are treated fairly and in accordance with the overarching principle that detention is a measure of last resort, and the decision to detain or release an individual is based on the risk they present.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "831d96ab335c5a100263e12348fed517"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "1e6f53aef3c37f9552e303a12ef77dad",
+    "text": "The CLO is the ATD subject matter expert. They provide a centralized approach for the ATD program.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "831d96ab335c5a100263e12348fed517"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "5f0da6675ce3c00ed54ca6e3daa89015",
+    "text": "5",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 5,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "e39494ebf2ecda8715080c51eeeb1faf",
+    "text": "5. The Acts and Regulations",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "29693639838e0454207fc83c93f9aee6",
+    "text": "Officers should be familiar with the legislative and regulatory authorities that surround the use of ATDs contained in the IRPA and its Regulations. The following are referenced authorities that officers should be familiar with:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e39494ebf2ecda8715080c51eeeb1faf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "ec2d6e8ab5f58be42d1c826a08af05f8",
+    "text": "Authorities Sections of IRPA/IRPR Release - officer A56(1) An officer may order the release from detention of a permanent resident or a foreign national before the first detention review by the Immigration Division if the officer is of the opinion that the reasons for the detention no longer exist. The officer may impose any conditions, including the payment of a deposit or the posting of a guarantee for compliance with the conditions, that the officer considers necessary. Release \u2013 Immigration Division, Conditions A58(3) If the Immigration Division orders the release of a permanent resident or a foreign national, it may impose any conditions that it considers necessary, including the payment of a deposit or the posting of a guarantee for compliance with the conditions. Other factors R248(e) If it is determined that there are grounds for detention, the following factors shall be considered before a decision is made on detention or release: the existence of alternatives to detention",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><thead><tr><th>Authorities</th><th>Sections of IRPA/IRPR</th></tr></thead><tbody><tr><td>Release - officer An officer may order the release from detention of a permanent resident or a foreign national before the first detention review by the Immigration Division if the officer is of the opinion that the reasons for the detention no longer exist. The officer may impose any conditions, including the payment of a deposit or the posting of a guarantee for compliance with the conditions, that the officer considers necessary.</td><td>A6(1)</td></tr><tr><td>Other factors If it is determined that there are grounds for detention, the following factors shall be considered before a decision is made on detention or release: the existence of alternatives to detention</td><td>R248(e)</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e39494ebf2ecda8715080c51eeeb1faf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "9a9e18ca136d7913b083b7309d5969c0",
+    "text": "6. Forms and Publications",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "b558535e320dd67d167abb8e91704298",
+    "text": "The ATD forms reflect the following: male, female and an unspecified options. The unspecified identifier is an option that may be chosen by individuals who do not identify exclusively as male, female, as well as two-spirit individuals. However, some ATD forms will require an individual\u2019s gender in order to ensure their safety and well-being through the ATD continuum.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9a9e18ca136d7913b083b7309d5969c0"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "fd2c058c3afa78d7bf51c86fd1130d88",
+    "text": "Form Title - CBSA Form Number Community Case Management and Supervision Referral BSF801 Community Case Management and Supervision - Supervision Agreement BSF802 Community Case Management and Supervision Privacy Notice BSF803 Consent to Share Location with the CBSA BSF804 Community Case Management and Supervision Case Summary BSF805",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><thead><tr><th>Form Title - CBSA</th><th>Form Number</th></tr></thead><tbody><tr><td>Community Case Management and Supervision Referral</td><td>BSF801</td></tr><tr><td>Community Case Management and Supervision - Supervision Agreement</td><td>BSF802</td></tr><tr><td>Community Case Management and Supervision Privacy Notice</td><td>BSF803</td></tr><tr><td>Consent to Share Location with the CBSA</td><td>BSF804</td></tr><tr><td>Community Case Management and Supervision Case Summary</td><td>BSF805</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9a9e18ca136d7913b083b7309d5969c0"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "73a59baa6f807a253571d7cae05dfcf6",
+    "text": "6",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 6,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "dc6719bacee0e2775f1b89eceb8d6a38",
+    "text": "Community Case Management and Supervision (CCMS) Change of BSF806 Conditions Community Case Management and Supervision Report of Non-Compliance BSF807 Client Profile Set Up (Electronic Monitoring) BSF808 Client Instructions (Electronic Monitoring) BSF809",
+    "metadata": {
+      "is_extracted": "true",
+      "links": [
+        {
+          "text": "BSF806",
+          "url": "http://atlas/toolkit-outils/forms-formulaires/index_eng.asp",
+          "start_index": 0
+        },
+        {
+          "text": "BSF807",
+          "url": "http://atlas/toolkit-outils/forms-formulaires/index_eng.asp",
+          "start_index": 0
+        },
+        {
+          "text": "BSF808",
+          "url": "http://atlas/toolkit-outils/forms-formulaires/index_eng.asp",
+          "start_index": 8
+        },
+        {
+          "text": "BSF809",
+          "url": "http://atlas/toolkit-outils/forms-formulaires/index_eng.asp",
+          "start_index": 16
+        }
+      ],
+      "text_as_html": "<table><thead><tr><th>Community Case Management and Supervision (CCMS) Change of Conditions</th><th>BSF806</th></tr></thead><tbody><tr><td>Community Case Management and Supervision Report of Non-Compliance</td><td>BSF807</td></tr><tr><td>Client Profile Set Up (Electronic Monitoring)</td><td>BSF808</td></tr><tr><td>Client Instructions (Electronic Monitoring)</td><td>BSF809</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "35c724320b594356105cc97649ed5035",
+    "text": "Form Title - Toronto Bail Program Bail Program Supervision Contract Agreement of Supervision: Crim Agreement of Supervision: Holding Centre Graduation Request Interview Results Withdraw Supervision Letter Template",
+    "metadata": {
+      "is_extracted": "true",
+      "links": [
+        {
+          "text": "Bail Program Supervision Contract",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22558656",
+          "start_index": 36
+        },
+        {
+          "text": "Agreement of Supervision : Crim",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22558336",
+          "start_index": 71
+        },
+        {
+          "text": "Agreement of Supervision : Holding Centre",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22555875",
+          "start_index": 103
+        },
+        {
+          "text": "Graduation Request",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22558244",
+          "start_index": 145
+        },
+        {
+          "text": "Interview Results",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22556370",
+          "start_index": 166
+        },
+        {
+          "text": "Withdraw Supervision Letter Template",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll/Overview/22558345",
+          "start_index": 185
+        }
+      ],
+      "text_as_html": "<table><tbody><tr><td>Form Title - Toronto Bail Program</td></tr><tr><td>Bail Program Supervision Contract</td></tr><tr><td>Agreement of Supervision: Crim</td></tr><tr><td>Agreement of Supervision: Holding Centre</td></tr><tr><td>Graduation Request</td></tr><tr><td>Interview Results</td></tr><tr><td>Withdraw Supervision Letter Template</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "12831b203a5be82225ead077ebc66f49",
+    "text": "The ATD forms must be uploaded within seven business days into the Global Case Management System (GCMS) and in accordance with the Alternatives to Detention Forms Upload Procedures. The forms and assessment should also be placed on the individuals\u2019 physical file.",
+    "metadata": {
+      "is_extracted": "true",
+      "links": [
+        {
+          "text": "Alternatives  to  Detention  Forms  Upload",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll?func=ll&objaction=overview&objid=35768772",
+          "start_index": 139
+        },
+        {
+          "text": "Procedures .",
+          "url": "https://apollo.omega.dce-eir.net/livelink/llisapi.dll?func=ll&objaction=overview&objid=35768772",
+          "start_index": 183
+        }
+      ],
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "bda2a722c7e36e35ef6ce129a4c4285c",
+    "text": "7. Departmental Policy",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "011b737f392fb276848f7bab401bebe9",
+    "text": "The CBSA has established tools and programs that enable officers to more effectively release individuals into the community, while achieving balanced enforcement outcomes. The ATD program provides risk-based, nationally consistent programming to individuals deemed suitable for release from detention.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "bda2a722c7e36e35ef6ce129a4c4285c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "ddbc7438dc787fe3807318027b136bd6",
+    "text": "In addition to the options of releasing an individual on reporting conditions (e.g., in-person reporting), cash deposit, or with a bond and/or guarantee upon the establishment of a suitable bondsperson, the ATD program also includes the option of:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "bda2a722c7e36e35ef6ce129a4c4285c"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b9943115a2fb6c838543515b1a9c30d0",
+    "text": "A national Community Case Management and Supervision (CCMS) program that mitigates risk factors in a manner that aligns in-community support services with individuals\u2019 needs.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "bda2a722c7e36e35ef6ce129a4c4285c"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "4695914eda9ab98cdc18291f1354beb2",
+    "text": "An Electronic Monitoring (EM) program that uses global positioning satellites, cellular and radio frequency technology to monitor an individual\u2019s whereabouts.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "bda2a722c7e36e35ef6ce129a4c4285c"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "130dbd14c4f24f7cff83ab6b5d6e8d47",
+    "text": "8. Assessment of alternatives to detention",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "9f7d3fddeb474ca693e02c5b9b297790",
+    "text": "8.1. Risk identification for ATD Considerations",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7cb4186e19410d895bb08bc5ef4cc213",
+    "text": "Risk identification is an evaluation of the information available at the time of the assessment. Information can be obtained through an interview and should include evidence available that may help predict future behaviour.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9f7d3fddeb474ca693e02c5b9b297790"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "8c5facc30d2fedb0e79d28ccafc4f405",
+    "text": "7",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 7,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "97ec3ca5ebaf42d23c1c1373c194056a",
+    "text": "Risks related to the objectives of the IRPA can generally be categorized in the following ways:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "c0ba20ec27d26ef50e689c505fd2377b",
+    "text": "1. As described in paragraphs A3(1)(h) and A3(2)(g) risk to public safety is related to the objectives of the IRPA. Public safety is the top priority for the CBSA. When consequences associated with public safety risks are significant, an officer may, where appropriate, impose conditions that they consider necessary, and the conditions must minimize the risk and be proportional to the risk (Mawut: 2022 FC 415, paragraph 35) for the purpose of release or detention avoidance.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "ef96d13c83cb1f8fb6eb877f5b660e9b",
+    "text": "2. Risk to program integrity is also a key consideration in regards to risk identification. These risks relate to a negative impact on achieving all other objectives of the IRPA. The acceptable degree of risk depends on the specific circumstances and is discussed further below.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "1b79f561c37cf0bd31a9b4cf3c2b76a8",
+    "text": "At this stage, the focus is on identifying information that will be considered during the risk analysis.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf",
+    "text": "8.2. Conducting the risk analysis",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e9f543defed71ff774146c8544b8686f",
+    "text": "Once all the available information on potential risks has been gathered, officers must analyze the information to determine what weight should be given. The following factors and questions assist in determining the weight to be given:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "1b199b214741136824cb83782c32bafb",
+    "text": "1. How reliable, accurate and comprehensive is the information?",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "3dcbc3ce0e50aa2d9981d003311e449f",
+    "text": "a. Greater weight should be given to information that is believed to be unbiased and fully describes the behaviour or circumstances.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b9a7625281d7bdb899e8e271b6bf5a99",
+    "text": "2. How likely is it that the risk will impact the CBSA\u2019s enforcement mandate or IRPA objective?",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "2618ab2ad807707fd10794eaa764e85a",
+    "text": "a. Greater weight should be given to information that directly relates to the objectives of the IRPA. For example, a history of failing to appear for immigration proceedings or to appear before the Court for criminal matters should be given more weight than failure to appear for regulatory (traffic) proceedings.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "a020c3c6ee3b34ffa388c80b61070ca9",
+    "text": "Using the information gathered, officers consider the prescribed factors, as identified in sections 244 to 247 of the Immigration and Refugee Protection Regulations (IRPR), as well as some additional factors discussed below, as they relate to the grounds for detention. Where the individual is subject to conditions under the Criminal Code of Canada, care should be taken to ensure that the conditions imposed under the IRPA are not contradictory. Officers should be aware of the specific details of any criminal conditions and should considered this as part of the risk analysis.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e564dd198ea74dcbb348f0cf2243a64b",
+    "text": "Officers should reference ENF 7 for factors to be considered by an officer before, during and after arrest/detention.",
+    "metadata": {
+      "is_extracted": "true",
+      "links": [
+        {
+          "text": "ENF 7",
+          "url": "https://cicintranet.ci.gc.ca/Manuals/Documents/PDF/enf/enf7_e.pdf",
+          "start_index": 26
+        }
+      ],
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "1d2a2048b5ccb9fc1c5a83b03140a1bf"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "3918847daf3264d8bb762737429ac665",
+    "text": "8",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 8,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "e37f3938392b4d2f380ceae3df2cb51e",
+    "text": "8.2.1. Flight risk",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "00e55a33ce1da7a288d03403f485acd5",
+    "text": "Individuals who pose a risk of not appearing for proceedings (Unlikely to Appear) may be more likely to appear than not after the imposition of conditions, taking into account the factors in section R245 and paragraphs R248(b), (c) and (d) as well as any other relevant factors, such as:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "103acd423f9da9867a2069c1848e40c3",
+    "text": "\u2022 Objective assessment of their chances of gaining durable status in Canada.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "5fb70f9debaff148d69c61c5b0993b4a",
+    "text": "\u2022 Existence of strong ties to a community in Canada.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "d91e6673778bc31495dff68dcf21e150",
+    "text": "Strong ties are a factor in favour of release if the ties are to a person or people who can influence the person to appear for proceedings.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "ba0f98582f33903e6d66b3c267cd2fb3",
+    "text": "Strong ties are a factor against release if the person or people have shown not to have a positive influence and, therefore, become a strong pull factor motivating the individual not to appear for removal.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "fb54b6f766c6685b967c805dd8485a08",
+    "text": "\u2022 Access to sufficient financial means, which may provide an increased ability to abscond.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b232f38baa3ede90319a78e99895c5de",
+    "text": "\u2022 Use of false identity documents and aliases to evade detection from the authorities.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "281329743064a685182c036a394d1e05",
+    "text": "\u2022 Previous attempts to hide their presence in Canada.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "d4638e8b20a6a353b8a925d1c16ada2d",
+    "text": "\u2022 Lack of credibility, as demonstrated in dealings with immigration or police officials.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "52da6eb41356a595b101dfb1fe1681c9",
+    "text": "\u2022 Co-operation of the individual.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "40e94c4f942406b12823b861f49a3424",
+    "text": "If an individual is uncooperative with the CBSA, this is a strong indicator that the individual is unlikely to comply with imposed conditions.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e37f3938392b4d2f380ceae3df2cb51e"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "8ddb21f142e20d4fe731a76fe869d620",
+    "text": "8.2.2. Identity",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "fe1cdef7443c0ef346b7de625493609f",
+    "text": "Paragraph 58(1)(d) of the IRPA provides that delegated officials may issue an opinion to the Immigration Division with respect to the establishing of identity of the foreign national, which the Immigration Division must consider during a detention review. This opinion must be documented using the BSF510 form. In regions with Immigration Holding Centres (IHCs) the foreign national could be detained at the IHC until their identity is established.",
+    "metadata": {
+      "is_extracted": "true",
+      "links": [
+        {
+          "text": "BSF510 form .",
+          "url": "http://atlas/forms-formulaires/eb-dgel/bsf510.pdf",
+          "start_index": 301
+        }
+      ],
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8ddb21f142e20d4fe731a76fe869d620"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "8ad04945475f4811b285ca0b1279c06c",
+    "text": "Establishing identity is a two-way street, in that both the Minister and the foreign national must work together in an effort to establish the foreign nationals identity. The Immigration Division\u2019s supervisory jurisdiction on the issue of identity is limited to examining whether the Minister is conducting an ongoing investigation, in good faith, and the foreign national is cooperating with the Minister in an effort to establish the foreign national\u2019s identity.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8ddb21f142e20d4fe731a76fe869d620"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "73bb46c76b2e9a405bb1138ef34a89f6",
+    "text": "The Federal Court of Appeal in Brown (2020 FCA 130, paragraph 99) states the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8ddb21f142e20d4fe731a76fe869d620"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "209f0cf133d4d09674a6494920c4bddb",
+    "text": "\u201c Detention cannot be ordered on the basis of non-cooperation alone\u2014to do so would be contrary to sections 7 and 9. But where the impasse in effecting removal is disputed identity and the detainee has refused to cooperate in confirming their identity, delays in removal cannot count against the Minister. Release in these circumstances would encourage detainees to be less than forthcoming. Where a detainee is uncooperative, detention cannot be classified as indefinite because it is within the detainee\u2019s control to change their destiny.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8ddb21f142e20d4fe731a76fe869d620"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "006cef17172a9f503184075f7c5ecf84",
+    "text": "9",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 9,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "40f51031b330058db12353213b263fd4",
+    "text": "Establishing the identity of an individual remains the cornerstone to the Canadian Immigration System (Singh: 2004 FC 1634, paragraph 38) and the non-confirmation of identity under the Act is still a ground for detention.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "375befc62cac0e2de67b55bb32626d27",
+    "text": "The CBSA must have enough reliable, accurate and comprehensive information to effectively assess the risk posed by an individual, if released. If the CBSA does not have sufficient information, release on the basis of ATDs is generally not appropriate until the CBSA is able to, based on a balance of probabilities, feel sufficiently comfortable that the information on file is enough to predict risk.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "a9de186a38fc578560cb5351a0c1a978",
+    "text": "8.2.3. Danger",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "6ee49c43537926ee7206e62af7a04234",
+    "text": "Individuals who are detained for danger to the public should have their risk mitigated, so the risk of serious harm to the public is significantly reduced by the conditions being imposed. Factors to be assessed include the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "3aaef56434fbbffae011596b2b516be0",
+    "text": "\u2022 assessment related to present or future danger based on prior history;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "2376ba83952a4c62159892b840f49582",
+    "text": "\u2022 positive danger opinion from the Minister;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "8d3b9c075fccfb2c814730dead356814",
+    "text": "\u2022 association with criminal organizations, including people smuggling and human trafficking (membership is not required, just association; a criminal record is not required either)",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "77c499a06aaf661b56df0fe6f8ef21ba",
+    "text": "\u2022 convictions in Canada for offences involving violence or drug trafficking",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "22fceec47741419a996ac8208e76edf0",
+    "text": "\u2022 charges or convictions outside Canada involving violence or drugs trafficking",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "0ff63debd7796b3847007a10cc353d5c",
+    "text": "\u2022 age of convictions must be considered, as the more time that has passed since the convictions the lesser the risk, taking into account efforts by the individual to rehabilitate, including any associated factors, such as substance addiction;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "cb699cbcda031e22b47e6e1515ee598f",
+    "text": "\u2022 parole, probation and bail decisions (where available) serve as good references when evaluating the level of danger, and may include risk assessment and related supervision conditions in the area of criminal history, institutional/custodial behavior, and community reintegration potential, etc.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "cccb6480d0750d63dec521f96f61f89a",
+    "text": "CBSA\u2019s assessment may take into consideration third party criminal justice agency information from a non-immigration perspective, and strengthen decision- making pertaining to the conditions recommended to manage risk. Where possible, CBSA\u2019s conditions should respect any active parole, probation and bail decisions to ensure consistency in the management of individuals risk to public safety.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "f4df9770424d65edab7daf1abab6705c",
+    "text": "\u2022 nature of the risk posed",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "7e2c2871b5b5e27a0a72bed4b3ab4c63",
+    "text": "For example, if an individual presents a very likely risk of serious harm to the public, the risk should be significantly reduced by the conditions being imposed. If the risk posed to the public is based on predictive factors and is more general in nature, the imposed conditions should reasonably be expected to reduce the general risk posed.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a9de186a38fc578560cb5351a0c1a978"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "1b199e399f5493bc529673ccd204569c",
+    "text": "10",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 10,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "55ff4ce8b0b2ee0ed2a69a377e550e52",
+    "text": "8.2.4. Mental health concerns",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "b9c2ff9f7a4df2ce2b2a99765c98cf8a",
+    "text": "The risk posed by individuals with mental health concerns depends largely on the available treatment options and the individual\u2019s ability and willingness to participate in the treatment. The history of the individual\u2019s compliance with previous treatment is a good indicator of future compliance. However, the individual\u2019s history is only one factor to be considered, and should be assessed against their current ability and willingness to participate in treatment.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "55ff4ce8b0b2ee0ed2a69a377e550e52"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "11c7e5ab0a891749ff150f506b155af0",
+    "text": "The National Risk Assessment for Detention (NRAD) form is used to determine the appropriate placement of individuals in detention. Many of the factors identified and analyzed in the NRAD form are likely relevant to a risk analysis for alternatives to detention; however, the analysis of risks for purposes of alternatives to detention must be done separately from the NRAD form decision.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "55ff4ce8b0b2ee0ed2a69a377e550e52"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "594aabedff9d84f40d486c7e418eb45e",
+    "text": "For more information on risk analysis and the use of the NRAD form, see ENF 20.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "55ff4ce8b0b2ee0ed2a69a377e550e52"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "a2e2ac5f9d36a50f294b127d45f2f764",
+    "text": "8.3. Risk offset",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "42ae470b2f2a77d0cb302332b2b60183",
+    "text": "Risk offset describes the degree to which the condition that is imposed is expected to minimize the risk posed. Identifying conditions that effectively reduce the specific risk or risks posed is the intended outcome of this phase of the eligibility assessment of an ATD.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "92f284bf5721d6ee690ee92d8d7b2ec6",
+    "text": "A condition imposed as a risk offset should:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "cf8365a28f61e3c46fbcfc225be5e6d5",
+    "text": "\u2022 minimize the likelihood of the risk impacting the enforcement outcome;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "c4389a27e10f474900f89c4f118a742a",
+    "text": "\u2022 minimize the risk of harm to the public;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "90ac67073e04583dde3555e17d5cd18a",
+    "text": "\u2022 address specific negative behaviours of the individual;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "bb558da20d4258621247a1308400295b",
+    "text": "\u2022 be reasonable and proportional to the risk.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "824045273c246a0fef6d25a3349ff608",
+    "text": "ATD options may be combined together to offset risk. ATD options are at the disposal of CBSA officers to leverage while imposing conditions on individuals that they consider necessary in light of the facts and circumstances before them. The imposed conditions must minimize risk and be proportional to the risk. For CCMS and EM, a suitability assessment must be conducted. For EM, concurrence from regional management is required.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "fdb052e5394b28ae40a1ae2c53f25060",
+    "text": "Furthermore, the ATD program options are at the disposal of the Hearings Officer to leverage in consultation with the CLO and the Inland Enforcement Officer while making recommendations of release during detention reviews before an Immigration Division Member of the IRB.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a2e2ac5f9d36a50f294b127d45f2f764"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "99271fd7b09a22f2253a1bfb6aacff63",
+    "text": "8.4. Evaluation of residual risk",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "c6db6a7c81f2b6e33304098501f1256c",
+    "text": "Residual risk is the level of risk that remains if it is decided that an individual be placed on conditions. It is either acceptable residual risk (the risk has been sufficiently mitigated) or unacceptable residual risk (the risk has not been sufficiently mitigated). When an officer (CLO, Inland Enforcement Officer, Border Services Officer) is considering release, or when a Hearings",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "99271fd7b09a22f2253a1bfb6aacff63"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "71c59e25e78607c2d03a5ef75d50d4a7",
+    "text": "11",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 11,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "893a516549b5ff31d832dd5260f7b184",
+    "text": "Officer is making submissions on a release plan to the IRB, the residual risk posed by the individual, after conditions are imposed, is the primary consideration.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "644cf158575facc26ac89fbf2962b16b",
+    "text": "What is acceptable or unacceptable in any given case depends on the unique facts of the case. Therefore, a case-by-case analysis is required. It is important for officers to remember that if an individual is a flight risk, but poses no other risks, only those conditions that minimize their risk of absconding should be imposed. Similarly, if an individual poses a risk to public safety, only the least onerous conditions to address that specific risk should be imposed.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "993226ba8c88e4bed48520a1d9c7a773",
+    "text": "When deciding if the residual risk is acceptable for individuals who are unlikely to appear, the officer should be evaluating, on a balance of probabilities, whether the individual is more likely to appear than not.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "37712014bea002f803f08beabf20e214",
+    "text": "When deciding if the residual risk is acceptable for an individual who is detained for identity, the officer must evaluate the risk of the individual not appearing and the possible danger to the public the individual poses, taking into account the risks inherent in not being satisfied with the individual\u2019s identity. Additionally, the officer must be satisfied that the ability to continue the investigation into the individual\u2019s identity is not negatively impacted by releasing the individual on the conditions available.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "04150584fd548f2a89597c930c686ffa",
+    "text": "For an individual who presents as a danger to the public, the residual risk must be very low. The IRPA prioritizes the safety of the public and, therefore, any risk posed must be minimal, taking into account all of the individual circumstances.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "748590ad8b813aa70e3658ad31ca0b3c",
+    "text": "If the residual risk is acceptable, in the officer\u2019s opinion, they may decide to release prior to the 48 hour detention review or present the release options to the Hearings Officer for the detention review.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "bbbe42653e36e2687df8b82d7173db44",
+    "text": "If the residual risk is unacceptable, in the officer\u2019s opinion, taking into account the factors in paragraphs R248(a) to (d), they should proceed with making a recommendation for continued detention to the authorized reviewing manager or the Hearings Officer for the detention review, as appropriate.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "0ef19b1351d8c038ff07b925ae9112d8",
+    "text": "ENF 3 Admissibility Hearings and Detention Reviews provides guidance on evaluating residual risk at detention reviews.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "8e0a4019807abd5fd007ee320181ece8",
+    "text": "8.5. Documenting the decision",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "a907d1b058da215eb07e722aff56beb8",
+    "text": "Officers are required to document their assessment of ATDs and the reasons for the recommendation to continue detention or support release on ATDs. The written assessment of ATDs must contain the salient facts and must include, at a minimum",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8e0a4019807abd5fd007ee320181ece8"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "a7f997174a57227f7608db6d2632788c",
+    "text": "\u2022 the information that was available at the time the assessment was made;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8e0a4019807abd5fd007ee320181ece8"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "e1c1d7741ade20b3c9dbf04123b99914",
+    "text": "\u2022 factors used to determine the weight given to the information;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8e0a4019807abd5fd007ee320181ece8"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "2b9a2a47ccfd2e3b183893f2c2ed6ddb",
+    "text": "12",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 12,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "5b66f14aae6a5cd503a553934f82503b",
+    "text": "\u2022 the risks identified;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "a766fbc79ada64b20e28dc5b56256d6a",
+    "text": "\u2022 for a recommendation to continue detention, the factors in paragraphs R248(a) to (d) that weighed in favour of detention, when balanced against the risk offset provided by the available ATDs;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "8f4dba9402609b515f1c25a860acca3f",
+    "text": "\u2022 for a recommendation to release on the basis of ATDs, the risk offset provided by the ATDs;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "3699fcbce2d88f51248536b1beac1774",
+    "text": "\u2022 justification for any recommendation that is an exception to the guidelines provided in this manual or other operational guidance.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "5e1c5bf21dd10c018995c5f525656d03",
+    "text": "For every assessment completed, all details must be entered into the relevant case management systems (i.e., National Case Management System, GCMS, etc.). The BSF forms and assessment must be uploaded into GCMS in accordance with the Alternatives to Detention Form Upload Procedures and placed on the individuals\u2019 physical file.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "c9236b741d422f672924595f50fd6c2e",
+    "text": "9. Vulnerable persons",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7bf2c2037168d076c998702503905b42",
+    "text": "Some vulnerable persons have an increased risk, based on their vulnerability. For the purposes of immigration detention, vulnerable persons include but are not limited:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "78fe71508da4a66b42987c0174bf5650",
+    "text": "pregnant women and nursing mothers;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "bdd88299c83bb42fb92daf17d0cc1f1c",
+    "text": "minors (under 18 years of age);",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "76e8128c9366cbeccff3e92ff81d9436",
+    "text": "persons suffering from a severe medical condition or disability;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "76a66b9f4094b6d00724eb8a06014468",
+    "text": "persons suffering from restricted mobility;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b9d3ed121ec958c5dcf7cdf2aa4c688f",
+    "text": "persons with a suspected or known mental illness (including suicide and self harm);",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "908ca7b77b8399306568e48bc6de8d92",
+    "text": "victims of human trafficking;",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b01ac9ce95e318ac397dc8b53cb9dd22",
+    "text": "persons who may face hardship for sexual or gender based reasons or who may be victims or survivors of gender-based violence.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e2b165b5e7a9b7211c44698c734a2a07",
+    "text": "It is recognized that detention has a greater impact on vulnerable persons, and detention should be minimized to the extent possible for such groups. Risk tolerance may be influenced by vulnerability factors. Each case needs to be assessed on its case-specific factors to determine if release is a viable option. If the individual has been identified on the National Risk Assessment for Detention or through an IHC doctor assessment as a vulnerable person, the assessment and, if applicable, a referral to a CCMS Service Provider must be completed by the CLO within 72 hours of the vulnerability being noted and the decisions documented as per section 8.5 of this manual.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "5e3f29239e1de53140f13c756741764f",
+    "text": "See ENF 20 Detentions for more information regarding vulnerable persons.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "c9236b741d422f672924595f50fd6c2e"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "0b6d5ad52e4e7a9388a79b9329e08df6",
+    "text": "13",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 13,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "02773fa7fe13072928c0604e45173029",
+    "text": "10. Minors",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "83fc8c037411e3c6805166029f77305c",
+    "text": "See ENF 20 Detentions for guidance on the factors to be considered when a case involves a minor child. This includes detention decisions related to parents and legal guardians of minors when the minor is affected.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "02773fa7fe13072928c0604e45173029"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "6ee1fc0ab919deac4cbdb64802f9ea3a",
+    "text": "11. Use of Alternatives to Detention Program tools at ports of entry",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7aae370710e6fe66660adfd28522798b",
+    "text": "The assessment process for ATDs is the same at ports of entry (POE) as it is for inland cases. Most POE detentions are for a very short amount of time, and the grounds for detention are usually related to a high or unknown risk. These factors usually weigh heavily in favour of detention. However, this does not preclude the officer\u2019s responsibility to assess and consider ATDs in all cases where detention may be continued.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6ee1fc0ab919deac4cbdb64802f9ea3a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "6119162f392cf89b87f509fb39a8fb53",
+    "text": "All officers arresting and/or detaining under section A55 of the IRPA, including officers at the POE, are required to consider available ATDs. This includes officers detaining on entry under A55(3). Border Services Officers could leverage, where necessary and appropriate, deposits and guarantees as ATDs when imposing conditions under POE authorities. Please refer to ENF8 for additional information on Deposits and Guarantees.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6ee1fc0ab919deac4cbdb64802f9ea3a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "c2df300b79e13a87fdb3fa39e11d282c",
+    "text": "In instances where the POE examination has ended and ATDs are not available at the time of arrest/detention under A55, the designated officer (e.g., Border Services Officer) that made the decision to arrest and detain under A55 may refer the case to the CLO at the inland office that will take carriage of the file, for further assessment of available ATDs.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6ee1fc0ab919deac4cbdb64802f9ea3a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9e1e2b202be81acd831c04b533a42a2d",
+    "text": "Border Services Officers should ensure persons with disabilities are entitled to the same services as any other person, in accordance with the People Processing Manual Part One, Chapter Four \u2013 Awareness Issues.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6ee1fc0ab919deac4cbdb64802f9ea3a"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "2022a1b98d2c930aa81f6954ef321d1d",
+    "text": "12. Alternatives to Detention",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "72e4e4cd0674eb1dbf99e72afa2a685c",
+    "text": "Various ATDs are available and must be reasonably considered prior to immigration detention and while the individual remains in immigration detention. The officer should consider the individual\u2019s immigration history and potential risk against the maximum risk that can be mitigated through each ATD. Accessibility to ATDs may differ between POE and inland enforcement offices. The availability of ATDs may be impacted by the time of day of the arrest as some require involvement from third parties (e.g., guarantor or service provider).",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2022a1b98d2c930aa81f6954ef321d1d"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "5f831247f29e2a86faf707eed7f69279",
+    "text": "14",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 14,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "72a1f440f0afa54f948aad5946637b4a",
+    "text": "12.1. Imposition of Conditions under 56(1)",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "c0c80a2961abc656d3153f40b4a55cb4",
+    "text": "IRPA allows for general conditions to be imposed on individuals when the Minister orders the release of an individual. General conditions can be imposed with or without any additional conditions, such as payment of deposits, or in addition to other types of conditions (e.g. deposits, community supervision, in-person reporting, etc.). It is important to note that release solely on conditions equates to ATDs.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "72a1f440f0afa54f948aad5946637b4a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "5341b76bf72f54ce3dcad4da5f0f4d83",
+    "text": "The following are commonly imposed conditions that are appropriate in a majority of cases where release from detention is being contemplated:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "72a1f440f0afa54f948aad5946637b4a"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "120fcd53cda917f7b38124865c702cb3",
+    "text": "Condition Risk mitigation Keep the CBSA A current address allows the CBSA to locate the individual if they updated with a fail to comply with conditions or requirements, including removal. current address A current address is likely to provide investigative leads if the individual fails to comply. Report criminal Criminal charges and convictions are indicators that an charges and individual may pose a danger to the public, which is a primary convictions concern for the CBSA. Cooperate with The lack of an identity or travel document is often the sole obtaining an identity impediment to removal for many individuals. Obtaining an or travel document identity or travel document can take a long time, and the sooner the process begins, the more likely the timely removal of the person will take place if it becomes necessary. Other conditions, An officer may impose any other condition that they consider including those listed necessary in order to address risk specific to each individual on the BSF821 form provided the condition is proportional to the risk; however, the (Acknowledgement officer must be able to articulate why specific conditions are of Conditions) being imposed and they cannot be unreasonable or amount to de facto detention.",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><thead><tr><th>Condition</th><th>Risk mitigation</th></tr></thead><tbody><tr><td>Keep the CBSA updated with a current address</td><td>A current address allows the CBSA to locate the individual if they fail to comply with conditions or requirements, including removal. A current address is likely to provide investigative leads if the individual fails to comply.</td></tr><tr><td>Report criminal charges and convictions</td><td>Criminal charges and convictions are indicators that an individual may pose a danger to the public, which is a primary concern for the CBSA.</td></tr><tr><td>Cooperate with obtaining an identity or travel document</td><td>The lack of an identity or travel document is often the sole impediment to removal for many individuals. Obtaining an identity or travel document can take a long time, and the sooner the process begins, the more likely the timely removal of the person will take place if it becomes necessary.</td></tr><tr><td>Other conditions, including those listed on the BSF821 form (Acknowledgement of Conditions)</td><td>An officer may impose any other condition that they consider necessary in order to address risk specific to each individual provided the condition is proportional to the risk; however, the officer must be able to articulate why specific conditions are being imposed and they cannot be unreasonable or amount to de facto detention.</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "72a1f440f0afa54f948aad5946637b4a"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "017a34b3e29e8bf33838a3ed03cf971c",
+    "text": "12.2. Issuance of deposits and guarantees",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9ceadbea787616b2ec22944ff7095455",
+    "text": "Deposits and guarantees are tools intended to provide some assurances that an individual will comply with conditions imposed. Deposits and guarantees are discussed in ENF 8 Deposits and Guarantees.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "017a34b3e29e8bf33838a3ed03cf971c"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "36bd17b64194e6cf82007a03ef396922",
+    "text": "15",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 15,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "2ac77584a1f8895cec46fe90d780ec86",
+    "text": "12.3. In-person reporting",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e0553816a1df793fd81ea47a696fe62b",
+    "text": "In-person reporting is intended to keep the individual connected with the CBSA through regular face-to-face interactions. Regular reporting allows the CBSA to obtain updates on information relevant to the administration and/or enforcement of IRPA and allows the individual to ask questions of the CBSA in relation to their immigration enforcement proceedings.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2ac77584a1f8895cec46fe90d780ec86"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "f17c44c8b14b70a473e64ec4758e1557",
+    "text": "12.4. Remote Reporting",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f27ecd67ffb0a5b8fea461efb90ae37e",
+    "text": "With the decommissioning of Voice Reporting System and the delay in implementing its replacement, on a case-by-case basis, an individual may be permitted to report remotely via telephone. An individual should only be considered for this option if they cannot physically report in-person (e.g., geographical location \u2013 individual lives in Whitehorse, or mobility issues).",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "f17c44c8b14b70a473e64ec4758e1557"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "2fdf5df916ce770ac761f08e8a7f94e9",
+    "text": "12.5. Community Case Management and Supervision",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e68b254aba25e47bc576230669de5da8",
+    "text": "Like all other ATD options, the CCMS program is intended for individuals under the immigration continuum, who are cooperative with the CBSA in working towards furthering their enforcement proceedings, including effecting their removal from Canada. CCMS provides released individuals with services in the community that mitigate and manage the risk they pose through case management and pro-social treatment options. CCMS is delivered by existing non- governmental organizations and community organizations contracted by the CBSA to provide these services.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2fdf5df916ce770ac761f08e8a7f94e9"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "b6e1e72852d138998d9f150462e6d75e",
+    "text": "CCMS service providers conduct an eligibility assessment of detained individuals referred to them by the CLO and provide the results of the eligibility assessment to the CLO. If the service provider accepts an individual into the program and CCMS is imposed as a condition by either the CBSA or the IRB order for release, the CCMS service provider will enrol the individual in the appropriate program and services, and will monitor the individual as they participate in the program.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2fdf5df916ce770ac761f08e8a7f94e9"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "896c263ac633a456a9f2d322deed92b0",
+    "text": "CCMS services are primarily focused on mitigating and managing the risk of non-compliance associated with vulnerabilities such as physical health, mental health, substance abuse, addictions and behavioral issues. Additionally, the CCMS service provider can refer individuals to existing community resources that provide housing and shelter assistance as well as child and family services.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2fdf5df916ce770ac761f08e8a7f94e9"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7672e097eace60f9cfa7ef2fa8e9272d",
+    "text": "For a limited number of individuals who present a high flight risk or danger to the public, CCMS service providers have community residential facilities that individuals can be released to, under strict conditions and subject to very close monitoring. Individuals released to these facilities are required to reside in the facility, follow facility rules and participate in any programmes deemed necessary to mitigate and manage the risk the individual poses.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "2fdf5df916ce770ac761f08e8a7f94e9"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "1b4ba6509da0aa5576e9840385b0912e",
+    "text": "16",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 16,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f161c44ae4c97f1ea00a466d6b09b7a1",
+    "text": "CCMS service providers report any violations of conditions to the CLO who will then consider all of the information and consult impacted areas, as required, when determining an appropriate resolution.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "ddd7f16b7d2227060301b894b22a0811",
+    "text": "12.5.1. Description of CCMS services",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9963e29fedc8ba9d6ad90888e9bbf760",
+    "text": "CCMS is intended to address factors that are likely to impact the individual\u2019s ability to maintain a stable community living situation. The underlying premise is that an individual who is stable in the community is more likely to comply with imposed IRPA requirements and conditions.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ddd7f16b7d2227060301b894b22a0811"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "fb332eb1c19e1f1d03df80967933b12d",
+    "text": "The following CCMS services assist individuals in becoming and remaining stable in the community:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ddd7f16b7d2227060301b894b22a0811"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "fa96b94f83afec4fe6f3af36af2bf914",
+    "text": "Service Description Case management Every individual enrolled in CCMS receives case management services. The CCMS service provider performs an assessment to determine the appropriate nature and frequency of case management services. At a minimum, the individual is required to report to the CCMS service provider at regular intervals to update on changes to their living situation, daily activities (such as work and school) and any specific issues that could impact compliance with the imposed conditions. Links to health Individuals who have a serious medical condition that require significant support ongoing treatment may be eligible to receive support from the CCMS service provider in arranging and managing their treatment in the absence of a support system of their own. Mental health Individuals with mental health issues that are likely to impact their assistance compliance with conditions may have treatment options available to them that are designed to support and encourage compliance with IRPA requirements and imposed conditions. These services may be provided by program operators available through the CCMS service provider or subcontracted by the CCMS service provider. Addiction and Individuals whose ability to comply with conditions is impacted by substance abuse addiction may be eligible to participate in counselling and/or treatment counselling and programs designed to minimize the impact of their addiction and assist support with maintaining stability in the community. These outcomes are expected to support the individual\u2019s ability to comply with imposed conditions.",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><thead><tr><th>Service</th><th>Description</th></tr></thead><tbody><tr><td>Case management</td><td>Every individual enrolled in CCMS receives case management services. The CCMS service provider performs an assessment to determine the appropriate nature and frequency of case management services. At a minimum, the individual is required to report to the CCMS service provider at regular intervals to update on changes to their living situation, daily activities (such as work and school) and any specific issues that could impact compliance with the imposed conditions.</td></tr><tr><td>Links to health support</td><td>Individuals who have a serious medical condition that require significant ongoing treatment may be eligible to receive support from the CCMS service provider in arranging and managing their treatment in the absence of a support system of their own.</td></tr><tr><td>Mental health assistance</td><td>Individuals with mental health issues that are likely to impact their compliance with conditions may have treatment options available to them that are designed to support and encourage compliance with IRPA requirements and imposed conditions. These services may be provided by program operators available through the CCMS service provider or subcontracted by the CCMS service provider.</td></tr><tr><td>Addiction and substance abuse counselling and support</td><td>Individuals whose ability to comply with conditions is impacted by addiction may be eligible to participate in counselling and/or treatment programs designed to minimize the impact of their addiction and assist with maintaining stability in the community. These outcomes are expected to support the individual\u2019s ability to comply with imposed conditions.</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ddd7f16b7d2227060301b894b22a0811"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "0967209da10d5c68b34342d8c8c7fd8a",
+    "text": "17",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 17,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Table",
+    "element_id": "ed41922ddbc11fc161594b529fc903e3",
+    "text": "Information Individuals who are eligible to work in Canada may be eligible to receive regarding housing assistance from the CCMS service provider in accessing local and employment employment resources. Employment provides stability in the community as well as a legitimate source of funds to live on, both of which contribute to the individual being more likely to comply with imposed conditions. Individuals who are or anticipate having difficulty finding a stable residence may be eligible to receive assistance from the CCMS service provider in accessing local housing resources. A stable residential address is one of the strongest contributors to an individual complying with conditions. Information Individuals with child-care needs may be eligible to receive assistance regarding child- from the CCMS service provider in accessing local resources. A stable related or family community and family situation both contribute to an increased likelihood needs of compliance. Mandatory Individuals who require close supervision may be eligible to be placed residency into residential facilities operated by the CCMS service provider. These facilities closely monitor the individual\u2019s behavior and report any concerns or violations of curfews or other conditions to the CBSA immediately. Individuals may receive treatment services in some of these facilities and be escorted to appointments and treatment programs by the CCMS service provider when necessary.",
+    "metadata": {
+      "is_extracted": "true",
+      "text_as_html": "<table><tbody><tr><td>Information regarding housing and employment</td><td>Individuals who are eligible to work in Canada may be eligible to receive assistance from the CCMS service provider in accessing local employment resources. Employment provides stability in the community as well as a legitimate source of funds to live on, both of which contribute to the individual being more likely to comply with imposed conditions. Individuals who are or anticipate having difficulty finding a stable residence may be eligible to receive assistance from the CCMS service provider in accessing local housing resources. A stable residential address is one of the strongest contributors to an individual complying with conditions.</td></tr><tr><td>Information regarding child- related or family needs</td><td>Individuals with child-care needs may be eligible to receive assistance from the CCMS service provider in accessing local resources. A stable community and family situation both contribute to an increased likelihood of compliance.</td></tr><tr><td>Mandatory residency</td><td>Individuals who require close supervision may be eligible to be placed into residential facilities operated by the CCMS service provider. These facilities closely monitor the individual's behavior and report any concerns or violations of curfews or other conditions to the CBSA immediately. Individuals may receive treatment services in some of these facilities and be escorted to appointments and treatment programs by the CCMS service provider when necessary.</td></tr></tbody></table>",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f52fe3d9eaebb1ad80ef08932f0694d4",
+    "text": "To maintain the integrity of the CCMS program and ensure resources are used most effectively, below are guidelines on individuals that should not be considered for enrolment in CCMS.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "c1c064fda960b6f14877526628a6f0db",
+    "text": "Examples may include, but are not limited to:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "b7709aa3a401221ff042fbfef8fa97ce",
+    "text": "Protected persons (including Convention Refugees) who have lost their Permanent Resident status due to serious criminality. CBSA cannot enforce the removal order.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "4ffce34906770faaf0ee208f6d4ab286",
+    "text": "Protected persons (including Convention Refugees) who have lost their Permanent Resident status due to criminality, but for whom a Danger Opinion is not being sought. CBSA cannot enforce the removal order.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "77041639b3fd36bc8ed20aded2106115",
+    "text": "Permanent Residents who have applied for, or have been granted an Immigration Appeal Division (IAD) stay. They remain Permanent Residents.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "9293b2324ebc95a2355521b329773790",
+    "text": "Eligible refugee claimant who are eligible for services and programs through settlement professionals.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "e8891b8550781b4eada4f87c14b368e7",
+    "text": "12.5.2. Referral to the CCMS service provider",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "b8e99cdc7f3a1be50fcd0f613a804e4f",
+    "text": "At any time throughout the enforcement continuum, an officer, including an arresting officer, the Hearings Officer and a CLO, may form the opinion that the risk the individual presents could be",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e8891b8550781b4eada4f87c14b368e7"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "cd2d973ced50a8c422687196ed7a9265",
+    "text": "18",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 18,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "24f222b760f920fab295176c5028a0ae",
+    "text": "mitigated or managed by one of the services available through the CCMS service provider. The CLO, as the ATD subject matter expert, will conduct an assessment to determine if the individual should be recommended for an ATD. This includes the completion of all relevant BSF forms, in accordance with risk offset strategies and ATD program objectives.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e2de236977edc515f64c6880fab3bf27",
+    "text": "The decision to refer an individual for an eligibility assessment by the CCMS service provider should take into account these factors:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "71cf69078360d6d60bfdaa0fc84e9800",
+    "text": "\u2022 Expected removal timeline:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "0d1fb65ef8bc48ce70233661b20ca8dd",
+    "text": "CCMS is intended to provide risk mitigation over a period of time, as part of a case management process. If the individual is being removed within a few weeks or less, CCMS is likely not appropriate, as the assessment and enrolment process may take some time.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "ae82c4d0aec191e3cfde31808d481039",
+    "text": "\u2022 Stability of the individual in detention:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "3380ed3946194316f0ddff9e919f97d3",
+    "text": "In the event an individual has medical or mental health concerns that have contributed to their detention, these issues must be stabilized while in detention to a point that the individual can effectively participate in the assessment process.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "bb2557d4d5268bbfe4206319775d0253",
+    "text": "\u2022 Risk level of the individual:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "f4665bfeab7dd21993745c5f27c95b4a",
+    "text": "If the risk level of the individual is so high that release on even the strictest conditions is only plausible far into the future, an assessment should not be requested. The relevance of an assessment by the CCMS service provider diminishes over time and should be done only when there is a realistic possibility of release.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "68312935b2df15a0a5d930cd0d5b9613",
+    "text": "In most instances, the decision to refer an individual for an eligibility assessment rests solely with the CLO. When a CCMS service provider has comprehensive knowledge of CBSA enforcement operations, referrals to the CCMS program may also be initiated through outside parties, such as the individual themselves, counsel or another party associated with the individual (only available through the Toronto Bail Program or by the Immigration Division). These may be directed to the CLO for referral or to the CCMS service provider themselves. The CLO, in conjunction with the CCMS service provider, will review the request and take appropriate action. Once reviewed by the CLO, the CCMS provider may undertake an eligibility assessment of an outside referral following notification to the CLO. For Member directed referrals, the CLO will send the referral to the service provider on behalf of the IRB, regardless of whether or not the CLO is in agreement of the referral. The CLO should refrain from providing their opinion on a individual\u2019s suitability when submitting the CCMS Supervision Referral Form for Member directed referrals.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "2e35f48de07986a671d36176a6be82ac",
+    "text": "If an IRB Member directs the CBSA to refer the individual to the service provider for a CCMS eligibility assessment, the CLO must articulate a chronological immigration history of the individual on the CCMS Supervision Referral Form and forward it to the service provider so that they can conduct the eligibility assessment. The CCMS Supervision Referral Form must also articulate that it is a member directed referral.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "f32681c0bbe5250afd84f71e068cd074",
+    "text": "19",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 19,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "601d3d3435f54bca6ad195df42394874",
+    "text": "In the instance of a CLO referral, the referral must include all of the salient facts that the CBSA has available to assist the CCMS service provider in assessing the individual for services and treatment.. In completing the assessment, the CLO must conduct a comprehensive file and systems review, that may include speaking with the Inland Enforcement Officer, Removals Officer, Hearings Officer, and Detention Liaison Officer or IHC staff when necessary. The assessment process by the CLO should include an interview with the detainee in order to determine ATD eligibility. The CLO should not initiate simultaneous CCMS referrals.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "7bb8707157e717dc85de799f4bf3adb9",
+    "text": "12.5.3. CCMS Regional Transfer",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e3241b8fa67c1ab52a4dfc30f5534d73",
+    "text": "Transfers of actual or potential CCMS participants are permitted for all intervention levels provided that several logistical steps are performed prior to doing so. Whenever possible, CCMS transfers should be planned and set-up two to three working days prior to the actual transfer date to address outliers and ensure a smooth transfer.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "035a01b8391685dcb44c7aaaa4f9a26d",
+    "text": "CCMS transfers can occur in the following scenarios for which the list is non-exhaustive:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "598bc5e1b0da8509010192c90da2c341",
+    "text": "1. An individual is enrolled in CCMS with a service provider and wishes to move to another region to improve ATD program outcomes. For example, moving to a city where they have deeper ties to the community (family, close friend, etc.). The goal in this scenario is to improve ATD program outcomes and better prepare the participant for success during the programs de-escalation stage.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "1387a68ec0376843a881a2884e190782",
+    "text": "2. An individual is in detention, is not enrolled in the ATD program, has few or no ties to the community in their originating region, but has strong ties in another region where the CCMS program is available.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "76241a7ced1ec18c207e85ea45a2dcab",
+    "text": "3. An individual is in detention, is not enrolled in the ATD program, and the CBSA regional boundary does not align with the service provider regional boundary (e.g. Hamilton is in Greater Toronto Area Region for the CBSA but in Southern Ontario Region for the service provider).",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "885e2922d1de9e676f98844cb72e7a7d",
+    "text": "4. An individual is in detention, is not enrolled in the ATD program, and when no sufficient high intervention programming is available in the originating region. For example, a situation where no beds are available in the originating region where the case is, but are available in another.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "bdcd3c957c349f3923ccf0cab2d53b67",
+    "text": "It is important to note that all costs associated with CCMS transfers are the responsibility of the two regions involved. Costs incurred by the regions may include, but are not limited to: fleet vehicle use and gasoline, bus/train/airplane tickets for the individual being transferred, officer salary and any overtime incurred, and meal per diems for longer escorted transfers. Please refer to the CCMS Regional Transfer Guidelines for additional details.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "7bb8707157e717dc85de799f4bf3adb9"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "aadd2c2f946daef824d59f3fb4d4fe28",
+    "text": "12.5.4. Assessment by the CCMS service provider",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "0b0d7fc2bab799b0481ae4b6f5bf1fa9",
+    "text": "Upon receipt of a referral, the CCMS service provider performs an initial review of the information and contacts the CLO with a plan to complete the eligibility assessment. When necessary, the",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "aadd2c2f946daef824d59f3fb4d4fe28"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "a7a1a99a27c6c5fc3bd62a044b2493b9",
+    "text": "20",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 20,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "6143560d94e5ac211fde98743f0e367a",
+    "text": "CLO assists the CCMS service provider in gathering additional information that may be required in setting up interviews with the individual.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "a315d741e07243fa02d4ee44067b779b",
+    "text": "The CCMS service provider interviews the individual in person or remotely, if necessary, using the services of an interpreter, as required. The service provider provides the results of the eligibility assessment to the CLO as soon as it is completed and within the timelines outlined in the CCMS service providers statement of work.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "eb8a2096320056780bc1c4918a83d4b6",
+    "text": "The completed assessment is reviewed by the CLO and can be used in subsequent detention reviews by the Hearings Officer, as appropriate. The eligibility assessment provides the CBSA with sufficient information related to a proposed release plan for presentation to the IRB.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "9d661aa4ba4fc61eea75acd2f29ff653",
+    "text": "12.5.5. CCMS Use of Interpreters",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "471633026592f5ed672733c01a488e13",
+    "text": "The CBSA has access to interpreters through a list of accredited and security cleared interpreters maintained by IRCC.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9d661aa4ba4fc61eea75acd2f29ff653"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "90cde61daa9d803a406e54e2db1075ed",
+    "text": "CCMS service providers can access (and use) the interpreters list to assist in service delivery during the following phases:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9d661aa4ba4fc61eea75acd2f29ff653"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "cb2ac57436d6cecce3d7030c46e2b5bc",
+    "text": "1. Referral and Assessment: the service provider is required, at the request of the CBSA and/or the IRB to assess individuals for ATD CCMS enrolment. This will include an interview, which may be undertaken in person or via telephone.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9d661aa4ba4fc61eea75acd2f29ff653"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "ba0fe501c9f8177947e29ac50e59b1a7",
+    "text": "2. Enrolment: once released by the IRB, the service provider will meet with the individual to enrol them in ATD CCMS Program. This includes discussing the terms and conditions of release and any service provider-related rules for programming.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9d661aa4ba4fc61eea75acd2f29ff653"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "15bf05360d2d49ef9818ede87dc7362b",
+    "text": "3. Case Management: the service provider is required to meet with the individual while they are released into the community to discuss programming, verify attendance, etc.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "9d661aa4ba4fc61eea75acd2f29ff653"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "262414debebbc8ceb161c5301aae318c",
+    "text": "12.5.6. Enrolment with the CCMS service provider",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "b099b75e6725abc3d7fad3c52897e0a2",
+    "text": "Once enrolment with a CCMS service provider has been imposed as a condition of release by the CBSA or the IRB, the CLO makes arrangements with the CCMS service provider to enrol the individual. In most cases, the individual is released from the detention facility with a direction to report to the CCMS service provider at a scheduled time.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "262414debebbc8ceb161c5301aae318c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "0c753a2c78c296126fa9e927a94a118f",
+    "text": "High-risk individuals may be transported to the CCMS service provider office or residential facility by the CBSA or contracted guard service for enrolment, when deemed necessary. The CBSA or the contracted guard service can only transport individuals who have their release conditions explicitly worded that release is contingent upon enrolment.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "262414debebbc8ceb161c5301aae318c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "29f04880db2fa55183b1aa630128643d",
+    "text": "At the enrolment appointment, the CCMS case worker reviews the release conditions imposed and the particulars of the individual\u2019s case to develop an appropriate program of reporting and community services that collectively mitigates risk factors present. They further explain what is required of the individual to participate in the CCMS program. The specific services and",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "262414debebbc8ceb161c5301aae318c"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "3f7d8db25887359d72a92e9c2db5259f",
+    "text": "21",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 21,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "67c9ca5be7cf06f2a3b575193efabe62",
+    "text": "programs that the individual is subject to, as part of their participation in the CCMS program, are documented within the Agreement of Supervision or the Supervision Contract initiated between the CCMS service provider and the individual. This document (BSF802) is sent to the CLO using Canada Post Connect and is to be placed on the individual\u2019s file, in accordance with the CCMS statement of work. All relevant information is put into the NCMS. Within seven business days, the CLO will upload the ATD forms into GCMS as per the ATD Form Upload Procedures.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "4848779448bc8f9fd346d1c7d53fdbbe",
+    "text": "12.5.7. Monitoring and enforcement by CCMS service provider and CBSA",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9f7527eab80536d6592ed1523db9b011",
+    "text": "Once the individual has been enrolled into the CCMS program, the CCMS service provider has regular and ongoing interactions with the individual to ensure that the individual is abiding by the requirements of the program and their release conditions. Over the course of their participation in the program, the CCMS service provider, in accordance with the parameters of their statement of work, provides the CLO with any new information received from the individual that may be of interest to the CBSA in the ongoing administration of the program.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "4848779448bc8f9fd346d1c7d53fdbbe"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "bb6ff43207c27870ef6661ac076a2652",
+    "text": "On a regular schedule, the CCMS service provider will review the services the individual is enrolled in and provide the CLO with a recommendation to maintain the current services or modify them, in accordance with the CCMS service providers statement of work. In general, individuals enrolled in the CCMS program are expected to gradually require less support from the CCMS service provider, to the point where they can remain stable in the community without support from the CCMS service provider.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "4848779448bc8f9fd346d1c7d53fdbbe"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "9e03be1d88dd4dee1d182b79f897a242",
+    "text": "If the CCMS service provider becomes aware that the individual is not abiding by the requirements of the CCMS program or other conditions of their release, the CCMS service provider must contact the CLO with the details. The CLO, in conjunction with the service provider, will have a discussion to determine the appropriate response. Depending on the nature and severity of the violation, the history of the individual and the risk level of the individual, more restrictive conditions may be imposed, withdrawal of supervision may be undertaken, and the case may be referred for investigation and further enforcement action.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "4848779448bc8f9fd346d1c7d53fdbbe"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "a3059169ed8d4ef2eb101fef8d875318",
+    "text": "12.6. Electronic monitoring",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7621cfa2ef02c3324f1f93bccb0469e5",
+    "text": "The National Electronic Monitoring Program (NEMP) is an ATD option and is currently operated through a partnership with Correctional Service Canada (CSC). A Memorandum of Understanding with CSC facilitates the provision of monitoring services, software profile management and inventory services.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a3059169ed8d4ef2eb101fef8d875318"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "bb53acb82d820ae9fc8a8bc6eb647bf8",
+    "text": "EM involves attaching a bracelet-type device to an individual\u2019s ankle which allows continuous monitoring of the individual\u2019s location when released in the community. The bracelet is securely attached and should only be removed in cases of medical necessity, unless otherwise directed by the CBSA or IRB.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "a3059169ed8d4ef2eb101fef8d875318"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "e466040a60deaf1a72e62e078962a852",
+    "text": "22",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 22,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7fe5c249f03e3f128e1c7d179c2c12ac",
+    "text": "EM is intended to be used in conjunction with CCMS, a deposit or guarantee, or both for individuals who present a high risk if released into the community, but whose predicted length of detention favours release. Individuals on EM usually have restrictions on places and times that they can be in the community. Compliance with these conditions is monitored at all times by staff in the National Monitoring Centre, operated by CSC. Any violation of EM conditions is reported immediately to the CBSA for review and action, as required.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "5d1fad7b60ebc52036542b2a700e0e8c",
+    "text": "12.6.1. Enrolment",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "3d17cc9969279626406bbd9cb77ba70b",
+    "text": "Once an individual has an EM condition imposed by the IRB or CBSA, the enrolment process is initiated by regional CBSA staff. EM enrolment is a two-step process: installation of the ankle monitor on the individual and installation of the Radio Frequency (RF) modem in the individual\u2019s residence. The installation of the EM monitoring device takes approximately 60 minutes and is done by a CBSA inland enforcement officer.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "5d1fad7b60ebc52036542b2a700e0e8c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "1fc1d03be0baef0db030da65c384518a",
+    "text": "Before the individual\u2019s release from detention, the officer performs an assessment of the proposed residence and tests the functioning of the RF unit and the ankle monitor at the proposed residence by verifying the operation of the units with the CSC National Monitoring Centre. After verifying the equipment is functioning correctly, officers explain to the individual the terms and conditions of their participation in the NEMP and installs the ankle monitor. The officer reviews and shares a copy of the NEMP Client Handbook, which has their EM assigned client number listed on the cover page. The officer should also provide the client with a copy of the NEMP \u2013 Charging Instructions document.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "5d1fad7b60ebc52036542b2a700e0e8c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f50dafdc03a4f646b91fae2c1443269f",
+    "text": "Enrolment in the NEMP program is undertaken in English and French only, so an interpreter may be necessary to assist the individual in following enrolment instructions.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "5d1fad7b60ebc52036542b2a700e0e8c"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "5b09fc062f54ab88049139d3aee4e33f",
+    "text": "When an individual is successfully enrolled, they are provided with detailed written instructions on how to remain compliant with NEMP requirements and the particular conditions associated with their participation on the program. They are also provided with a handbook that provides tips, troubleshooting and contact information for assistance.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "5d1fad7b60ebc52036542b2a700e0e8c"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "dc8711664a60593d85a14bf0b72cc9f4",
+    "text": "12.6.2. Monitoring and enforcement",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "cd4ba6a54179aee93aebcfdb82aca9b5",
+    "text": "Individuals on EM are monitored by the CSC National Monitoring Centre, in conjunction with the CBSA. Any breach or non-compliance is referred to the region for immediate action. All functions related to monitoring and enforcement are undertaken in accordance with NEMP policies and guidelines and are governed by the established Memorandum of Understanding between both departments.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "dc8711664a60593d85a14bf0b72cc9f4"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "48e418a1b667f09a9dd8648cb0796e56",
+    "text": "23",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 23,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "ee8470260e587fd377f68908bf2c3bd8",
+    "text": "13. Roles and responsibilities",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "6d538e7d49bfcf3700fbd474ece70b53",
+    "text": "13.1. Community liaison officer",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "913ba5b466e5b11e6dc97ebba4b80589",
+    "text": "The role of the CLO is to provide a centralized approach for the ATD program. All CBSA regions have dedicated CLOs to ensure the effective and ongoing use of ATDs, in accordance with program objectives, national policies and guidelines. The CLO is the subject matter expert in all regions for ATDs and are primarily responsible for the assessment, referral and case management of ATD individuals. . While the CLO is not the primary file holder for specific cases, they must be made aware of all new detention cases. They may be informed about detainees through inclusion on arrest and detention emails, and may review the Notice of Arrest and Detention, or where applicable, converse with the arresting officer to discuss which ATD options are suitable based on the individual\u2019s immigration history, ability to acquire travel documents, ties to Canada, period of time since last incident with the CBSA or the criminal justice system and vulnerabilities.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6d538e7d49bfcf3700fbd474ece70b53"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e7b4d9059e0c34047620c4d07f164f16",
+    "text": "It is the CLO\u2019s responsibility to conduct an initial assessment to determine if the individual should be recommended for an ATD, in accordance with case management risk mitigation strategies and ATD program objectives. The assessment process by the CLO should include an interview with the detainee in order to determine ATD eligibility. All individuals for whom detention was ordered and continued past the seven day detention review will be assigned for an ATD assessment by the CLO to ensure all individuals have an ATD assessment prior to the 30-day detention review. The CLO is the sole point of contact in the region for the CCMS service provider. On a monthly basis, the CLO will review the individuals\u2019 file to determine if they should be considered for de-escalation and/or graduation from the CCMS program, and recommend amended conditions for consideration by the IRB.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6d538e7d49bfcf3700fbd474ece70b53"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f2db204902abc6504eeaf01862e4b8da",
+    "text": "At the three (3) month mark of EM participation OR as new information comes to light that diminishes the need1 for EM use, the CLO must initiate a case review for EM participants. This can be done alone or with the assistance of the regional EM response unit.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6d538e7d49bfcf3700fbd474ece70b53"
+    }
+  },
+  {
+    "type": "ListItem",
+    "element_id": "09484ec937229141c7baebf80d438b05",
+    "text": "If the case was not recommended for de-escalation by the CLO at the three (3) month mark, the CLO is to review the case every thirty (30) days thereafter or as new information becomes available that diminishes the need for EM use.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6d538e7d49bfcf3700fbd474ece70b53"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "4b7b24cafc5e30771ea5cca88ac46e16",
+    "text": "The CLO\u2019s are regional program officers with the delegated authorities under the IRPA to make decisions. Despite this authority, they are not expected to make decisions on detention, release or the imposition of conditions. Rather, they provide functional advice and guidance, as required, on the imposition of ATD condition to Inland Enforcement Officers, Border Services Officers and Hearings Officers in the management of their cases and the execution of their work. The CLO may, in conjunction with Inland Enforcement Officers and CCMS service providers, monitor individuals released into the community to assess their continued compliance with the ATD Program.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "6d538e7d49bfcf3700fbd474ece70b53"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "4aed19694e123cef5d38013f9e324e67",
+    "text": "1 Examples of information include but are not limited to: solidified travel documents; new family and/or kin has come forward to vouch for the participant; a history of compliance with the program.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "f2839d969da66bf4c91eadaad0766609",
+    "text": "24",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 24,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "e87e5db3772530d7c604cdc0e82c5bc1",
+    "text": "13.2. CSC National Monitoring Centre",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "fb9b8d0862453a3e119d2c13cb7fad5c",
+    "text": "The CSC National Monitoring Centre monitors the status of individuals enrolled in EM 24 hours per day and seven days per week and immediately notifies the CBSA of any violations of EM conditions. The CSC National Monitoring Centre also confirms the successful installation and application of EM equipment during enrolment and provides technical support to CBSA officers responsible for managing individuals on EM.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "e87e5db3772530d7c604cdc0e82c5bc1"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "8fd6b7737f738ffd0aa32550acdd8436",
+    "text": "13.3. CCMS service provider",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "18da2082a123eae0c9803613842794b8",
+    "text": "The CCMS service provider writes an eligibility assessment for individuals referred to them that describes the services and support available that are expected to mitigate and manage the individual\u2019s risk in the community. Once the individual is enrolled in CCMS programming, the CCMS service provider monitors the individual and provides case management services. Information regarding changes in circumstances and violations is reported to the CLO for review and action, if required.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8fd6b7737f738ffd0aa32550acdd8436"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "dffaaa8e4f0e27eb90c69e2c50a46527",
+    "text": "The CCMS service provider must ensure the necessary services and programs are available in the service locations listed in the statement of work and fulfill the reporting and administrative obligations outlined in the statement of work. The CCMS service provider must provide qualified, security-cleared staff to perform case management functions, as specified in the statement of work.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8fd6b7737f738ffd0aa32550acdd8436"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "ec1c77bbd40a104a70bc4e9f44b03d1a",
+    "text": "14.0. Jurisprudence",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "1b90d8c260eaa23138c9ac4e2bb39fb2",
+    "text": "The CLO is required to write comprehensive notes to file based on the assessment they conduct, including a recommendation for an ATD if applicable, because recommendations could be put forward by the Hearings Officers during a detention review before the IRB. these",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ec1c77bbd40a104a70bc4e9f44b03d1a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "7bfb708924684031711ccdf4c3257def",
+    "text": "The Federal Court in Mawut (Citation: 2021 FC 1155) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ec1c77bbd40a104a70bc4e9f44b03d1a"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "5d221057c9d760376b1e5f69e07a6ade",
+    "text": "[35] As a practical matter, the Minister\u2019s representative should review the file and start from the premise that disclosure is the rule and withholding information, the exception. As the Federal Court of Appeal noted in Brown, at paragraph 142, the duty to disclose \u201cis not unlimited\u201d and is \u201ctempered by the requirement that the information be relevant.\u201d Relevance should be assessed according to the principles set out above. An assessment of relevance, however, cannot be based on the Minister\u2019s representative\u2019s opinion as to what avenues the detainee\u2019s counsel should pursue, or the idea that the evidence already disclosed is overwhelming with respect to a particular issue or sufficient to justify detention.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "ec1c77bbd40a104a70bc4e9f44b03d1a"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "09c2d89a0e3d671375eed7ad0b2abacc",
+    "text": "25",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 25,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "3d9f99fcc8e8fd8cc3ebe38e5840392c",
+    "text": "[36] Given the nature of detention reviews, the Minister\u2019s duty to disclose is a continuing one. Therefore, as the situation evolves, the weight of each section 248 factor may vary. Nevertheless, information should not be withheld simply because the Minister\u2019s representative believes that information may only become relevant at a later stage.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "08c88e87f04fa54d9e25383798a7a970",
+    "text": "[37] Adherence to the foregoing principles should go a long way towards preventing disputes regarding the scope of disclosure. Should an issue nonetheless arise, it should be brought before the ID.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "e611858bdb7ba51c234ffbd1e942f1e8",
+    "text": "It is important to note that the CBSA has the obligation to demonstrate the IRB Members that it is being diligent in considering ATDs for vulnerable individuals. The Federal Court in Lee (Citation: 2022 FC 383) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "2089c39f425b650cf35cedb44d4cd262",
+    "text": "[68] As counsel for Ms. Lee properly emphasizes, there is a heightened obligation on the part of the ID to consider alternatives to detention for vulnerable persons such as persons with mental illness (a point I will return to below). Related to this is a heightened onus on the Minister to justify the detention of such persons, as reflected in paragraph 3.1.15 of the Guideline. Consequently, as the Guideline also notes, a member should \u201cactively question\u201d the steps that the Minister has taken to make an alternative to detention available when the person concerned is a vulnerable person. I am not persuaded that the ID erred in failing to do this in the last detention review. That being said, there has now been a material change in circumstances with the March 14, 2022, Order of Justice Ahmed granting an interlocutory stay of Ms. Lee\u2019s removal. Given this, I fully expect the question of whether the CBSA is being diligent in identifying and supporting alternatives to detention to be front and centre at the next detention review.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "8a7e5b73b19f3530ae29498ac1f67cd7",
+    "text": "It is noteworthy that the CBSA has a heightened obligation to consider ATDs when detention becomes lengthy. The Federal Court in Ahmed (Citation: 2015 FC 876) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "65e91b8b9b88e79be59e5553a8fd8066",
+    "text": "[34] Nevertheless, given the finding that Mr. Ahmed\u2019s detention is indefinite, both the Board and the Minister are under a heightened obligation to consider alternatives to detention, specifically release upon conditions. The National Parole Board previously determined that Mr. Ahmed could be released subject to stringent conditions. It is open to the Board to require a psychological assessment as a condition of release (Canada (Minister of Citizenship and Immigration) v Romans, 2005 FC 435 at para 74). Counsel for Mr. Ahmed informed the Court that she has initiated the process to update the Minister\u2019s Danger Opinion. These are all considerations that should be at the forefront when Mr. Ahmed\u2019s detention is next reviewed on July 24, 2015.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "4f52a4b34ae8c62ee9d72eeaafba919a",
+    "text": "It is important to note that ATDs need not be perfect. Rather, they need only be proportional to the individual\u2019s risk profile. The Federal Court in Hamdan (Citation: 2019 FC 1129) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "afff4257f288ab04323492f9a5ee6623",
+    "text": "26",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 26,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "81bac1cf5de61fa364758715cfd91f2c",
+    "text": "[97] Some final comments are in order regarding the specifics of conditions. First, there could of course have been more safeguards placed within them in a perfect world. But as pointed out above, perfection is not the standard to be attained in a reasonableness review, and thus alternatives to detention need not be perfect (Canada (Public Safety and Emergency Preparedness) v Berisha, 2012 FC 1100 at para 85). Rather, they need only be proportionate and attainable, which these conditions were. the 25",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "0eaab58e0ba4f473ba9207aba842612f",
+    "text": "It is noteworthy that the \u201cvirtually eliminate\u201d test is virtually impossible to meet and could prevent release whenever a detainee is a danger to the public. The Federal Court in Mawut (Citation: 2022 FC 415) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f48f47f03d8860fa21709655f9f2bece",
+    "text": "[35] I wish to add that in reaching this conclusion, I have not found it necessary to rely on the idea that the conditions of release must \u201cvirtually eliminate\u201d any danger to the public posed by Mr. Mawut. The phrase \u201cvirtually eliminate\u201d finds its origin in Canada (Public Safety and Emergency Preparedness) v Lunyamila, 2016 FC 1199, [2017] 3 FCR 428 [Lunyamila], and was mentioned in subsequent cases. It is not always easy to reduce a complex decision-making process to a few words. Taken too literally, the \u201cvirtually eliminate\u201d test is virtually impossible to meet and could foreclose release whenever a detainee is a danger to the public. This, however, is not what is contemplated by section 58 of the Act and section 248 of the Regulations, nor by the decision of the Federal Court of Appeal in Brown. In the context of bail, which shares a preventive purpose with immigration detention, conditions must \u201cminimize\u2019 or \u201cattenuate\u201d risk and be \u201cproportional to the risk\u201d: R v Zora, 2020 SCC 14, at paragraphs 84, 85 and 89. I also note that in Canada (Public Safety and Emergency Preparedness) v Ali, 2018 FC 552, at paragraph 47, a decision rendered after Lunyamila, the test in the context of immigration detention was described as \u201cany conditions of release [must be] sufficiently robust to ensure that the general public will not be exposed to any material risk of harm\u201d. Whatever the best manner to formulate the test, it was clearly not met in this case. The basic conditions imposed by the ID do not attenuate in any way, and are not proportional to the risk posed by Mr. Mawut.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "6ce6a80e454e035e325d0c1b45524971",
+    "text": "It is of paramount importance to note that EM only monitors an individual\u2019s whereabouts, not his activities, who he talks to and what he says. Therefore, a human supervision component is vital. The Federal Court in Bruzzese (Citation: 2014 FC 230) stated the following:",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "d524b9fed3218a7fc35dc9c9b21e52c7",
+    "text": "[78] Finally, I have also come to the conclusion that ID members could reasonably find that the GPS monitoring was not sufficient to overcome the shortcomings of the bondspersons offered by the Applicant. There is no doubt that such a device, in combination with appropriate bondspersons, can sometimes provide an acceptable alternative to detention. In the case at bar, however, there were good reasons to find that it would not be sufficient to offset the concerns with respect to danger to the public. First of all, Mr Bruzzese did not present the ID members with a comprehensive proposal whereby any risk of flight could allegedly be managed, as was done in Tursunbayev. It appears that the bracelet used by the proposed company could be cut with a simple pair",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "0fbb91922c2ffd7580ae626f2052b0b2",
+    "text": "27",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 27,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f94b5b2efe87beab8929f50cb11cc6f4",
+    "text": "of scissors, that it might take six hours to notify the authorities should the system breaks down, and that the monitoring would discontinue should the monthly bill not be paid. Maybe more importantly, the system would only control Mr Bruzzese\u2019s location, not his activities, who he talks to and what he says. The GPS, therefore, might conceivably be an alternative to detention as far as the flight risk is concerned, but it would not be sufficient to ensure that Mr Bruzzese is not involved in the criminal activities of the \u2018Ndrangheta, either in Canada or abroad.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "8048361dedbdfaa67a6293e9ab4459cd",
+    "text": "15. Presenting the alternatives to detention assessment at detention reviews",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "502340951bd8274927885bc89015631c",
+    "text": "The results of an ATD eligibility assessment is used by Hearings Officers when making submissions to the IRB on the residual risk posed by an individual if released. This may include the assessment by the CCMS service provider, if enrolment in CCMS is being proposed. In general, Hearings Officers make submissions on whether the factors in paragraphs R248(a) to (d) weigh in favour of detention or release, taking into account the residual risk after the available ATDs are considered.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8048361dedbdfaa67a6293e9ab4459cd"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "4938ade806ce8c7a95a058bc01941599",
+    "text": "See ENF 3 Admissibility Hearings and Detention Reviews for more information on the factors for consideration and procedures at detention reviews.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8048361dedbdfaa67a6293e9ab4459cd"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "0a5babff4a26032cb149846386dc6a60",
+    "text": "If the CBSA has not referred the case to the CCMS service provider and does not intend to in the foreseeable future, the Hearings Officer should provide a brief explanation of that decision. If the IRB requests that the individual be referred to the CCMS service provider for eligibility assessment, the CLO must do so.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8048361dedbdfaa67a6293e9ab4459cd"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "648f00c6cc979cf468191b4c8ebaf3d9",
+    "text": "When making submissions on the wording of the conditions for CCMS and EM, the Hearings Officer should propose language that allow the CCMS service provider and the CBSA the latitude necessary to manage the person effectively while released. The proposed wording of the conditions should authorize the CBSA to modify or cancel the conditions imposed by the IRB related to CCMS and EM.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "8048361dedbdfaa67a6293e9ab4459cd"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "81d84bcf910bf2040e2f3367bcc16cea",
+    "text": "16. Privacy and information-sharing",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "2648b87ebe4a6c1aa33b08af6d41f3a0",
+    "text": "Information collected under the ATD Program can only be disclosed under the provisions of the Privacy Act. See CBSA guidelines of information-sharing for details. In general, collected information can be shared under paragraph 8(2)(a) of the Privacy Act if it is shared for a use consistent with the purpose it was collected for. Information related to alternatives to detention is collected for the purpose of administering and enforcing the IRPA.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "81d84bcf910bf2040e2f3367bcc16cea"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "2cd3c2da3acb8028f627ac7d2bb9d8cd",
+    "text": "28",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 28,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "d398c8e1713b5240c07101d668571f5b",
+    "text": "16.1. Community case management and supervision Privacy Notice form",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "60547f74db7413221d673001aba97ad3",
+    "text": "The CBSA is authorized to share information necessary for the assessment and participation in CCMS with the CCMS service provider, without the consent of the individual, as prescribed in paragraph 8(2)(a) of the Privacy Act. However, the individual must be notified that their information is being shared. The CCMS Privacy Notice form (BSF803) notifies the individual that their information may be provided to the CCMS service provider to start the eligibility assessment process and as needed, if enrolled. The sharing and use of information must be conveyed to the individual by the CLO, using an interpreter, if required, before the individual\u2019s information is shared outside the CBSA.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "d398c8e1713b5240c07101d668571f5b"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "733694429f419382c5b47ee7cc0cb5f2",
+    "text": "The BSF803 form must be uploaded in accordance with section 8.5. \u2013 Documenting the Decision.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "d398c8e1713b5240c07101d668571f5b"
+    }
+  },
+  {
+    "type": "Title",
+    "element_id": "44de3a7675bb75b5cd9a2f098c215152",
+    "text": "16.2. Requesting sensitive information from the community case management and supervision service provider",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "f7bc86985b74d13f748a8729a309bd4e",
+    "text": "While enrolled in CCMS, individuals may provide sensitive information, such as health and mental health information, to the CCMS service provider. The CBSA does not have routine access to this information. The CLO can only request sensitive information from the CCMS service provider if it is required to protect the health or safety of the individual, CBSA staff or the public.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "44de3a7675bb75b5cd9a2f098c215152"
+    }
+  },
+  {
+    "type": "NarrativeText",
+    "element_id": "30c466aa4d4008ee57644ddeb0715bc0",
+    "text": "All requests for information from the CCMS service provider must be submitted by the CLO. The CLO will ensure that the requested information meets the requirements of the above policy and other applicable policies, regulations and legislation.",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf",
+      "parent_id": "44de3a7675bb75b5cd9a2f098c215152"
+    }
+  },
+  {
+    "type": "Footer",
+    "element_id": "739b77d294cdd7bb6b57890a1c8cef34",
+    "text": "29",
+    "metadata": {
+      "is_extracted": "true",
+      "filetype": "application/pdf",
+      "languages": [
+        "eng"
+      ],
+      "page_number": 29,
+      "filename": "enf34-eng.pdf"
+    }
+  }
+]
