@@ -20,15 +20,20 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
-from llama_index.core import PropertyGraphIndex
+from llama_index.core import PropertyGraphIndex, Settings
 from llama_index.core.extractors import BaseExtractor
 from llama_index.core.graph_stores import EntityNode, Relation
 from llama_index.core.graph_stores.types import KG_NODES_KEY, KG_RELATIONS_KEY
 from llama_index.core.ingestion import IngestionPipeline
-from llama_index.core.indices.property_graph import LLMSynonymRetriever
+from llama_index.core.indices.property_graph import (
+  ImplicitPathExtractor,
+  LLMSynonymRetriever,
+  VectorContextRetriever,
+)
 from llama_index.core.llms.mock import MockLLM
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.schema import BaseNode, Document, TransformComponent
+from llama_index.embeddings.cohere import CohereEmbedding
 from llama_index.llms.google_genai import GoogleGenAI
 
 
@@ -88,6 +93,30 @@ def load_env_file(path: Path) -> None:
     key = key.strip()
     if key and key not in os.environ:
       os.environ[key] = value.strip()
+
+
+def configure_embeddings() -> str:
+  api_key = os.getenv("COHERE_API_KEY", "").strip()
+  if not api_key:
+    raise ValueError("COHERE_API_KEY is required for Cohere embeddings.")
+
+  model_name = os.getenv("COHERE_EMBED_MODEL", "embed-english-v3.0").strip()
+  input_type = os.getenv("COHERE_INPUT_TYPE", "search_document").strip()
+  embed_batch_size = int(os.getenv("COHERE_EMBED_BATCH_SIZE", "1"))
+  num_workers = int(os.getenv("COHERE_EMBED_NUM_WORKERS", "1"))
+  max_retries = int(os.getenv("COHERE_EMBED_MAX_RETRIES", "20"))
+  Settings.embed_model = CohereEmbedding(
+    api_key=api_key,
+    model_name=model_name,
+    input_type=input_type,
+    embed_batch_size=embed_batch_size,
+    num_workers=num_workers,
+    max_retries=max_retries,
+  )
+  return (
+    f"Cohere ({model_name}, input_type={input_type}, "
+    f"batch={embed_batch_size}, workers={num_workers})"
+  )
 
 
 def neo4j_uri_from_db_id(database_id: str) -> str:
@@ -435,10 +464,11 @@ def build_index(
   projector = LegalStructureProjector()
   return PropertyGraphIndex(
     nodes=nodes,
-    kg_extractors=[projector],
+    kg_extractors=[projector, ImplicitPathExtractor()],
     property_graph_store=property_graph_store,
+    use_async=False,
     embed_kg_nodes=False,
-    show_progress=False,
+    show_progress=True,
   )
 
 
@@ -463,7 +493,18 @@ def build_synonym_retriever(index: PropertyGraphIndex, model: str) -> Any:
 
 def run_queries(index: PropertyGraphIndex, queries: Iterable[str], top_k: int, model: str) -> None:
   synonym_retriever = build_synonym_retriever(index, model=model)
-  retriever = index.as_retriever(sub_retrievers=[synonym_retriever], include_text=True)
+  vector_retriever = VectorContextRetriever(
+    index.property_graph_store,
+    vector_store=index.vector_store,
+    embed_model=index._embed_model,
+    similarity_top_k=top_k,
+    path_depth=1,
+    include_text=True,
+  )
+  retriever = index.as_retriever(
+    sub_retrievers=[vector_retriever, synonym_retriever],
+    include_text=True,
+  )
 
   for query in queries:
     results = retriever.retrieve(query)
@@ -588,6 +629,8 @@ def main() -> int:
   args = parser.parse_args()
 
   load_env_file(Path(".env"))
+  embedding_desc = configure_embeddings()
+  print(f"Embeddings: {embedding_desc}")
   if not args.neo4j_db_id:
     args.neo4j_db_id = os.getenv("NEO4J_DATABASE_ID", "")
   if not args.neo4j_uri:
