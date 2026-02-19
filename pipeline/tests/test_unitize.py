@@ -115,7 +115,7 @@ class TestBuildPolicyUnits:
                 "type": "Title",
                 "norm_text": "1. Intro",
                 "flags": ["heading", "title"],
-                "heading_path": ["Document"],
+                "heading_path": [],
                 "metadata": {"page_number": 1},
                 "source_index": 0,
             },
@@ -124,7 +124,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "Paragraph one.",
                 "flags": [],
-                "heading_path": ["Document", "1. Intro"],
+                "heading_path": ["1. Intro"],
                 "metadata": {"page_number": 1},
                 "source_index": 1,
             },
@@ -133,7 +133,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "Paragraph two.",
                 "flags": [],
-                "heading_path": ["Document", "1. Intro"],
+                "heading_path": ["1. Intro"],
                 "metadata": {"page_number": 1},
                 "source_index": 2,
             },
@@ -142,7 +142,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "Paragraph three.",
                 "flags": [],
-                "heading_path": ["Document", "1. Intro"],
+                "heading_path": ["1. Intro"],
                 "metadata": {"page_number": 1},
                 "source_index": 3,
             },
@@ -151,7 +151,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "Paragraph four.",
                 "flags": [],
-                "heading_path": ["Document", "1. Intro"],
+                "heading_path": ["1. Intro"],
                 "metadata": {"page_number": 1},
                 "source_index": 4,
             },
@@ -168,7 +168,7 @@ class TestBuildPolicyUnits:
                 "type": "Title",
                 "norm_text": "Table section",
                 "flags": ["heading", "title"],
-                "heading_path": ["Document"],
+                "heading_path": [],
                 "metadata": {"page_number": 1},
                 "source_index": 0,
             },
@@ -177,7 +177,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "Before table.",
                 "flags": [],
-                "heading_path": ["Document", "Table section"],
+                "heading_path": ["Table section"],
                 "metadata": {"page_number": 1},
                 "source_index": 1,
             },
@@ -186,7 +186,7 @@ class TestBuildPolicyUnits:
                 "type": "Table",
                 "norm_text": "A | B\nC | D",
                 "flags": ["table"],
-                "heading_path": ["Document", "Table section"],
+                "heading_path": ["Table section"],
                 "metadata": {"page_number": 1},
                 "source_index": 2,
             },
@@ -195,7 +195,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "After table.",
                 "flags": [],
-                "heading_path": ["Document", "Table section"],
+                "heading_path": ["Table section"],
                 "metadata": {"page_number": 1},
                 "source_index": 3,
             },
@@ -211,7 +211,7 @@ class TestBuildPolicyUnits:
                 "type": "Title",
                 "norm_text": "Mixed heading",
                 "flags": ["heading"],
-                "heading_path": ["Document"],
+                "heading_path": [],
                 "metadata": {"page_number": 1},
                 "source_index": 0,
             },
@@ -220,7 +220,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "The Minister may decide.",
                 "flags": [],
-                "heading_path": ["Document", "Mixed heading"],
+                "heading_path": ["Mixed heading"],
                 "metadata": {"page_number": 1},
                 "source_index": 1,
             },
@@ -229,7 +229,7 @@ class TestBuildPolicyUnits:
                 "type": "NarrativeText",
                 "norm_text": "L'article 34 de la loi s'applique.",
                 "flags": [],
-                "heading_path": ["Document", "Mixed heading"],
+                "heading_path": ["Mixed heading"],
                 "metadata": {"page_number": 1},
                 "source_index": 2,
             },
@@ -264,7 +264,7 @@ class TestBuildUnitsWrapper:
                 "type": "NarrativeText",
                 "norm_text": "Some policy content",
                 "flags": [],
-                "heading_path": ["Document"],
+                "heading_path": [],
                 "metadata": {"page_number": 1},
                 "source_index": 0,
             }
@@ -273,3 +273,242 @@ class TestBuildUnitsWrapper:
         assert len(units) == 1
         assert units[0].doc_type == "policy"
         assert errors == []
+
+
+class TestPolicyUnitizationV2:
+    def test_heading_path_includes_current_title(self):
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "Title",
+                "norm_text": "12.5.2 Referral to the CCMS service provider",
+                "flags": ["heading", "title"],
+                "heading_path": ["12 Enforcement", "12.5 Referrals"],
+                "metadata": {"page_number": 7},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "Referral content paragraph.",
+                "flags": [],
+                "heading_path": ["12 Enforcement", "12.5 Referrals"],
+                "metadata": {"page_number": 7},
+                "source_index": 1,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf")
+        assert len(units) == 1
+        assert units[0].heading_path == [
+            "12 Enforcement",
+            "12.5 Referrals",
+            "12.5.2 Referral to the CCMS service provider",
+        ]
+
+    def test_lead_in_stub_merges_with_following_bullets(self):
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "NarrativeText",
+                "norm_text": "12.5.2 Decision factors",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "The decision-maker should take into account these factors:",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 1,
+            },
+            {
+                "element_id": "p2",
+                "type": "ListItem",
+                "norm_text": "- urgency of the case",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 2,
+            },
+            {
+                "element_id": "p3",
+                "type": "ListItem",
+                "norm_text": "- impact on service delivery",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 3,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf")
+        assert len(units) == 1
+        assert "take into account these factors:" in units[0].embed_text
+        assert "- urgency of the case" in units[0].embed_text
+        assert "- impact on service delivery" in units[0].embed_text
+
+    def test_bullet_aggregation_stops_at_next_numbered_heading(self):
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "NarrativeText",
+                "norm_text": "12.5.2 Program objectives",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "Program objectives include:",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 1,
+            },
+            {
+                "element_id": "p2",
+                "type": "ListItem",
+                "norm_text": "• speed",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 2,
+            },
+            {
+                "element_id": "p3",
+                "type": "ListItem",
+                "norm_text": "• consistency",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 3,
+            },
+            {
+                "element_id": "h2",
+                "type": "NarrativeText",
+                "norm_text": "12.5.3 Escalation",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 4,
+            },
+            {
+                "element_id": "p4",
+                "type": "NarrativeText",
+                "norm_text": "Escalation requires manager review.",
+                "flags": [],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 5,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf")
+        assert len(units) == 2
+        assert "Program objectives include:" in units[0].embed_text
+        assert "Escalation requires manager review." in units[1].embed_text
+        assert units[0].heading_path[-1] == "12.5.2 Program objectives"
+        assert units[1].heading_path[-1] == "12.5.3 Escalation"
+
+    def test_token_cap_split_is_deterministic(self):
+        long_item = "- " + ("x" * 260)
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "Title",
+                "norm_text": "Decision factors",
+                "flags": ["heading", "title"],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "The following factors apply:",
+                "flags": [],
+                "heading_path": ["Decision factors"],
+                "metadata": {"page_number": 1},
+                "source_index": 1,
+            },
+            {
+                "element_id": "p2",
+                "type": "ListItem",
+                "norm_text": long_item,
+                "flags": [],
+                "heading_path": ["Decision factors"],
+                "metadata": {"page_number": 1},
+                "source_index": 2,
+            },
+            {
+                "element_id": "p3",
+                "type": "ListItem",
+                "norm_text": long_item,
+                "flags": [],
+                "heading_path": ["Decision factors"],
+                "metadata": {"page_number": 1},
+                "source_index": 3,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf", max_paragraphs_per_unit=8, max_tokens_per_unit=120)
+        assert len(units) == 2
+        assert all(unit.estimated_tokens <= 120 for unit in units)
+
+    def test_scope_tagging_and_non_embed(self):
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "Title",
+                "norm_text": "Glossary",
+                "flags": ["heading", "title"],
+                "heading_path": [],
+                "metadata": {"page_number": 1},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "IRPA means Immigration and Refugee Protection Act.",
+                "flags": [],
+                "heading_path": ["Glossary"],
+                "metadata": {"page_number": 1},
+                "source_index": 1,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf")
+        assert len(units) == 1
+        assert units[0].scope == "glossary"
+        assert units[0].unit_type == "glossary"
+        assert units[0].non_embed is True
+        assert units[0].authority_level_num == 0
+
+    def test_policy_unit_extracts_cross_references(self):
+        elements = [
+            {
+                "element_id": "h1",
+                "type": "Title",
+                "norm_text": "References",
+                "flags": ["heading", "title"],
+                "heading_path": [],
+                "metadata": {"page_number": 2},
+                "source_index": 0,
+            },
+            {
+                "element_id": "p1",
+                "type": "NarrativeText",
+                "norm_text": "See A63(5), IRPR 200(1)(b), and IRPA s.34(1)(c).",
+                "flags": [],
+                "heading_path": ["References"],
+                "metadata": {"page_number": 2},
+                "source_index": 1,
+            },
+        ]
+        units = build_policy_units(elements, "enf01.pdf")
+        assert len(units) == 1
+        assert "IRPA:63(5)" in units[0].cross_references
+        assert "IRPA:34(1)(c)" in units[0].cross_references
+        assert "IRPR:200(1)(b)" in units[0].cross_references

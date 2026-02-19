@@ -3,10 +3,7 @@ from typing import Any
 
 
 def _heading_text(node: dict[str, Any]) -> str:
-    text = (node.get("text") or "").strip()
-    if text:
-        return text
-    return f"Section {node.get('source_index', 0)}"
+    return (node.get("text") or "").strip()
 
 
 def build_tree(raw: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -70,8 +67,10 @@ def build_tree(raw: list[dict[str, Any]]) -> list[dict[str, Any]]:
         node["heading_path"] = headings.copy()
 
         next_headings = headings
-        if node.get("type") in ("Title", "Header"):
-            next_headings = headings + [_heading_text(node)]
+        if node.get("type") == "Title":
+            heading = _heading_text(node)
+            if heading:
+                next_headings = headings + [heading]
 
         for child_id in children_map.get(element_id, []):
             dfs(child_id, root_id, chain + [element_id], next_headings)

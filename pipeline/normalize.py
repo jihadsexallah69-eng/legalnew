@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PAGE_NUMBER_PATTERN = re.compile(r"^Page\s+\d+\s+of\s+\d+$", re.IGNORECASE)
 FOOTER_KEYWORDS = {"footer", "page", "page number", "confidential", "draft"}
+HEADING_REGEX = re.compile(r"^(?:\d+)(?:\.\d+){1,}\s+\S+")
 
 
 def normalize_text(text: str | None) -> str | None:
@@ -121,6 +122,11 @@ def normalize_elements(structured: list[dict[str, Any]]) -> list[dict[str, Any]]
             flags.append("heading")
             flags.append("title")
         
+        if norm_text and not any(f in flags for f in ("heading", "title")):
+            if HEADING_REGEX.match(norm_text):
+                flags.append("heading")
+                flags.append("inferred")
+
         if norm_text and is_footer_text(norm_text):
             if "footer" not in flags:
                 flags.append("footer")

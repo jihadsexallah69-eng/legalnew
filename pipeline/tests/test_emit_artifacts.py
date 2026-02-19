@@ -24,13 +24,18 @@ def make_policy_unit(unit_id: str, source_index: int, language: str = "en") -> L
         display_text=f"Text {unit_id}",
         language=language,
         authority_level="policy",
+        authority_level_num=2,
         instrument="ENF",
         doc_type="policy",
         filename="test.pdf",
         page_start=1,
         page_end=1,
         element_ids=[f"el_{unit_id}"],
-        heading_path=["Document"],
+        heading_path=[],
+        non_embed=False,
+        unit_type="policy_rule",
+        scope="default",
+        cross_references=["IRPA:63(5)"],
     )
 
 
@@ -43,6 +48,7 @@ def make_legislation_unit(unit_id: str, source_index: int) -> LegalUnit:
         display_text="IRPA:34(1)(a) text",
         language="en",
         authority_level="act",
+        authority_level_num=4,
         instrument="IRPA",
         doc_type="legislation",
         filename="irpa.pdf",
@@ -55,6 +61,8 @@ def make_legislation_unit(unit_id: str, source_index: int) -> LegalUnit:
         consolidation_date=date(2026, 1, 19),
         last_amended_date=date(2025, 12, 15),
         source_snapshot_id="C-29-2026-01-19",
+        unit_type="policy_rule",
+        scope="default",
     )
 
 
@@ -192,3 +200,16 @@ class TestSerializeLegalUnit:
         assert record["source_index"] == 10
         assert record["consolidation_date"] == "2026-01-19"
         assert record["source_snapshot_id"] == "C-29-2026-01-19"
+        assert record["authority_level_num"] == 4
+        assert record["non_embed"] is False
+        assert record["unit_type"] == "policy_rule"
+        assert record["scope"] == "default"
+        assert isinstance(record["estimated_tokens"], int)
+
+    def test_serializes_policy_scope_fields(self):
+        unit = make_policy_unit("u-pol", 2)
+        record = serialize_legal_unit(unit)
+        assert record["authority_level_num"] == 2
+        assert record["scope"] == "default"
+        assert record["unit_type"] == "policy_rule"
+        assert record["cross_references"] == ["IRPA:63(5)"]

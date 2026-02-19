@@ -103,7 +103,7 @@ function hashQuery(query) {
   return createHash('sha1').update(normalizeQuery(query)).digest('hex');
 }
 
-function inferQueryProfile(query) {
+export function inferQueryProfile(query) {
   const q = normalizeQuery(query);
   const instrument = new Set();
   let jurisdiction = 'federal';
@@ -111,6 +111,7 @@ function inferQueryProfile(query) {
   let mode = 'default';
   let requiresBinding = true;
   let compareFamilies = [];
+  let scopeIntent = 'default';
 
   if (/\btrv\b|\bvisitor visa\b|\bvisitor record\b/.test(q)) instrument.add('TRV');
   if (/\beta\b|\belectronic travel authorization\b/.test(q)) instrument.add('ETA');
@@ -122,6 +123,16 @@ function inferQueryProfile(query) {
   if (/\binadmissib|\bcriminality\b|\bmedical inadmissib|\bsecurity inadmissib/.test(q)) instrument.add('INADMISSIBILITY');
   if (/\bmisrep\b|\ba40\b|\bmisrepresentation\b/.test(q)) instrument.add('MISREP');
   if (/\benforcement\b|\bremoval order\b|\badmissibility hearing\b|\bdetention\b/.test(q)) instrument.add('ENFORCEMENT');
+
+  if (
+    /\bglossary\b|\bdefine\b|\bdefinition\b|\bacronym\b|\babbreviation\b|\bstand for\b|\bmeaning of\b|\bwhat does\b.*\bstand for\b/.test(q)
+  ) {
+    scopeIntent = 'glossary';
+  } else if (/\blink\b|\bresources?\b|\bwebsite\b|\bcontact\b|\boffice\b|\bwhere to find\b|\bwhere can i find\b|\bhow to apply\b/.test(q)) {
+    scopeIntent = 'links';
+  } else if (/\btable of contents\b|\btoc\b|\boutline\b|\bsection list\b|\blist sections\b|\bchapter list\b/.test(q)) {
+    scopeIntent = 'toc';
+  }
 
   if (/\boinp\b|\bontario immigrant nominee\b/.test(q)) {
     jurisdiction = 'ontario';
@@ -176,10 +187,25 @@ function inferQueryProfile(query) {
     compareRequested,
     compareFamilies,
     caseLawRequested,
+    scopeIntent,
   };
 }
 
-function buildTierFilters(profile) {
+export function buildScopeFilter(profile) {
+  const scopeIntent = toText(profile?.scopeIntent || '').toLowerCase();
+  if (scopeIntent === 'glossary' || scopeIntent === 'links' || scopeIntent === 'toc') {
+    return { scope: { $eq: scopeIntent } };
+  }
+  // Backward compatibility: missing scope is treated as default.
+  return {
+    $or: [
+      { scope: { $eq: 'default' } },
+      { scope: { $exists: false } },
+    ],
+  };
+}
+
+export function buildTierFilters(profile) {
   const sharedClauses = [];
   if (profile.docFamily) {
     sharedClauses.push({ doc_family: { $eq: profile.docFamily } });
@@ -190,7 +216,9 @@ function buildTierFilters(profile) {
   if (profile.jurisdiction && profile.jurisdiction !== 'federal') {
     sharedClauses.push({ jurisdiction: { $eq: profile.jurisdiction } });
   }
-  const sharedFilter = buildAndFilter(sharedClauses);
+  const scopeClause = buildScopeFilter(profile);
+
+  const sharedFilter = buildAndFilter([...sharedClauses, scopeClause]);
 
   let bindingAuthority = BINDING_LEVELS;
   let guidanceAuthority = [...GUIDANCE_LEVELS];
@@ -264,12 +292,13 @@ async function runCompareDocFamilyQueries({ query, namespace, profile, topK, fal
   }
 
   const families = profile.compareFamilies.slice(0, 2);
+  const scopeFilter = buildScopeFilter(profile);
   const queries = families.map((family) => runTierQuery({
     tierName: `compare_${family}`,
     query,
     namespace,
     topK,
-    filter: { doc_family: { $eq: family } },
+    filter: mergeFilters({ doc_family: { $eq: family } }, scopeFilter),
     fallbackAllowed,
   }));
 
@@ -473,6 +502,89 @@ export async function retrieveGrounding({ query, topK = 6 }) {
         authority_level: normalizeAuthorityLevel(source),
         score: typeof source?.score === 'number' ? source.score : null,
         tier: source?.retrievalTier || 'unknown',
+      })),
+    },
+  };
+}
+
+export async function retrieveBindingGrounding({ query, topK = 6 }) {
+  const namespace = process.env.PINECONE_NAMESPACE;
+  const safeTopK = toInt(topK, 6, 1, 16);
+  const bindingGateFilter = {
+    $or: [
+      { authority_level_num: { $eq: 4 } },
+      { authority_level: { $in: ['statute', 'regulation'] } },
+    ],
+  };
+
+  const pineconeResults = await pineconeQuery({
+    query,
+    topK: safeTopK,
+    namespace,
+    filter: bindingGateFilter,
+  }).catch((err) => {
+    console.error('Binding-only Pinecone retrieval failed:', err);
+    return [];
+  });
+
+  const taggedBinding = (Array.isArray(pineconeResults) ? pineconeResults : [])
+    .map((source) => ({ ...source, retrievalTier: 'binding_gate' }));
+  const pinecone = sortSourcesStable(dedupeSources(taggedBinding));
+  const bindingAuthorityCount = taggedBinding
+    .map((source) => normalizeAuthorityLevel(source))
+    .filter((level) => BINDING_LEVELS.includes(level))
+    .length;
+
+  return {
+    pinecone,
+    caseLaw: [],
+    retrieval: {
+      queryHash: hashQuery(query),
+      namespace: namespace || null,
+      mode: 'binding_gate',
+      noSilentFallback: true,
+      settings: {
+        tieredEnabled: false,
+        noSilentFallback: true,
+      },
+      profile: {
+        mode: 'binding_gate',
+        requiresBinding: true,
+      },
+      tiers: {
+        binding: {
+          topK: safeTopK,
+          count: taggedBinding.length,
+          bindingAuthorityCount,
+          appliedFilter: bindingGateFilter,
+          fallbackUsed: false,
+          fallbackReason: '',
+          errors: [],
+        },
+        guidance: {
+          topK: 0,
+          count: 0,
+          appliedFilter: null,
+          fallbackUsed: false,
+          fallbackReason: '',
+          errors: [],
+        },
+        compare: {
+          enabled: false,
+          families: [],
+          count: 0,
+          errors: [],
+        },
+      },
+      noBindingFound: bindingAuthorityCount === 0,
+      authorityMixCounts: countBy(pinecone, (source) => normalizeAuthorityLevel(source)),
+      docFamilyCounts: countBy(pinecone, (source) => normalizeDocFamily(source)),
+      topSourceIds: pinecone.slice(0, 10).map((source) => ({
+        id: source?.id,
+        doc_family: normalizeDocFamily(source),
+        authority_level: normalizeAuthorityLevel(source),
+        score: typeof source?.score === 'number' ? source.score : null,
+        tier: source?.retrievalTier || 'binding_gate',
       })),
     },
   };

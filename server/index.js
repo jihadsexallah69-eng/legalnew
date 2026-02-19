@@ -3,12 +3,19 @@ import dotenv from 'dotenv';
 import { randomUUID } from 'node:crypto';
 import { groqAnswer } from './clients/groq.js';
 import { a2ajEnrichCaseSources, a2ajSearchDecisions, a2ajToCaseSources } from './clients/a2aj.js';
-import { retrieveGrounding, buildPrompt, extractCitations, validateCitationTokens } from './rag/grounding.js';
+import {
+  retrieveGrounding,
+  retrieveBindingGrounding,
+  buildPrompt,
+  extractCitations,
+  validateCitationTokens,
+} from './rag/grounding.js';
 import { buildCitationFromSource } from './rag/citations.js';
 import { chunkUserDocumentText, rankDocumentChunks } from './rag/documents.js';
 import { enforceAuthorityGuard } from './rag/responseGuard.js';
 import { applyFailureStateNotice, getFailureStateInfo, resolveFailureState } from './rag/failureStates.js';
 import { prependAnalysisDateHeader } from './rag/responsePolicy.js';
+import { enforceStatuteGate } from './rag/statuteGate.js';
 import {
   appendRunTraceEvent,
   buildAuditRunTraceContract,
@@ -23,6 +30,7 @@ import {
 } from './rag/auditTrace.js';
 import { routeIntent } from './rag/router.js';
 import { detectPromptInjection, isRcicRelatedQuery, sanitizeUserMessage } from './rag/security.js';
+import { runChatGraph } from './rag/graph/runner.js';
 import {
   appendMessage,
   createDocument,
@@ -251,6 +259,7 @@ app.post('/api/chat', async (req, res) => {
   const auditTraceIncludeRedactedPrompt = boolFlag(process.env.AUDIT_TRACE_INCLUDE_REDACTED_PROMPT, false);
   const auditTracePersistLog = boolFlag(process.env.AUDIT_TRACE_PERSIST_LOG, true);
   const auditTraceSampleRate = Number(process.env.AUDIT_TRACE_SAMPLE_RATE || 1);
+  const graphRagEnabled = boolFlag(process.env.GRAPH_RAG_ENABLED, false);
   const auditBudgets = {
     maxToolCalls: Number(process.env.RAG_MAX_TOOL_CALLS || 8),
     maxLiveFetches: Number(process.env.RAG_MAX_LIVE_FETCHES || 3),
@@ -315,6 +324,67 @@ app.post('/api/chat', async (req, res) => {
     const sanitizedMessage = sanitizeUserMessage(message);
     const effectiveMessage = sanitizedMessage || message;
     const rcicRelated = isRcicRelatedQuery(effectiveMessage);
+
+    if (graphRagEnabled) {
+      const graphOutput = await runChatGraph({
+        message,
+        effectiveMessage,
+        sanitizedMessage,
+        promptSafety,
+        rcicRelated,
+        sessionId,
+        userId,
+        history,
+        topK,
+        analysisDateBasis,
+        asOfDate,
+        runtimeBudget,
+        runTrace,
+        defaultA2ajTopK,
+        model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+        flags: {
+          debugEnabled,
+          promptInjectionBlockingEnabled,
+          a2ajEnabled,
+          a2ajCaseLawEnabled,
+          a2ajLegislationEnabled,
+          auditTraceEnabled,
+          auditTracePersistLog,
+          auditTraceSampleRate,
+        },
+        loadDocumentSources: async ({ query }) => {
+          if (!(dbEnabled() && userId)) return [];
+          try {
+            const documentRows = await listSessionDocumentChunks({
+              sessionId,
+              userId,
+              limit: Number(process.env.DOCUMENT_CHUNK_POOL || 80),
+            });
+            return rankDocumentChunks({
+              query,
+              chunks: documentRows,
+              topK: Number(process.env.DOCUMENT_TOP_K || 4),
+            });
+          } catch (docError) {
+            console.warn('Document grounding failed; continuing without document sources.', docError?.message || docError);
+            return [];
+          }
+        },
+      });
+
+      if (dbEnabled() && userId) {
+        await appendMessage({
+          sessionId,
+          userId,
+          role: 'assistant',
+          content: graphOutput.text,
+          citations: graphOutput.citations,
+        });
+      }
+
+      return res.status(graphOutput.statusCode || 200).json(graphOutput.payload);
+    }
+
     appendRunTraceEvent(runTrace, 'input_safety', {
       detected: Boolean(promptSafety?.detected),
       rcicRelated,
@@ -398,7 +468,7 @@ app.post('/api/chat', async (req, res) => {
       as_of_date: asOfDate,
     });
     runtimeBudget.usedToolCalls += 1;
-    const grounding = await retrieveGrounding({ query: effectiveMessage, topK });
+    let grounding = await retrieveGrounding({ query: effectiveMessage, topK });
     completeRunTracePhase(runTrace, 'RETRIEVAL', {
       outputs: {
         pinecone_count: Array.isArray(grounding?.pinecone) ? grounding.pinecone.length : 0,
@@ -489,6 +559,81 @@ app.post('/api/chat', async (req, res) => {
       } catch (docError) {
         console.warn('Document grounding failed; continuing without document sources.', docError?.message || docError);
       }
+    }
+
+    const statuteGateResult = await enforceStatuteGate({
+      query: effectiveMessage,
+      grounding,
+      topK,
+      retrieveBindingGrounding: async (params) => {
+        runtimeBudget.usedToolCalls += 1;
+        return retrieveBindingGrounding(params);
+      },
+    });
+    appendRunTraceEvent(runTrace, 'statute_gate', {
+      status: statuteGateResult.status,
+      rerunUsed: statuteGateResult.rerunUsed,
+      reason: statuteGateResult?.check?.reason || '',
+      canonicalKey: statuteGateResult?.check?.canonicalKey || '',
+    });
+    if (statuteGateResult?.rerunUsed && statuteGateResult?.grounding) {
+      grounding = statuteGateResult.grounding;
+    }
+    if (statuteGateResult?.status === 'fail') {
+      const failureState = 'NO_BINDING_AUTHORITY';
+      const failureStateInfo = getFailureStateInfo(failureState);
+      const failText = prependAnalysisDateHeader(
+        'No binding statute/regulation authority found for this legal-requirement question after binding-only retrieval.',
+        {
+          analysisDateBasis,
+          asOfDate,
+        }
+      );
+      if (dbEnabled() && userId) {
+        await appendMessage({
+          sessionId,
+          userId,
+          role: 'assistant',
+          content: failText,
+          citations: [],
+        });
+      }
+      appendRunTraceEvent(runTrace, 'failure_state', { failureState });
+      finalizeRunTrace(runTrace, {
+        status: 'ok',
+        responseText: failText,
+        citations: [],
+      });
+      const auditTraceContract = runTrace ? buildAuditRunTraceContract(runTrace) : null;
+      const auditTraceContractValidation = auditTraceContract
+        ? validateAuditRunTraceContract(auditTraceContract)
+        : null;
+      if (runTrace && auditTraceEnabled && auditTracePersistLog) {
+        persistRunTraceLog(runTrace, { sampleRate: auditTraceSampleRate });
+      }
+      return res.status(422).json({
+        text: failText,
+        citations: [],
+        sessionId,
+        ...(debugEnabled
+          ? {
+              debug: {
+                analysisDate: {
+                  basis: analysisDateBasis,
+                  asOf: asOfDate,
+                },
+                failureState,
+                failureStateInfo,
+                budget: runtimeBudget,
+                retrieval: grounding?.retrieval || null,
+                statuteGate: statuteGateResult,
+                auditTrace: summarizeRunTrace(runTrace),
+                auditTraceContract,
+                auditTraceContractValidation,
+              },
+            }
+          : {}),
+      });
     }
 
     startRunTracePhase(runTrace, 'GROUNDING', {

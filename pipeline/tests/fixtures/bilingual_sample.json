@@ -1,0 +1,35 @@
+[
+  {
+    "element_id": "bi_001",
+    "type": "Title",
+    "text": "Bilingual Operations Note",
+    "norm_text": "Bilingual Operations Note",
+    "flags": ["heading", "title"],
+    "heading_path": ["Document"],
+    "metadata": {"page_number": 1, "filename": "bilingual-note.pdf"},
+    "source_index": 0,
+    "non_embed": false
+  },
+  {
+    "element_id": "bi_002",
+    "type": "NarrativeText",
+    "text": "The officer must review all statutory requirements before issuing the document.",
+    "norm_text": "The officer must review all statutory requirements before issuing the document.",
+    "flags": [],
+    "heading_path": ["Document", "Bilingual Operations Note"],
+    "metadata": {"page_number": 1, "filename": "bilingual-note.pdf"},
+    "source_index": 1,
+    "non_embed": false
+  },
+  {
+    "element_id": "bi_003",
+    "type": "NarrativeText",
+    "text": "L'article 34 de la loi s'applique dans ce contexte et l'agent doit verifier les conditions.",
+    "norm_text": "L'article 34 de la loi s'applique dans ce contexte et l'agent doit verifier les conditions.",
+    "flags": [],
+    "heading_path": ["Document", "Bilingual Operations Note"],
+    "metadata": {"page_number": 1, "filename": "bilingual-note.pdf"},
+    "source_index": 2,
+    "non_embed": false
+  }
+]

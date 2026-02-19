@@ -115,6 +115,7 @@ class TestLegalUnit:
         unit = LegalUnit(**data)
         assert unit.canonical_key == "IRPA:34(1)(c)"
         assert unit.language == "en"
+        assert unit.authority_level_num == 4
 
     def test_valid_policy_unit(self):
         data = {
@@ -134,6 +135,7 @@ class TestLegalUnit:
         }
         unit = LegalUnit(**data)
         assert unit.canonical_key is None
+        assert unit.authority_level_num == 2
 
     def test_invalid_language_fails(self):
         data = {
@@ -247,6 +249,65 @@ class TestLegalUnit:
             consolidation_date=date(2024, 1, 1),
         )
         assert unit.consolidation_date == date(2024, 1, 1)
+
+    def test_authority_level_num_explicit_zero_preserved(self):
+        unit = LegalUnit(
+            unit_id="unit_scope0",
+            canonical_key=None,
+            embed_text="Glossary term",
+            display_text="Glossary term",
+            language="en",
+            authority_level="policy",
+            authority_level_num=0,
+            instrument="ENF",
+            doc_type="policy",
+            filename="x.pdf",
+            page_start=1,
+            page_end=1,
+            element_ids=[],
+            heading_path=[],
+            unit_type="glossary",
+            scope="glossary",
+        )
+        assert unit.authority_level_num == 0
+
+    def test_invalid_unit_type_fails(self):
+        with pytest.raises(ValueError):
+            LegalUnit(
+                unit_id="unit_bad_type",
+                canonical_key=None,
+                embed_text="text",
+                display_text="text",
+                language="en",
+                authority_level="policy",
+                instrument="ENF",
+                doc_type="policy",
+                filename="x.pdf",
+                page_start=1,
+                page_end=1,
+                element_ids=[],
+                heading_path=[],
+                unit_type="bad_type",
+            )
+
+    def test_invalid_scope_fails(self):
+        with pytest.raises(ValueError):
+            LegalUnit(
+                unit_id="unit_bad_scope",
+                canonical_key=None,
+                embed_text="text",
+                display_text="text",
+                language="en",
+                authority_level="policy",
+                instrument="ENF",
+                doc_type="policy",
+                filename="x.pdf",
+                page_start=1,
+                page_end=1,
+                element_ids=[],
+                heading_path=[],
+                scope="bad_scope",
+            )
 
 
 class TestSchemaVersion:

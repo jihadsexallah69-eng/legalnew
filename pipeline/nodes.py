@@ -33,6 +33,7 @@ def _unit_metadata(unit: LegalUnit) -> dict[str, Any]:
         "language": unit.language,
         "language_raw": unit.language_raw,
         "authority_level": unit.authority_level,
+        "authority_level_num": unit.authority_level_num,
         "instrument": unit.instrument,
         "doc_type": unit.doc_type,
         "filename": unit.filename,
@@ -41,6 +42,11 @@ def _unit_metadata(unit: LegalUnit) -> dict[str, Any]:
         "element_ids": list(unit.element_ids),
         "heading_path": list(unit.heading_path),
         "display_text": unit.display_text,
+        "non_embed": bool(unit.non_embed),
+        "unit_type": unit.unit_type,
+        "scope": unit.scope,
+        "cross_references": list(unit.cross_references),
+        "estimated_tokens": int(unit.estimated_tokens),
     }
 
     if unit.bilingual_group_id:

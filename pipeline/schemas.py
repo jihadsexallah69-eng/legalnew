@@ -1,10 +1,40 @@
 #!/usr/bin/env python3
+import math
 from datetime import date
 from typing import Any
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 SCHEMA_VERSION = "1.0.0"
+LEGAL_UNIT_TYPES = {"policy_rule", "glossary", "directory", "toc", "outline", "table"}
+LEGAL_SCOPES = {"default", "glossary", "links", "toc"}
+AUTHORITY_LEVEL_NUM_MAP = {
+    # Binding legislation tiers.
+    "statute": 4,
+    "act": 4,
+    "regulation": 4,
+    # Subordinate binding policy tiers.
+    "ministerial_instruction": 3,
+    "mi": 3,
+    "public_policy": 3,
+    # Operational policy tiers.
+    "policy": 2,
+    "manual": 2,
+    "voi": 2,
+    "guide": 2,
+    # Secondary/supporting.
+    "secondary": 1,
+    "commentary": 1,
+    "reference": 1,
+    "jurisprudence": 1,
+    "case_law": 1,
+    # Non-default retrieval scopes.
+    "glossary": 0,
+    "directory": 0,
+    "toc": 0,
+    "outline": 0,
+}
+ZERO_PRIORITY_UNIT_TYPES = {"glossary", "directory", "toc", "outline"}
 
 
 class RawElement(BaseModel):
@@ -52,6 +82,7 @@ class LegalUnit(BaseModel):
     language: str
     language_raw: str | None = None
     authority_level: str
+    authority_level_num: int | None = None
     instrument: str
     doc_type: str
     filename: str
@@ -64,6 +95,11 @@ class LegalUnit(BaseModel):
     consolidation_date: date | None = None
     last_amended_date: date | None = None
     source_snapshot_id: str | None = None
+    non_embed: bool = False
+    unit_type: str = "policy_rule"
+    scope: str = "default"
+    cross_references: list[str] = Field(default_factory=list)
+    estimated_tokens: int = 0
 
     @model_validator(mode="before")
     @classmethod
@@ -103,21 +139,53 @@ class LegalUnit(BaseModel):
             raise ValueError(f"Invalid translation_role: {v}")
         return v
 
+    @field_validator("unit_type")
+    @classmethod
+    def validate_unit_type(cls, v: str) -> str:
+        if v not in LEGAL_UNIT_TYPES:
+            raise ValueError(f"Invalid unit_type: {v}")
+        return v
+
+    @field_validator("scope")
+    @classmethod
+    def validate_scope(cls, v: str) -> str:
+        if v not in LEGAL_SCOPES:
+            raise ValueError(f"Invalid scope: {v}")
+        return v
+
+    @field_validator("authority_level_num")
+    @classmethod
+    def validate_authority_level_num(cls, v: int | None) -> int | None:
+        if v is None:
+            return v
+        if v < 0:
+            raise ValueError("authority_level_num cannot be negative")
+        return v
+
+    @model_validator(mode="after")
+    def derive_authority_level_num(self) -> "LegalUnit":
+        # Preserve explicit numeric values, including 0.
+        if self.authority_level_num is not None:
+            return self
+
+        if self.unit_type in ZERO_PRIORITY_UNIT_TYPES:
+            self.authority_level_num = 0
+            return self
+
+        self.authority_level_num = AUTHORITY_LEVEL_NUM_MAP.get(self.authority_level.lower(), 1)
+        return self
+
+    @model_validator(mode="after")
+    def derive_estimated_tokens(self) -> "LegalUnit":
+        if self.estimated_tokens <= 0:
+            self.estimated_tokens = math.ceil(len(self.embed_text) / 4)
+        return self
+
     @model_validator(mode="after")
     def validate_legislation_requirements(self) -> "LegalUnit":
         if self.doc_type == "legislation":
             if not self.canonical_key:
                 raise ValueError("canonical_key is required for legislation units")
-            if not self.bilingual_group_id:
-                raise ValueError("bilingual_group_id is required for legislation units")
-            if not self.translation_role:
-                raise ValueError("translation_role is required for legislation units")
-            if not self.consolidation_date:
-                raise ValueError("consolidation_date is required for legislation units")
-            if not self.last_amended_date:
-                raise ValueError("last_amended_date is required for legislation units")
-            if not self.source_snapshot_id:
-                raise ValueError("source_snapshot_id is required for legislation units")
         return self
 
 

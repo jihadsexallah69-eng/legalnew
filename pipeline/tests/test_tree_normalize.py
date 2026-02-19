@@ -154,6 +154,23 @@ class TestNormalizeElements:
         assert "heading" in result[0]["flags"]
         assert "title" in result[0]["flags"]
 
+    def test_numbered_heading_inferred_when_not_title(self):
+        structured = [
+            {
+                "element_id": "n1",
+                "type": "NarrativeText",
+                "text": "12.5.2 Referral to the CCMS service provider",
+                "metadata": {},
+                "source_index": 0,
+                "parent_chain": [],
+                "heading_path": [],
+                "root_id": "n1",
+            },
+        ]
+        result = normalize_elements(structured)
+        assert "heading" in result[0]["flags"]
+        assert "inferred" in result[0]["flags"]
+
     def test_metadata_candidates(self):
         structured = [
             {"element_id": "el1", "type": "NarrativeText", "text": "Content", "metadata": {"page_number": 5, "filename": "test.pdf"}, "source_index": 0, "parent_chain": [], "heading_path": [], "root_id": "el1"},

@@ -15,6 +15,7 @@ def make_legislation_unit(unit_id: str, source_index: int) -> LegalUnit:
         display_text="**IRPA:34(1)(a)** on grounds of security.",
         language="en",
         authority_level="act",
+        authority_level_num=4,
         instrument="IRPA",
         doc_type="legislation",
         filename="irpa.pdf",
@@ -27,6 +28,10 @@ def make_legislation_unit(unit_id: str, source_index: int) -> LegalUnit:
         consolidation_date=date(2026, 1, 19),
         last_amended_date=date(2025, 12, 15),
         source_snapshot_id="C-29-2026-01-19",
+        non_embed=False,
+        unit_type="policy_rule",
+        scope="default",
+        cross_references=["IRPA:34(1)(b)"],
     )
 
 
@@ -39,6 +44,7 @@ def make_policy_unit(unit_id: str, source_index: int) -> LegalUnit:
         display_text="Operational guidance paragraph.",
         language="en",
         authority_level="policy",
+        authority_level_num=2,
         instrument="ENF",
         doc_type="policy",
         filename="enf01.pdf",
@@ -46,6 +52,10 @@ def make_policy_unit(unit_id: str, source_index: int) -> LegalUnit:
         page_end=1,
         element_ids=["el2"],
         heading_path=["ENF 1", "Objectives"],
+        non_embed=True,
+        unit_type="glossary",
+        scope="glossary",
+        cross_references=["IRPA:63(5)"],
     )
 
 
@@ -64,6 +74,7 @@ class TestUnitToNode:
         assert md["canonical_key"] == "IRPA:34(1)(a)"
         assert md["language"] == "en"
         assert md["authority_level"] == "act"
+        assert md["authority_level_num"] == 4
         assert md["instrument"] == "IRPA"
         assert md["doc_type"] == "legislation"
         assert md["filename"] == "irpa.pdf"
@@ -76,6 +87,11 @@ class TestUnitToNode:
         assert md["consolidation_date"] == "2026-01-19"
         assert md["last_amended_date"] == "2025-12-15"
         assert md["source_snapshot_id"] == "C-29-2026-01-19"
+        assert md["non_embed"] is False
+        assert md["unit_type"] == "policy_rule"
+        assert md["scope"] == "default"
+        assert md["cross_references"] == ["IRPA:34(1)(b)"]
+        assert isinstance(md["estimated_tokens"], int)
 
     def test_policy_metadata_parity(self):
         unit = make_policy_unit("u2", 2)
@@ -86,6 +102,11 @@ class TestUnitToNode:
         assert md["source_index"] == 2
         assert md["canonical_key"] is None
         assert md["doc_type"] == "policy"
+        assert md["authority_level_num"] == 2
+        assert md["non_embed"] is True
+        assert md["unit_type"] == "glossary"
+        assert md["scope"] == "glossary"
+        assert md["cross_references"] == ["IRPA:63(5)"]
         assert "bilingual_group_id" not in md
         assert "consolidation_date" not in md
 

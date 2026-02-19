@@ -19,12 +19,18 @@ def serialize_legal_unit(unit: LegalUnit) -> dict[str, Any]:
         "language": unit.language,
         "language_raw": unit.language_raw,
         "authority_level": unit.authority_level,
+        "authority_level_num": unit.authority_level_num,
         "instrument": unit.instrument,
         "doc_type": unit.doc_type,
         "page_start": unit.page_start,
         "page_end": unit.page_end,
         "element_ids": unit.element_ids,
         "heading_path": unit.heading_path,
+        "non_embed": unit.non_embed,
+        "unit_type": unit.unit_type,
+        "scope": unit.scope,
+        "cross_references": unit.cross_references,
+        "estimated_tokens": unit.estimated_tokens,
     }
 
     if unit.bilingual_group_id:
