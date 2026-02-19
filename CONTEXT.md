@@ -1,397 +1,418 @@
 # Project Context
 
-Last updated: 2026-02-13
+Last updated: 2026-02-19
 
-## Snapshot
+## 1) Project Identity
 - Name: `rcic-case-law-assistant`
-- Stack: Vite + React frontend, Node/Express backend
-- Domain: RCIC-focused legal research assistant (Canadian immigration)
-- Core retrieval/generation: Pinecone grounding + Groq answer generation
-- Case-law integration: A2AJ REST (server-side orchestration, no model MCP tool-calling in Groq requests)
+- Domain: RCIC-focused Canadian immigration research assistant
+- Frontend: React 19 + TypeScript + Vite + Tailwind (CDN config in `index.html`)
+- Backend: Node.js + Express (`server/index.js`)
+- Core retrieval/generation: Pinecone grounding + Groq response generation
+- Optional case law retrieval: A2AJ REST search/fetch orchestration
+- Persistence: Optional Postgres (`DATABASE_URL`) for users/sessions/messages/documents
 
-## Current Architecture (Important)
-- Chat endpoint: `POST /api/chat`
-- Retrieval path:
-  1. Tiered Pinecone retrieval (`server/rag/grounding.js`) with query profiling and metadata filters
-  2. Intent routing (`server/rag/router.js`) decides A2AJ use
-  3. A2AJ decision search/fetch enrichment when enabled
-- Prompt grounding:
-  - Pinecone sources labeled `P1..Pn` (Tier A/Tier B combined in stable order)
-  - A2AJ sources labeled `C1..Cn`
-  - Uploaded document sources labeled `D1..Dn`
-- Citation safety:
-  - model output tokens validated against citation map (`validateCitationTokens`)
-  - invalid `[P#]/[C#]` tokens removed before response
-  - post-generation hierarchy guard (`server/rag/responseGuard.js`) adds warnings when binding claims lack binding citations
-- UI:
-  - inline citation tokens in chat are clickable and open citation popup
-  - Sources panel renders from `citations[]` returned by backend
+## 2) Current Operational Reality (Important)
+- The chat runtime is active and implemented end-to-end in `server/index.js`.
+- Citation validation and clickable citation UX are implemented and working.
+- Tiered retrieval, failure-state resolution, analysis-date headers, and audit trace scaffolding are implemented.
+- `POST /api/ingest/pdi` is implemented.
+- `POST /api/ingest` remains a placeholder and returns `{"ok":false,"message":"Ingest not implemented yet."}`.
+- Several governance/eval artifacts exist and are useful, but parts of them are scaffolding rather than strict runtime enforcement.
 
-## Runtime Endpoints
+## 3) Repository Map (High-Level)
+
+### Runtime app
+- Frontend entry: `index.tsx`, `App.tsx`
+- Main pages: `pages/ChatPage.tsx`, `pages/CasesPage.tsx`, `pages/SettingsPage.tsx`, `pages/LandingPage.tsx`, `pages/LoginPage.tsx`, `pages/TermsPage.tsx`, `pages/CRSCalculatorPage.tsx`
+- UI components: `components/chat/*`, `components/layout/Sidebar.tsx`, `components/shared/ExportMemoModal.tsx`, `components/ui/Generic.tsx`
+- State/api/auth: `lib/store.tsx`, `lib/api.ts`, `lib/neonAuth.ts`, `lib/types.ts`
+
+### Backend runtime
+- API entrypoint: `server/index.js`
+- RAG modules: `server/rag/*`
+- Clients: `server/clients/*`
+- DB layer: `server/db.js`, migration `server/db/migrations/phase2_documents.sql`
+- PDI ingestion endpoint pipeline: `server/ingest/pdi/*`
+
+### Governance and eval
+- Contracts: `contracts/v1/*`
+- Source policy: `config/source_policy.v1.json`, `config/sourcePolicy.js`
+- Eval harness and matrix: `eval/*`
+
+### Data + scripts
+- Scraper pipeline: `scripts/scraper/*`
+- Markdown ingestion: `scripts/ingest_md/*`
+- PDF ingestion: `scripts/ingest_pdf/*`
+- XML legislation chunking: `scripts/ingest_xml/*`
+- Local manuals corpus: `manuals/*.pdf` (21 files)
+- Scraped markdown corpus: `scripts/scraper/ircc_data_clean/*.md` (284 files)
+
+## 4) Backend API Surface (`server/index.js`)
 - `GET /api/health`
-- `GET /api/history` (DB-backed if `DATABASE_URL` configured)
-- `GET /api/documents` (DB-backed when enabled)
+- `GET /api/history`
+- `GET /api/documents`
+- `POST /api/documents/text`
 - `POST /api/chat`
-- `POST /api/documents/text` (DB-backed when enabled)
-- `POST /api/ingest/pdi` (URL -> parse -> chunk -> embed -> upsert)
-- `POST /api/ingest` is placeholder (`not implemented`)
+- `POST /api/ingest`
+- `POST /api/ingest/pdi`
 
-## Database Status
-Implemented DB integration (when `DATABASE_URL` is set):
+Server defaults:
+- Host: `127.0.0.1`
+- Port: `3001`
+
+## 5) `/api/chat` Runtime Flow (Implemented)
+
+### Request setup
+- Validates `message`.
+- Resolves identity via headers/body/query with fallback dev identity.
+- Session handling:
+  - If DB enabled, enforces user-session ownership.
+  - On ownership mismatch, creates a new session UUID.
+
+### Input safety
+- `detectPromptInjection()` + `sanitizeUserMessage()` + `isRcicRelatedQuery()`.
+- If prompt-injection blocking is enabled and query is out-of-scope:
+  - returns blocked response,
+  - prepends analysis date header,
+  - sets failure state `OUT_OF_SCOPE_SOURCE`,
+  - optionally persists assistant message if DB is enabled.
+
+### Retrieval and routing
+1. Tiered Pinecone retrieval via `retrieveGrounding()`.
+2. Route decision via `routeIntent()` (heuristic first, Groq router fallback).
+3. Optional A2AJ case-law search + detail enrichment.
+4. Optional user-document chunk ranking (`rankDocumentChunks()`) when DB docs exist.
+
+### Prompt build and generation
+- Prompt assembled by `buildPrompt()` with source blocks:
+  - `P#` Pinecone
+  - `C#` A2AJ case-law
+  - `D#` user documents
+- Generation via `groqAnswer()`.
+
+### Post-generation guard/validation
+- `validateCitationTokens()` removes invalid citation tokens.
+- `enforceAuthorityGuard()` adds notices for:
+  - no binding authority,
+  - binding claims without binding citations,
+  - temporal claims without effective date metadata.
+- `extractCitations()` parses `[P#]/[C#]/[D#]`.
+- `buildCitationFromSource()` maps citation objects for frontend.
+- `resolveFailureState()` determines runtime failure state.
+- `applyFailureStateNotice()` prepends user-visible notice for selected states.
+- `prependAnalysisDateHeader()` prepends `Analysis date basis: YYYY-MM-DD (basis)`.
+
+### Debug payload
+When `DEBUG_MODE=true`, response may include:
+- route decision
+- prompt safety
+- analysis date basis
+- failure state/info
+- budget counters
+- retrieval diagnostics (tiers/filters/source IDs)
+- A2AJ diagnostics
+- audit trace summary + contract + contract validation
+
+## 6) Retrieval, Citation, and Guard Details
+
+### Tiered retrieval (`server/rag/grounding.js`)
+- Query profiling infers mode/instrument/doc family/jurisdiction.
+- Tier A (binding) + Tier B (guidance) queries with metadata filters.
+- Optional compare mode runs additional doc-family comparison queries.
+- Stable ranking sorts by score, authority rank, effective date, ID.
+- `RAG_NO_SILENT_FALLBACK_ENABLED=true` default disables fallback broadening.
+
+### Citation system
+- Prompt map built for `P#`, `C#`, `D#` IDs.
+- Output citation tokens validated before final answer.
+- UI receives normalized citation objects (including legacy fields used by components).
+
+### Failure states (`server/rag/failureStates.js`)
+Precedence:
+1. `OUT_OF_SCOPE_SOURCE`
+2. `BUDGET_EXCEEDED`
+3. `CITATION_MISMATCH`
+4. `STALE_VOLATILE_SOURCE`
+5. `NO_BINDING_AUTHORITY`
+6. `INSUFFICIENT_EVIDENCE`
+7. `INSUFFICIENT_FACTS`
+8. `NONE`
+
+### Analysis date policy (`server/rag/responsePolicy.js`)
+Supported request basis:
+- `today`
+- `explicit_as_of` (`asOf`/`as_of`)
+- `application_date` (`applicationDate` / `application_date` / `lockInDate` / `lock_in_date`)
+
+## 7) Audit Trace Runtime (`server/rag/auditTrace.js`)
+- Feature flag: `AUDIT_TRACE_ENABLED`.
+- Captures phases: `RETRIEVAL`, `ROUTING`, `GROUNDING`, `GENERATION`, `VALIDATION`, `RESPONSE_GUARD`.
+- Builds contract-shaped trace payload + runtime validator.
+- Optional log persistence via `AUDIT_TRACE_PERSIST_LOG` and sampling.
+
+## 8) Data Persistence Model (`server/db.js`)
+
+### Optional DB mode
+- Enabled only when `DATABASE_URL` is set.
+- If DB is not configured:
+  - history endpoint returns empty sessions,
+  - document listing returns empty,
+  - text document upload endpoint returns 400,
+  - chat still works in stateless mode.
+
+### Tables used by runtime
 - `users`
 - `sessions`
-- `messages` (includes `citations` JSONB)
+- `messages` (with `citations` JSONB)
+- `documents` (Phase 2)
+- `document_chunks` (Phase 2)
 
-Server behavior:
-- If DB configured, user/session/messages are persisted.
-- If DB not configured, app still works in stateless mode.
+### Migration state
+- Repo includes migration for documents/chunks only: `server/db/migrations/phase2_documents.sql`.
+- Base schema for `users/sessions/messages` is assumed to exist externally.
 
-## Auth Status
-- Neon auth identity hooks are wired in frontend API client (`lib/neonAuth.ts`, `lib/api.ts`).
-- App can operate with auth bypass/dev identity depending on env and current setup.
-- Prior 403 issues were related to callback/allowed URL config; auth can be bypassed for dev.
+## 9) PDI Ingestion Endpoint (`server/ingest/pdi/*`)
+- Endpoint: `POST /api/ingest/pdi`.
+- Accepts `url` or nested `urls[]`; resolves and deduplicates wrappers/tracking params.
+- Pipeline:
+  1. `fetchPdiHtml()` via `got-scraping`
+  2. `parsePdiHtml()` main content extraction + last-updated detection
+  3. `extractSectionsFromContainer()` with heading hierarchy and table linearization
+  4. `chunkSections()` with overlap and table-boundary protection
+  5. `embedChunks()` with retry/backoff
+  6. `upsertPineconeVectors()` with batch size + request byte limits + retry/backoff
+- Canonical metadata enrichment includes:
+  - `authority_level`, `doc_family`, `instrument`, `jurisdiction`
+  - optional `effective_date`, `section_id`, `program_stream`, `noc_code`, `teer`, `table_type`
 
-## Citation System Status
-Implemented and active:
-- Prompt citation map creation (`server/rag/grounding.js`)
-- Citation token extraction + validation (`extractCitations`, `validateCitationTokens`)
-- Citation object mapping in API response (`buildCitationFromSource` in `server/index.js`)
-- Inline clickable citations in assistant messages (`components/chat/MessageBubble.tsx`)
-- Sources panel + citation popup (`components/chat/SourcesPanel.tsx`, `pages/ChatPage.tsx`)
-- Citation persistence/reload through DB history (`server/db.js`, `lib/api.ts`)
-- Canonical metadata passthrough on citations (`authorityLevel`, `docFamily`, `instrument`, `jurisdiction`, `effectiveDate`, etc.)
+## 10) Python Pipelines and Data Ops
 
-Detailed deep-dive doc:
-- `CITATION_SYSTEM.md`
+### Scraper (`scripts/scraper`)
+- `scrape.py` implements recursive BFS crawl with:
+  - strict allowlisting
+  - canonical URL dedupe + redirect unwrapping
+  - local extraction + Jina fallback
+  - resumable state (`_crawl_state.json`)
+  - outputs (`manifest.json`, `failed_urls.json`, markdown files)
+- Current local corpus directory has 284 markdown files.
+- Current manifest (`scripts/scraper/ircc_data_clean/manifest.json`) reports:
+  - `saved`: 284
+  - `fetch_failed`: 13
+  - `scrape_failed`: 3
 
-## A2AJ Integration Status
-Current approach is REST-only server orchestration:
-- Search endpoint usage via `server/clients/a2aj.js`
-- Detail fetch enrichment via `a2ajGetDecision` / `a2ajEnrichCaseSources`
-- Non-fatal fallback: if A2AJ fails, chat still returns Pinecone-grounded response
+### Markdown ingestion (`scripts/ingest_md`)
+- `ingest_md.py` parses frontmatter, cleans/enriches text, chunks, embeds, upserts.
+- Includes canonical legal metadata mapping in `legal_metadata.py`.
+- Includes namespace validation utility `validate_namespace.py`.
 
-Known behavior observed:
-- API path mismatch/debug iterations were resolved toward `/search` and `/fetch` behavior.
-- Quality now depends on top-result detail-fetch policy and snippet extraction quality.
+### PDF ingestion (`scripts/ingest_pdf`)
+- `ingest_pdf.py` orchestrates discover -> extract -> normalize -> sectionize -> chunk -> embed -> upsert.
+- Supports resumable state and chunk artifact output.
+- Canonical legal metadata mapping in `legal_metadata.py`.
+- Basic Python tests for normalization and state persistence.
 
-## Prompt Injection / Scope Guard
-Implemented in `server/rag/security.js`:
-- prompt injection pattern detection
-- sanitization of user text
-- RCIC-domain relevance gating
-- optional block behavior via env flag
+### XML legislation chunking (`scripts/ingest_xml`)
+- Parser script: `scripts/ingest_xml/parse_irpr_xml.py`.
+- Supported sources in workspace:
+  - `data/SOR-2002-227.xml` (IRPR)
+  - `data/I-2.5.xml` (IRPA)
+- Current generated artifacts:
+  - `data/SOR-2002-227_chunks.jsonl` (`3854` rows)
+  - `data/I-2.5_chunks.jsonl` (`1533` rows)
+- Contract-level behavior of generated records:
+  - Canonical `section_id` with no double underscores (citation-safe normalization).
+  - `citation_key` for exact lexical/metadata lookup (for example `IRPR_179_b`).
+  - Required provenance fields on every chunk: `content_hash`, `canonical_url`, `effective_from`, `effective_to`.
+  - Direct-addressable records for each section, subsection, and paragraph, with deeper subparagraph/clause expansion where present.
+- Exact-lookup capability validation:
+  - Query key `IRPR_179_b` resolves directly to `IRPR s.179(b)` from chunk metadata (no vector similarity path required for this cite form).
 
-## PDI Ingestion Pipeline Status (`server/ingest/pdi/*`)
-Implemented modules:
-- fetch, parse, sectionize, chunk, embed, upsert
-- endpoint: `POST /api/ingest/pdi`
-- tests passing: `npm run test:server`
+## 11) Frontend Runtime Behavior
 
-Chunking behavior:
-- section-based chunking with overlap
-- table boundary handling to avoid cutting table rows
-- metadata includes heading path, anchor, chunk indices, source URL/title/last updated
+### App shell and routing
+- `App.tsx` handles auth-gated routing and app shell.
+- Auth bypass via `VITE_BYPASS_AUTH=true` starts directly in chat.
+- Sidebar navigation routes to chat/calculator/cases/settings and local recent sessions.
 
-## Scraper Status (`scripts/scraper/*`)
-- Recursive crawler implemented with dedupe + state resume
-- Seed list: `scripts/scraper/input_links.md`
-- Output dir: `scripts/scraper/ircc_data_clean`
+### State management
+- `lib/store.tsx` uses React Context + `useReducer` (not Zustand).
+- Persists selected state to `localStorage` key `rcic-app-state`.
+- Loads server chat history on startup.
 
-Latest completed crawl summary:
-- allowed seed URLs visited: 287/287
-- saved markdown files: 284
-- remaining queue: 0
-- known scrape failures persisted in manifest for a small subset
+### API client
+- `lib/api.ts` adds `x-external-auth-id` and optional `x-user-email` headers.
+- Chat retries once on 403 if a stale session ID was supplied.
+- Document upload/list calls wired to backend document endpoints.
 
-Cleanup completed:
-- canonical output retained in `scripts/scraper/ircc_data_clean` (currently populated with 284 markdown files)
-- trial directories `ircc_data_clean_try*` are present and can be kept for comparison or cleaned later
+### Chat UI
+- `pages/ChatPage.tsx` supports:
+  - sending chat messages,
+  - `.txt/.md/.markdown` document upload,
+  - citation modal,
+  - sources panel,
+  - memo export modal open action.
+- `components/chat/MessageBubble.tsx` parses inline `[P#]/[C#]/[D#]` citation tokens.
+- `components/chat/SourcesPanel.tsx` renders citation cards and highlight sync.
 
-## Current Phase Focus
-Current repo focus is metadata-governed retrieval hardening:
-- Tiered Pinecone retrieval with explicit filter/debug artifacts (`server/rag/grounding.js`)
-- Response hierarchy guard to reduce policy-as-law drift (`server/rag/responseGuard.js`)
-- Ingestion metadata enrichment for markdown/pdf/pdi pipelines (canonical authority/doc_family/instrument/jurisdiction + optional fields)
-- Document endpoints and `D#` citations are present and active in chat flow
-- DB persistence currently covers `users`, `sessions`, `messages`, and session-scoped document/chunk grounding
-- Phase 0 contract freeze and control-plane scaffolding is now active for agentic RCIC architecture:
-  - roadmap: `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
-  - parallel delegation: `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
+### Frontend surfaces that are mostly mock/demo
+- `CasesPage` searches local `MOCK_CASES` data.
+- `SettingsPage` is largely static form UI.
+- `ExportMemoModal` generates template text client-side; Download button is UI-only.
 
-Phase 1 delegation remains active in parallel:
-- `PHASE1_DELEGATION.md`
+## 12) Current Design Direction (2026-02-19)
 
-## Phase 0 Junior Execution Details (Important)
-Junior-first policy for Phase 0:
-- Junior owns non-complex deterministic work by default (target 75-85% of Phase 0 implementation).
-- Senior handles only high-complexity/high-risk control-plane tasks.
+### Legal-unit pipeline redesign (planned)
+- New plan doc: `docs/LEGAL_UNIT_PIPELINE_REDESIGN_PLAN.md`.
+- Direction is to add a staged pipeline for JSON-element corpora:
+  1. structure pass (`node_map`, `children_map`, roots, `parent_chain`, `heading_path`)
+  2. normalization pass by type (`norm_text`, `non_embed`, table HTML -> row text)
+  3. unitization pass with mode selector (`legislation_mode` vs `policy_mode`)
+  4. bilingual split/pair pass (no mixed EN/FR units; legislation pairing by canonical key)
+  5. validated legal units -> LlamaIndex `TextNode` conversion
+- Legislation-specific constraints in plan:
+  - structural parser is primary segmentation authority (not title-merge heuristics),
+  - canonical key required for indexable legislation units,
+  - required aggregate units (`section`, `subsection`, clause),
+  - bilingual pair contract (`bilingual_group_id`, `translation_role`),
+  - consolidation snapshot stamping (`consolidation_date`, `last_amended_date`, `source_snapshot_id`).
 
-Primary docs junior must follow:
-- `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
-- `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
+### Delegation artifact for implementation
+- New delegation doc: `LEGAL_UNIT_PIPELINE_MIDLEVEL_DELEGATION.md`.
+- Defines bounded implementation scope under a new `pipeline/` package:
+  - `schemas.py`, `element_tree.py`, `normalize.py`, `section_parser.py`, `unitize.py`, `bilingual.py`, `emit_artifacts.py`, `nodes.py`
+  - required tests + fixtures under `pipeline/tests/*`
+- Required Python libs constrained to:
+  - `pydantic`, `beautifulsoup4`, `lxml`
+  - optional: `ftfy`, `regex`
+- Required staged JSONL outputs (stable ordering with `schema_version` and `source_index`):
+  - `tmp/elements_structured.jsonl`
+  - `tmp/elements_normalized.jsonl`
+  - `tmp/legal_units.jsonl`
+  - `tmp/legal_unit_errors.jsonl`
 
-Junior track assignments (J1-J7):
-- J1 Contracts pack:
-  - create `contracts/v1/*.schema.json`
-  - create `contracts/v1/examples/*.json`
-- J2 Source policy:
-  - create `config/source_policy.v1.json`
-  - add allowlist/blocklist tests
-- J3 Eval harness scaffold:
-  - create `eval/gold/gold_set_template.jsonl`
-  - create `eval/run_eval.(js|ts|py)`
-- J4 CI + validation tooling:
-  - schema/example validation runner
-  - CI job + report artifact output
-- J5 Failure-state test matrix:
-  - create `eval/failure_state_matrix.json`
-  - add stubbed tests per failure code
-- J6 Docs/runbooks:
-  - create `docs/phase0_contracts.md`
-  - create `docs/phase0_testplan.md`
-  - create `docs/phase0_runbook.md`
-- J7 Gold-set expansion:
-  - expand starter gold set to 30-40 entries
-  - Phase 0 assertions are scope/failure/doc-family checks (not answer-quality grading)
+### Status note
+- These are design/delegation artifacts only at this point.
+- No runtime retrieval/composer behavior has been changed yet based on this redesign.
+- `ChatPage` includes a `Search Web` button with no bound action.
 
-Contract/index requirements for junior:
-- maintain single source of truth index:
-  - `contracts/v1/INDEX.md` with version `v1.0.0`, schema list, required fields, examples
-- canonical ID format:
-  - `doc_id = sha256(canonical_url)` (64 hex)
-  - `content_hash_prefix = first 12 hex`
-  - `artifact_id = doc_id + ":" + content_hash_prefix`
-  - `chunk_id = artifact_id + ":" + chunk_index`
-  - `run_id = ulid()` (26 chars)
+### Auth integration
+- Neon auth client in `lib/neonAuth.ts`.
+- Supports email sign-in/sign-up and social sign-in redirects.
+- Dev bypass identity stored in localStorage (`rcic-external-auth-id`).
 
-Temporal requiredness (Phase 0 contracts):
-- required always: `observed_at`, `ingested_at`, `retrieved_at`
-- optional: `published_at`, `effective_from`, `effective_to`
-- required-if (best effort): for `{MI, PUBLIC_POLICY, OINP, BC_PNP, AAIP}`, include `effective_from`; `effective_to` nullable
+## 13) Build and Tooling
+- Frontend dev server: Vite on `3000`, API proxy `/api -> 3001`.
+- Backend dev server: `node server/index.js`.
+- TypeScript path alias `@/*` configured in `tsconfig.json` and Vite.
+- Tailwind is configured via CDN script in `index.html` (no local Tailwind build pipeline).
 
-Junior boundaries (must not cross without approval):
-- Do not modify runtime orchestration/failure semantics in app server code.
-- Do not change retrieval behavior in `server/rag/*` during J-tracks.
-- Do not change policy semantics in roadmap docs.
-- Keep each PR scoped to a single J-track.
-- Junior PRs must not modify `server/**` runtime code.
-- Exception: tests or config-loading hooks behind feature flags with explicit senior approval.
+## 14) Tests and Verified Status (2026-02-17)
 
-Phase 0 validator scope (junior scaffold):
-- include: schema checks, authority/modality compatibility, allowlist checks, binding-claim source checks on stub payloads
-- exclude: semantic quote verification by LLM (Phase 1+)
+### Command outputs verified in this workspace
+- `npm run test:server`:
+  - Runs only `server/ingest/pdi/__tests__/*.test.js`.
+  - Result: 7/7 passing.
+- Additional tests executed directly:
+  - `node --test server/rag/__tests__/auditTrace.test.js` (pass)
+  - `node --test server/rag/__tests__/failureStates.test.js` (pass)
+  - `node --test server/rag/__tests__/responsePolicy.test.js` (pass)
+  - `node --test server/__tests__/debugPayload.test.js` (pass)
 
-Junior daily status format (required):
-- `Track:`
-- `PR:`
-- `Tests:`
-- `Blocked by:`
-- `Next:`
+### Test inventory (excluding `node_modules`)
+- JS tests: 13 files
+  - `config/__tests__/sourcePolicy.test.js`
+  - `eval/__tests__/failureStateMatrix.test.js`
+  - `server/__tests__/debugPayload.test.js`
+  - `server/ingest/pdi/__tests__/*.test.js` (7 files)
+  - `server/rag/__tests__/*.test.js` (3 files)
+- Python tests:
+  - `scripts/scraper/tests/test_url_utils.py`
+  - `scripts/ingest_pdf/__tests__/test_normalize.py`
+  - `scripts/ingest_pdf/__tests__/test_state.py`
 
-Merge order for minimal conflicts:
-1. J1
-2. J2
-3. J4
-4. J3
-5. J5
-6. J6
-7. J7
-8. Senior integration tracks
+## 15) Contracts, Policy, and Eval Assets
 
-Phase 0 acceptance checks junior should run:
-- `npm run test:server`
-- eval runner:
-  - `node eval/run_eval.js` or `python eval/run_eval.py`
-- schema/example validation script from J4 tooling
+### Contracts (`contracts/v1`)
+- Schemas and examples are present for metadata, evidence bundle, claim ledger, validation result, and audit run trace.
+- `contracts/v1/validate.js` is a lightweight custom validator (required fields/enums/pattern checks), not a full JSON Schema engine.
 
-## Latest Debug Update (2026-02-13)
-- Added junior delegation runbook:
-  - `LEGAL_RAG_JUNIOR_PARALLEL_DELEGATION.md`
-- Added Phase 0 parallel delegation runbook:
-  - `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
-- Added/updated Phase 0 architecture roadmap with execution controls:
-  - `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
-  - includes constrained executor contract, budgets, failure-state set, temporal semantics, claim-ledger hard gates, and Phase 1 CI-eval requirement
-- Started Senior Track S3 (audit trace wiring plan):
-  - `docs/PHASE0_S3_AUDIT_TRACE_WIRING_PLAN.md`
-  - defines `/api/chat` trace insertion points, payload contract mapping, redaction defaults, feature flags, persistence strategy, and acceptance tests
-- Started S3 runtime scaffold (feature-flagged, non-blocking):
-  - new utility: `server/rag/auditTrace.js`
-  - `/api/chat` now emits structured trace events/summaries when `AUDIT_TRACE_ENABLED=true`
-  - trace summary is included under `debug.auditTrace` in chat responses when debug is enabled
-- Advanced S3 runtime wiring completed:
-  - phase-level trace capture added for `RETRIEVAL`, `ROUTING`, `GROUNDING`, `GENERATION`, `VALIDATION`, `RESPONSE_GUARD`
-  - trace contract adapter + validator added:
-    - `buildAuditRunTraceContract(...)`
-    - `validateAuditRunTraceContract(...)`
-  - `/api/chat` debug payload now includes:
-    - `debug.auditTraceContract`
-    - `debug.auditTraceContractValidation`
-  - optional structured trace logging enabled via env flags:
-    - `AUDIT_TRACE_PERSIST_LOG`
-    - `AUDIT_TRACE_SAMPLE_RATE`
-  - analysis date context now supports:
-    - `today`
-    - `explicit_as_of` (`asOf`/`as_of`)
-    - `application_date` (`applicationDate`/`lockInDate`)
-  - added unit coverage: `server/rag/__tests__/auditTrace.test.js`
-- Started S4 arbitration/sign-off integration:
-  - added runtime failure-state resolver:
-    - `server/rag/failureStates.js`
-  - `/api/chat` failure-state assignment now uses deterministic resolver with precedence:
-    - `OUT_OF_SCOPE_SOURCE` -> `BUDGET_EXCEEDED` -> `CITATION_MISMATCH` -> `STALE_VOLATILE_SOURCE` -> `NO_BINDING_AUTHORITY` -> `INSUFFICIENT_EVIDENCE` -> `INSUFFICIENT_FACTS` -> `NONE`
-  - runtime budget counters (`usedToolCalls`, `usedLiveFetches`) are now tracked and surfaced in debug payload
-  - debug payload now includes:
-    - `failureState`
-    - `failureStateInfo`
-    - `budget`
-  - added unit coverage:
-    - `server/rag/__tests__/failureStates.test.js`
-  - sign-off memo added:
-    - `docs/PHASE0_SIGNOFF.md`
-    - decision: `GO (Conditional)` for Phase 0 completion
-- Phase 1 senior kickoff started:
-  - response policy helper added: `server/rag/responsePolicy.js`
-  - `/api/chat` responses now prepend `Analysis date basis: YYYY-MM-DD (basis)` for success, blocked, and error paths
-  - retrieval default tightened to `RAG_NO_SILENT_FALLBACK_ENABLED=true` default in `server/rag/grounding.js`
-  - unit tests added:
-    - `server/rag/__tests__/responsePolicy.test.js`
-  - S1/S2 arbitration progress:
-    - failure-state user-facing notices centralized via `applyFailureStateNotice(...)` in `server/rag/failureStates.js`
-    - deterministic precedence exported via `failureStatePrecedence()`
-    - runtime policy spec added: `docs/PHASE1_RUNTIME_POLICY.md`
-    - roadmap failure-state set updated to include `BUDGET_EXCEEDED` and `INSUFFICIENT_FACTS`
-  - S3/S4 closeout:
-    - Phase 1 sign-off memo added: `docs/PHASE1_SIGNOFF.md`
-    - decision: `GO (Conditional)` with non-blocking operational hardening items
-- Junior progress status:
-  - J2 completed: source policy config + allowlist/blocklist tests
-  - J3 completed: eval harness scaffold (`eval/run_eval.js` + gold template)
-  - J4 completed: CI workflow for Phase 0 schema/source-policy checks
-  - J5 completed: failure-state matrix + deterministic tests
-  - J6 completed: Phase 0 contracts/testplan/runbook docs
-  - J7 completed: gold set expanded to 39 entries
-- Delegation policy updated to junior-first:
-  - junior assigned J1-J7 tracks (contracts, config, eval/CI scaffolding, runbooks, gold set)
-  - senior limited to complex control-plane arbitration and policy/runtime guard semantics
-- Junior Track B/C was reviewed and normalized to canonical schema values:
-  - validator updated in `scripts/ingest_md/validate_namespace.py`
-  - mapping contract corrected in `docs/LEGAL_METADATA_MAPPING.md`
-  - validation pass (2026-02-13): `npm run test:server` passed, Python compile checks passed for validator/metadata modules
-  - runtime note: `validate_namespace.py` requires Python package `pinecone` in local env to execute namespace scans
-- Senior stream retrieval updates:
-  - tiered retrieval/query profiling/filter reporting in `server/rag/grounding.js`
-  - hierarchy post-guard in `server/rag/responseGuard.js`
-  - debug payload now includes `retrieval` and `guardIssues` in `/api/chat`
-- Senior Track A metadata emission added:
-  - markdown: `scripts/ingest_md/legal_metadata.py` + wired in `scripts/ingest_md/ingest_md.py`
-  - pdf: `scripts/ingest_pdf/legal_metadata.py` + wired in `scripts/ingest_pdf/chunk.py`
-  - pdi: canonical metadata builder in `server/ingest/pdi/index.js`
-  - section ID normalization corrected for nested citations:
-    - `A40(1)(a)` now maps to `IRPA_A40_1a`
-    - `R200(1)(c)` maps to `IRPR_200_1c` while `R179(b)` remains `IRPR_179b`
-- Canonical markdown dataset was restored into `scripts/scraper/ircc_data_clean` from Git commit `c1f0b3eadfee6a1be4d6175e5dd65f19bcc7288c`.
-  - current markdown count in canonical directory: `284` files.
-- Markdown ingestion pipeline (`scripts/ingest_md/ingest_md.py`) was fixed for `EMBEDDING_PROVIDER=pinecone`:
-  - non-dry runs now always call real embedding (no dummy-vector fallback).
-  - this resolved prior dimension mismatch failures.
-- Verified one-file end-to-end upsert success:
-  - `python scripts/ingest_md/ingest_md.py --directory scripts/scraper/ircc_data_clean --max-files 1`
-  - summary: `Files processed: 1`, `Chunks embedded: 11`, `Vectors upserted: 11`.
-- Added resumability controls to markdown ingestion:
-  - `--no-delete-existing-source`
-  - `--skip-existing-ids`
-- New target namespace selected for refreshed markdown ingestion:
-  - `ircc-guidance-v1-20260212`
-  - full run started successfully but was user-interrupted before completion.
-- Added delegation/runbook doc:
-  - `MARKDOWN_UPSERT_PIPELINE_DELEGATION.md`
-- Added PDF ingestion MVP scaffold:
-  - `scripts/ingest_pdf/ingest_pdf.py` + modular helpers (`extract`, `normalize`, `structure`, `chunk`, `embed`, `upsert`, `state`, `schemas`)
-  - supports dry-run, state tracking, `--no-delete-existing-source`, `--skip-existing-ids`
-  - OCR flag wired as placeholder (`--enable-ocr`) for later integration.
+### Source policy (`config/source_policy.v1.json`)
+- Host/path allow/block policy exists with doc-family allow map and temporal metadata policy.
+- Runtime helper available in `config/sourcePolicy.js` with tests.
 
-## Key Files (High Value)
-- `server/index.js`
-- `server/rag/grounding.js`
-- `server/rag/responseGuard.js`
-- `server/rag/auditTrace.js`
-- `server/rag/router.js`
-- `server/rag/security.js`
-- `server/clients/a2aj.js`
-- `server/clients/pinecone.js`
-- `server/db.js`
-- `components/chat/MessageBubble.tsx`
-- `components/chat/SourcesPanel.tsx`
-- `pages/ChatPage.tsx`
-- `server/ingest/pdi/index.js`
-- `scripts/ingest_md/ingest_md.py`
-- `scripts/ingest_md/legal_metadata.py`
-- `scripts/ingest_md/validate_namespace.py`
-- `scripts/ingest_pdf/ingest_pdf.py`
-- `scripts/ingest_pdf/extract.py`
-- `scripts/ingest_pdf/chunk.py`
-- `scripts/ingest_pdf/legal_metadata.py`
-- `scripts/ingest_pdf/upsert.py`
-- `scripts/scraper/scrape.py`
-- `MARKDOWN_UPSERT_PIPELINE_DELEGATION.md`
-- `LEGAL_RAG_JUNIOR_PARALLEL_DELEGATION.md`
-- `docs/LEGAL_METADATA_MAPPING.md`
-- `docs/RCIC_AGENTIC_RESEARCH_ROADMAP.md`
-- `docs/PHASE0_PARALLEL_EXECUTION_DELEGATION.md`
-- `docs/PHASE0_S3_AUDIT_TRACE_WIRING_PLAN.md`
+### Eval (`eval/run_eval.js`)
+- Harness exists and loads gold set template (64 lines currently).
+- Current implementation is stub-style evaluation with synthetic retrieval/validator behavior and writes reports to `eval/reports/`.
 
-## Commands
-- Install: `npm install`
-- Backend: `npm run dev:server`
-- Frontend: `npm run dev`
-- Server tests: `npm run test:server`
-- Markdown one-file ingestion:
-  - `python scripts/ingest_md/ingest_md.py --directory scripts/scraper/ircc_data_clean --max-files 1`
-- Markdown resumable ingestion (no delete + skip existing IDs):
-  - `python scripts/ingest_md/ingest_md.py --directory scripts/scraper/ircc_data_clean --namespace ircc-guidance-v1-20260212 --no-delete-existing-source --skip-existing-ids`
-- PDF dry-run ingestion (example):
-  - `python scripts/ingest_pdf/ingest_pdf.py --directory scripts/pdfs --namespace ircc-pdf-v1-20260212 --max-files 1 --dry-run`
-- Scraper (resume):
-  - `python -u scripts/scraper/scrape.py --input-links-md /workspaces/legalnew/scripts/scraper/input_links.md --output-dir scripts/scraper/ircc_data_clean`
+## 16) Key Environment Variables
 
-## Environment Variables (Current-Relevant)
-Core:
+### Core runtime
 - `GROQ_API_KEY`, `GROQ_MODEL`, `ROUTER_MODEL`
 - `PINECONE_API_KEY`, `PINECONE_INDEX_HOST`, `PINECONE_NAMESPACE`
-- `RETRIEVAL_TOP_K`
+- `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`, `EMBEDDING_BASE_URL`, `EMBEDDING_DIM`
 - `DATABASE_URL`
 
-A2AJ:
-- `A2AJ_ENABLED`
-- `A2AJ_CASELAW_ENABLED`
-- `A2AJ_LEGISLATION_ENABLED`
-- `A2AJ_API_BASE`
-- `A2AJ_API_KEY`
-- `A2AJ_TIMEOUT_MS`
-- `A2AJ_TOP_K`
-- `A2AJ_FETCH_DETAILS_TOP_K`
-
-Security/debug:
-- `PROMPT_INJECTION_BLOCK_ENABLED`
-- `DEBUG_MODE`
+### Retrieval/routing controls
+- `RETRIEVAL_TOP_K`
 - `RAG_TIERED_RETRIEVAL_ENABLED`
-- `RAG_TOP_K_BINDING`
-- `RAG_TOP_K_GUIDANCE`
+- `RAG_TOP_K_BINDING`, `RAG_TOP_K_GUIDANCE`
 - `RAG_NO_SILENT_FALLBACK_ENABLED`
-- `AUDIT_TRACE_ENABLED`
-- `AUDIT_TRACE_INCLUDE_REDACTED_PROMPT`
-- `RAG_MAX_TOOL_CALLS`
-- `RAG_MAX_LIVE_FETCHES`
-- `RAG_MAX_RETRIES`
 
-Ingestion:
-- `EMBEDDING_MODEL`, `EMBEDDING_DIM`, `EMBEDDING_BASE_URL`
-- `EMBEDDING_PROVIDER`, `PINECONE_API_VERSION`
-- `PDI_EMBED_BATCH_SIZE`, `PDI_EMBED_CONCURRENCY`, retry/backoff envs
-- `PDI_UPSERT_BATCH_SIZE`, `PDI_UPSERT_MAX_REQUEST_BYTES`, retry/backoff envs
+### A2AJ
+- `A2AJ_ENABLED`, `A2AJ_CASELAW_ENABLED`, `A2AJ_LEGISLATION_ENABLED`
+- `A2AJ_API_BASE`, `A2AJ_API_KEY`, `A2AJ_TIMEOUT_MS`, `A2AJ_TOP_K`
+- `A2AJ_FETCH_DETAILS_TOP_K`, `A2AJ_DECISION_SNIPPET_CHARS`
+- `A2AJ_DECISIONS_SEARCH_PATH`, `A2AJ_DECISIONS_SEARCH_METHOD`
 
-## Open Risks
-- A2AJ latency and excerpt quality variance can still affect answer depth.
-- Citation contract has legacy + new fields; keep backward compatibility until UI is fully simplified.
-- Scraper outputs are large and currently mixed with runtime manifests; consider a cleaner artifacts policy for future commits.
+### Audit/failure/debug
+- `DEBUG_MODE`
+- `PROMPT_INJECTION_BLOCK_ENABLED`
+- `AUDIT_TRACE_ENABLED`, `AUDIT_TRACE_INCLUDE_REDACTED_PROMPT`, `AUDIT_TRACE_PERSIST_LOG`, `AUDIT_TRACE_SAMPLE_RATE`
+- `RAG_MAX_TOOL_CALLS`, `RAG_MAX_LIVE_FETCHES`, `RAG_MAX_RETRIES`
+
+### PDI ingest tuning
+- `PDI_CHUNK_*`, `PDI_TABLE_BOUNDARY_BUFFER_CHARS`
+- `PDI_EMBED_*`
+- `PDI_UPSERT_*`
+
+### Frontend auth
+- `VITE_NEON_AUTH_URL`
+- `VITE_NEON_AUTH_CALLBACK_URL`
+- `VITE_BYPASS_AUTH`
+
+## 17) Known Gaps / Mismatches to Keep in Mind
+- `test:server` does not include all server tests by default; it is currently scoped to PDI tests.
+- Some docs/runbooks reference broader validation pipelines than what default npm scripts enforce.
+- `POST /api/ingest` is not implemented.
+- Legacy MCP client (`server/clients/mcp.js`) remains in repo but chat runtime uses A2AJ REST path.
+- `pineconeUpsert()` in `server/clients/pinecone.js` is a stub and not the ingestion upsert path.
+- Governance schemas/policies and runtime metadata conventions are not fully harmonized yet (contracts use different enum conventions than ingestion/runtime metadata fields).
+
+## 18) Workspace Notes
+- Current git working tree includes an unrelated modified file: `package-lock.json`.
+
+## 19) Planned Agentic Graph Constraints (Design Decisions, Not Yet Runtime-Enforced)
+- Authoritative plan document: `AGENTIC_GRAPH_RAG_REFACTOR_PLAN.md`.
+- Runtime stays on single entrypoint: `POST /api/chat` (internal execution moves to graph-run).
+
+### Evidence metadata contract additions
+- Add `scope` with enum:
+  - `selection | admissibility | status_grant | procedure | enforcement | citizenship`
+- Add `applies_stage` with enum:
+  - `provincial_selection | federal_processing | border | appeal | court`
+- Validator rules should reject evidence records missing these fields or containing out-of-enum values.
+
+### Cite-first retrieval behavior
+- For canonical cite queries (for example `IRPR 179(b)`), run metadata/lexical exact lookup before Pinecone vector retrieval.
+- If parsed cite has no Tier A section match, return explicit failure state `CITATION_NOT_FOUND`.
+
+### Verifier hard constraints
+- If a claim touches `admissibility` or `status_grant`, require at least one federal binding evidence item.
+- Provincial evidence may only support `selection` or `procedure` claims.
+- Evidence tagged `applies_stage=provincial_selection` cannot support federal admissibility/status-grant claims.
+- Binding-claim validation should require quote support (claim support quote must be present in referenced evidence content).
+
+### Planned minimal graph edges (Postgres acceptable at phase 0/1)
+- `SUBORDINATE_TO` (provincial -> federal)
+- `GATES` (inadmissibility rules gating programs/rules)
+- `APPLIES_AT_STAGE` (rule -> lifecycle stage)

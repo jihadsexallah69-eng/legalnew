@@ -1,0 +1,134 @@
+[
+  {
+    "element_id": "enf_001",
+    "type": "Header",
+    "text": "ENF 1 Inadmissibility",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "ENF 1 Inadmissibility",
+    "non_embed": false,
+    "flags": ["heading", "title"],
+    "heading_path": ["ENF 1 Inadmissibility"],
+    "source_index": 0
+  },
+  {
+    "element_id": "enf_002",
+    "type": "Title",
+    "text": "1. What this chapter is about",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "1. What this chapter is about",
+    "non_embed": false,
+    "flags": ["heading"],
+    "heading_path": ["ENF 1 Inadmissibility", "1. What this chapter is about"],
+    "source_index": 1
+  },
+  {
+    "element_id": "enf_003",
+    "type": "NarrativeText",
+    "text": "This chapter provides guidance on the administration of the inadmissibility provisions under sections 34 to 42 of the Immigration and Refugee Protection Act (IRPA). It outlines the procedures for assessing inadmissibility, the grounds for refusal, and the remedies available to foreign nationals.",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "This chapter provides guidance on the administration of the inadmissibility provisions under sections 34 to 42 of the Immigration and Refugee Protection Act (IRPA). It outlines the procedures for assessing inadmissibility, the grounds for refusal, and the remedies available to foreign nationals.",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "1. What this chapter is about"],
+    "source_index": 2
+  },
+  {
+    "element_id": "enf_004",
+    "type": "Title",
+    "text": "2. Program objectives",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "2. Program objectives",
+    "non_embed": false,
+    "flags": ["heading"],
+    "heading_path": ["ENF 1 Inadmissibility", "2. Program objectives"],
+    "source_index": 3
+  },
+  {
+    "element_id": "enf_005",
+    "type": "NarrativeText",
+    "text": "The primary objectives of the inadmissibility program are to:",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "The primary objectives of the inadmissibility program are to:",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "2. Program objectives"],
+    "source_index": 4
+  },
+  {
+    "element_id": "enf_006",
+    "type": "ListItem",
+    "text": "Ensure the integrity of Canada's immigration system by preventing the entry of individuals who pose a risk to public safety or security;",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "Ensure the integrity of Canada's immigration system by preventing the entry of individuals who pose a risk to public safety or security;",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "2. Program objectives"],
+    "source_index": 5
+  },
+  {
+    "element_id": "enf_007",
+    "type": "ListItem",
+    "text": "Apply inadmissibility provisions fairly and consistently across all cases; and",
+    "metadata": {"page_number": 2, "filename": "enf01-eng.pdf"},
+    "norm_text": "Apply inadmissibility provisions fairly and consistently across all cases; and",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "2. Program objectives"],
+    "source_index": 6
+  },
+  {
+    "element_id": "enf_008",
+    "type": "ListItem",
+    "text": "Provide procedural fairness to individuals while upholding Canada's international obligations.",
+    "metadata": {"page_number": 2, "filename": "enf01-eng.pdf"},
+    "norm_text": "Provide procedural fairness to individuals while upholding Canada's international obligations.",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "2. Program objectives"],
+    "source_index": 7
+  },
+  {
+    "element_id": "enf_009",
+    "type": "Title",
+    "text": "3. Legal framework",
+    "metadata": {"page_number": 2, "filename": "enf01-eng.pdf"},
+    "norm_text": "3. Legal framework",
+    "non_embed": false,
+    "flags": ["heading"],
+    "heading_path": ["ENF 1 Inadmissibility", "3. Legal framework"],
+    "source_index": 8
+  },
+  {
+    "element_id": "enf_010",
+    "type": "NarrativeText",
+    "text": "The legal framework for inadmissibility is set out in IRPA sections 34 to 42, and the Immigration and Refugee Protection Regulations (IRPR) sections 228 to 241. Officers must apply these provisions in conjunction with this manual.",
+    "metadata": {"page_number": 2, "filename": "enf01-eng.pdf"},
+    "norm_text": "The legal framework for inadmissibility is set out in IRPA sections 34 to 42, and the Immigration and Refugee Protection Regulations (IRPR) sections 228 to 241. Officers must apply these provisions in conjunction with this manual.",
+    "non_embed": false,
+    "flags": [],
+    "heading_path": ["ENF 1 Inadmissibility", "3. Legal framework"],
+    "source_index": 9
+  },
+  {
+    "element_id": "enf_011",
+    "type": "Footer",
+    "text": "ENF 1 Inadmissibility | January 2024",
+    "metadata": {"page_number": 1, "filename": "enf01-eng.pdf"},
+    "norm_text": "ENF 1 Inadmissibility | January 2024",
+    "non_embed": true,
+    "flags": ["footer"],
+    "heading_path": [],
+    "source_index": 10
+  },
+  {
+    "element_id": "enf_012",
+    "type": "Footer",
+    "text": "Page 2 of 15",
+    "metadata": {"page_number": 2, "filename": "enf01-eng.pdf"},
+    "norm_text": "Page 2 of 15",
+    "non_embed": true,
+    "flags": ["footer", "page_number"],
+    "heading_path": [],
+    "source_index": 11
+  }
+]
